@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcstr.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 17:19:30 by sunhkim           #+#    #+#             */
-/*   Updated: 2020/12/22 17:30:33 by sunhkim          ###   ########.fr       */
+/*   Created: 2020/12/24 16:20:34 by sunhkim           #+#    #+#             */
+/*   Updated: 2020/12/24 21:11:34 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strtrim(char const *s1, char const set)
 {
 	unsigned int	i;
-	unsigned int	j;
+	unsigned int	t_start;
+	unsigned int	t_len;
+	char			*result;
 
+	if (!s1 || !set)
+		return (NULL);
 	i = 0;
-	if (needle[i] == 0)
-		return ((char *)haystack);
-	while (haystack[i] != 0 && i < len)
-	{
-		j = 0;
-		if (haystack[i] == needle[j])
-		{
-			while (haystack[i + j] == needlee[j] && i + j < len)
-			{
-				j++;
-				if (needle[j] == 0)
-					return ((char *)&haystack[i]);
-			}
-		}
+	while (s1[i] != 0 && ft_strchr(set, *s1))
 		i++;
-	}
-	return (0);
+	t_start = i;
+	t_len = ft_strlen(s1);
+	while (t_len > 0 && ft_strchr(set, s1[t_len]))
+		t_len--;
+	result = ft_substr((char *)s1, t_start, t_len + 1);
+	return (result);
 }
