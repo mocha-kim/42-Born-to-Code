@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 16:10:12 by sunhkim           #+#    #+#             */
-/*   Updated: 2020/12/24 16:19:51 by sunhkim          ###   ########.fr       */
+/*   Updated: 2020/12/27 17:48:05 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	while (s2[j] != 0)
 	{
-		result[i + j] = s1[j];
+		result[i + j] = s2[j];
 		j++;
 	}
 	result[i + j] = '\0';

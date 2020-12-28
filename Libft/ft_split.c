@@ -6,13 +6,13 @@
 /*   By: sunhkim <sunhkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 16:48:28 by sunhkim           #+#    #+#             */
-/*   Updated: 2020/12/24 21:12:40 by sunhkim          ###   ########.fr       */
+/*   Updated: 2020/12/27 16:57:58 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		count_word(char *s, char c)
+int		count_word(const char *s, char c)
 {
 	int		i;
 	int		count;
@@ -41,14 +41,14 @@ void	find_next_str(char **str, int *len, char c)
 {
 	int		i;
 
-	*str += len;
+	*str += *len;
 	*len = 0;
-	while (**next != 0 && **next == c)
-		(*next)++;
+	while (**str != 0 && **str == c)
+		(*str)++;
 	i = 0;
-	while ((*next)[i] != 0)
+	while ((*str)[i] != 0)
 	{
-		if ((*next)[i] == c)
+		if ((*str)[i] == c)
 			return ;
 		(*len)++;
 		i++;
@@ -69,7 +69,7 @@ char	**ft_split(char const *s, char c)
 	if (!(result = malloc(sizeof(char *) * (substr_num + 1))))
 		return (NULL);
 	i = 0;
-	substr = s;
+	substr = (char *)s;
 	substr_len = 0;
 	while (i < substr_num)
 	{

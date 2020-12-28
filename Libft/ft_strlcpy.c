@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 14:25:33 by sunhkim           #+#    #+#             */
-/*   Updated: 2020/12/22 14:31:33 by sunhkim          ###   ########.fr       */
+/*   Updated: 2020/12/27 16:47:50 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		i++;
 	}
 	i = 0;
-	if (size)
+	if (dstsize != 0)
 	{
-		while (src[i] != 0 && i < size - 1)
+		while (src[i] != 0 && i < dstsize - 1)
 		{
-			dest[i] = src[i];
+			dst[i] = src[i];
 			i++;
 		}
-		dest[i] = '\0';
+		dst[i] = '\0';
 	}
 	return (srcsize);
 }

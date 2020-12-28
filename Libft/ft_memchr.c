@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 17:48:43 by sunhkim           #+#    #+#             */
-/*   Updated: 2020/12/23 17:54:04 by sunhkim          ###   ########.fr       */
+/*   Updated: 2020/12/27 16:42:21 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (tmp[i] == (unsigned char)c)
-			return (&s[i]);
+			return ((void *)&s[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
