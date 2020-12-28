@@ -6,7 +6,7 @@
 #    By: sunhkim <sunhkim@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 17:04:33 by sunhkim           #+#    #+#              #
-#    Updated: 2020/12/27 17:32:06 by sunhkim          ###   ########.fr        #
+#    Updated: 2020/12/28 11:17:29 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,10 @@ $(NAME):	$(OBJS)
 all:	$(NAME)
 
 clean:
-	rm $(OBJS)
+	rm -f $(OBJS)
 
 fclean:	clean
-	rm $(NAME)
+	rm -f $(NAME)
 
 re:		fclean all
 

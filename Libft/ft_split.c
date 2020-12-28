@@ -6,18 +6,20 @@
 /*   By: sunhkim <sunhkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 16:48:28 by sunhkim           #+#    #+#             */
-/*   Updated: 2020/12/27 16:57:58 by sunhkim          ###   ########.fr       */
+/*   Updated: 2020/12/28 15:23:31 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		count_word(const char *s, char c)
+static int	count_word(const char *s, char c)
 {
 	int		i;
 	int		count;
 
 	i = 0;
+	if (!*s)
+		return (0);
 	while (s[i] != 0 && s[i] == c)
 		i++;
 	count = 0;
@@ -37,7 +39,7 @@ int		count_word(const char *s, char c)
 	return (count);
 }
 
-void	find_next_str(char **str, int *len, char c)
+static void	find_next_str(char **str, int *len, char c)
 {
 	int		i;
 
@@ -55,16 +57,28 @@ void	find_next_str(char **str, int *len, char c)
 	}
 }
 
-char	**ft_split(char const *s, char c)
+static char	**freee(char **result)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (result[i] != 0)
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+	return (NULL);
+}
+
+char		**ft_split(char const *s, char c)
 {
 	int		i;
 	int		substr_num;
 	int		substr_len;
 	char	**result;
 	char	*substr;
-
-	if (!s)
-		return (NULL);
+	
 	substr_num = count_word(s, c);
 	if (!(result = malloc(sizeof(char *) * (substr_num + 1))))
 		return (NULL);
@@ -75,7 +89,7 @@ char	**ft_split(char const *s, char c)
 	{
 		find_next_str(&substr, &substr_len, c);
 		if (!(result[i] = malloc(sizeof(char) * (substr_len + 1))))
-			return (NULL);
+			return (freee(result));
 		ft_strlcpy(result[i], substr, substr_len + 1);
 		i++;
 	}
