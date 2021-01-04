@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:04:55 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/04 16:07:15 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/04 16:15:13 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,42 @@ char	*ft_strdup(const char *s1)
 	return (result);
 }
 
+void	ft_strdel(char **as)
+{
+	if (as)
+	{
+		free(*as);
+		*as = NULL;
+	}
+	return ;
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	unsigned int	i;
+	char			*substr;
+
+	if (!s)
+		return (NULL);
+	if (ft_strlen(s) < start)
+	{
+		if (!(substr = malloc(sizeof(char))))
+			return (NULL);
+		substr[0] = '\0';
+		return (substr);
+	}
+	if (!(substr = malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	while (i < len && s[i] != 0)
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[i] = '\0';
+	return (substr);
+}
+
 int		read_line(char **line, int fd, char **backup, int reader)
 {
 	char	*tmp;
@@ -43,8 +79,8 @@ int		read_line(char **line, int fd, char **backup, int reader)
 		line_len++;
 	if (backup[fd][line_len] == '\n')
 	{
-		*line = ft_strsub(backup[fd], 0, len);
-		tmp = ft_strdup(s[fd] + len + 1);
+		*line = ft_substr(backup[fd], 0, line_len);
+		tmp = ft_strdup(backup[fd] + line_len + 1);
 		free(backup[fd]);
 		backup[fd] = tmp;
 		if (backup[fd][0] == '\0')
