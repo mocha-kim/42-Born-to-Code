@@ -10,7 +10,7 @@
 
 | Subject | Grade |  | 
 | ---------- | :--------- | :----------:
-| netwhat | |  |
-| get_next_line | |  |
+| netwhat | | 100% |
+| get_next_line | 115% |  |
 | ft_printf | |  |
 
