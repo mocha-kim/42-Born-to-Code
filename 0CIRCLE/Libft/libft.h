@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 19:23:05 by sunhkim           #+#    #+#             */
-/*   Updated: 2020/12/27 18:22:11 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/21 18:36:32 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,12 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 							void (*del)(void *));
+
+/*
+** Additional functions
+*/
+
+void			ft_putchar(char c);
+void			ft_putstr(char *str);
 
 #endif
