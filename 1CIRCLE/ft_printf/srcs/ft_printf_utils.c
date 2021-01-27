@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 18:55:51 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/26 22:39:19 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/27 20:09:55 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,48 @@ t_flags init_flags()
 	return (flags);
 }
 
-int		put_blanks(int start, int end, t_flags *flags)
+char	*get_blanks(int strlen, t_flags *flags)
 {
-	int		result;
+	int		i;
 	int		zero;
+	int		width;
+	char	*result;
 
-	result = 0;
+	width = flags->width;
+	if (strlen >= width || width == -1)
+		return (NULL);
+	if (!(result = (char *)malloc(sizeof(char) * (width - strlen + 2))))
+		return (NULL);
+	i = 0;
 	zero = flags->zero;
-	while (start <= end)
+	while (i < width - strlen + 1)
 	{
 		if (zero)
-			ft_putchar('0');
+			result[i] = '0';
 		else
-			ft_putchar(' ');
-		result++;
-		start++;
+			result[i] = ' ';
+		i++;
 	}
+	result[i] = 0;
+	return (result);
+}
+
+int		print_buffer(char *str, char *blanks, t_flags *flags)
+{
+	int		result;
+	char	*buffer;
+
+	if (!blanks)
+	{
+		if (flags->minus)
+			buffer = ft_strjoin(str, blanks);
+		else
+			buffer = ft_strjoin(blanks, str);
+	}
+	else
+		buffer = ft_strdup(str);
+	ft_putstr(buffer);
+	result = ft_strlen(buffer);
+	free(buffer);
 	return (result);
 }

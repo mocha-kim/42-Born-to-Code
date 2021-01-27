@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 18:18:47 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/26 22:33:39 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/27 19:22:50 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int		print_arg(va_list ap, t_flags flags)
 	else if (type == 's')
 		result = print_str(va_arg(ap, char *), &flags);
 	if (type == 'p')
-		result = print_pointer(va_arg(ap, int), &flags);
+		result = print_pointer(va_arg(ap, unsigned long), &flags);
 	if (type == 'd' || type == 'i')
 		result = print_int(va_arg(ap, int), &flags);
 	if (type == 'u')
-		result = print_int(va_arg(ap, unsigned int), &flags);
+		result = print_uint(va_arg(ap, unsigned int), &flags);
 	if (type == 'x' || type == 'X')
-		result = print_int_oc(va_arg(ap, unsigned int), &flags);
+		result = print_ocint(va_arg(ap, unsigned int), &flags);
 	if (type == '%')
 		result = print_char('%', &flags);
 	return (result - 1);

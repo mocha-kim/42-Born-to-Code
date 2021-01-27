@@ -1,16 +1,15 @@
+#include "../includes/ft_printf.h"
 #include <stdio.h>
 
 int		main()
 {
-	printf("%.5s\n", "hi");
-	printf("%0.5s\n", "hi");
-	printf("%5s\n", "hi");
-	printf("%-5s\n", "hi");
-	printf("%-05s\n", "hi");
-	printf("%-0.5s\n", "hi");
-	printf("%05.5s\n", "hi");
-	printf("%5.5s\n", "hi");
-	printf("%5.5s\n", "asdfghjk");
-	printf("%5.10s\n", "asdfghjk");
-	printf("%10.5s\n", "asdfghjk");
+	int	a = -1234567890;
+	unsigned int b = 3060399406;
+
+	printf("%d\n", a);
+	printf("%d\n", b);
+	printf("%d\n", (int)b);
+	printf("%u\n", a);
+	printf("%u\n", b);
+	printf("%u\n", (unsigned int)a);
 }

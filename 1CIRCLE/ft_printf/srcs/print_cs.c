@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 18:52:48 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/26 22:42:13 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/27 19:28:00 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,39 @@
 int		print_char(int c, t_flags *flags)
 {
 	int		result;
+	char	*blanks;
 
-	result = 0;
+	result = 1;
 	if (flags->minus)
 		ft_putchar(c);
-	result += put_blanks(1, flags->width, flags);
-	if (!(flags->minus))
-		ft_putchar(c);
-}
-
-int		print_buffer(char **buffer, char *str, int strlen, t_flags *flags)
-{
-	int		i;
-	int		result;
-
-	i = 0;
-	while (i < strlen)
+	if (!(blanks = get_blanks(1, flags)))
 	{
-		*buffer[i] = str[i];
-		i++;
+		ft_putstr(blanks);
+		result += ft_strlen(blanks);
 	}
-	buffer[i] = 0;
-	if (flags->minus)
-		ft_putstr(*buffer);
-	result += put_blanks(strlen, flags->width, flags);
 	if (!(flags->minus))
-		ft_putstr(*buffer);
-	return (result + strlen);
+		ft_putchar(c);
+	return (result);
 }
 
 int		print_str(char *str, t_flags *flags)
 {
 	int		result;
 	size_t	strlen;
-	char	*buffer;
+	char	*tmpstr;
+	char	*blanks;
 
 	result = 0;
 	if (!str)
 		str = "(null)";
+	strlen = flags->width;
 	if (flags->dot == -1 || ft_strlen(str) < (size_t)flags->dot)
 		strlen = ft_strlen(str);
-	if (!(buffer = (char *)malloc(sizeof(char) * (strlen + 1))))
+	blanks = get_blanks(strlen, flags);
+	if (!(tmpstr = (char *)malloc(sizeof(char) * (strlen + 1))))
 		return (0);
-	result = print_buffer(&buffer, str, strlen, flags);
-	free(buffer);
+	result = print_buffer(tmpstr, blanks, flags);
+	free(tmpstr);
+	free(blanks);
 	return (result);
 }
