@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 18:11:36 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/27 19:28:15 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/28 21:26:52 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void			check_flag();
 
 t_flags			init_flags();
 char			*get_blanks(int strlen, t_flags *flags);
+void			add_prec(char **str, size_t *strlen, t_flags *flags);
 int				print_buffer(char *str, char *blank, t_flags *flags);
 
 /*
@@ -54,16 +55,17 @@ int				print_char(int c, t_flags *flags);
 int				print_str(char *str, t_flags *flags);
 
 /*
-** print_diup.c
+** print_diu.c
 */
 
 int				print_int(int num, t_flags *flags);
 int				print_uint(unsigned int num, t_flags *flags);
 
 /*
-** print_xX.c
+** print_pxX.c
 */
 
+void			put_pointer_sign(char **str);
 int				print_pointer(unsigned long address, t_flags *flags);
 int				print_ocint(unsigned int num, t_flags *flags);
 

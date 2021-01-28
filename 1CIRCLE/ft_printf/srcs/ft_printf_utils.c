@@ -6,13 +6,13 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 18:55:51 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/27 20:09:55 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/28 21:27:53 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-t_flags init_flags()
+t_flags	init_flags(void)
 {
 	t_flags flags;
 
@@ -49,6 +49,31 @@ char	*get_blanks(int strlen, t_flags *flags)
 	}
 	result[i] = 0;
 	return (result);
+}
+
+void	add_prec(char **str, size_t *strlen, t_flags *flags)
+{
+	int		i;
+	int		prec;
+	char	*zeros;
+	char	*tmp;
+
+	prec = flags->dot;
+	if (!(zeros = (char *)malloc(sizeof(char) * (prec - (int)strlen + 1))))
+		return ;
+	i = 0;
+	while (i < prec - (int)strlen + 1)
+	{
+		zeros[i] = '0';
+		i++;
+	}
+	zeros[i] = 0;
+	tmp = ft_strjoin(zeros, *str);
+	free(zeros);
+	free(*str);
+	*str = tmp;
+	*strlen = ft_strlen(*str);
+	return ;
 }
 
 int		print_buffer(char *str, char *blanks, t_flags *flags)

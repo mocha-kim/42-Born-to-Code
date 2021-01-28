@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 18:18:47 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/27 19:22:50 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/28 21:31:08 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		print_arg(va_list ap, t_flags flags)
 
 	result = 0;
 	type = flags.type;
-		
 	if (type == 'c')
 		result = print_char(va_arg(ap, int), &flags);
 	else if (type == 's')
@@ -70,10 +69,6 @@ void	check_flag(t_flags *flags)
 {
 	if (flags->minus && flags->zero)
 		flags->zero = 0;
-/*
-**	if (flags->type == '%' || flags->type == 'c' || flags->type == 's')
-**		flags->zero = 0;
-*/
 }
 
 int		parse_str(va_list ap, char *str)
@@ -90,7 +85,7 @@ int		parse_str(va_list ap, char *str)
 		{
 			flags = init_flags();
 			i++;
-			while (str[++i]!= 0 && !ft_strchr("cspdiuxX%", str[i]))
+			while (str[++i] != 0 && !ft_strchr("cspdiuxX%", str[i]))
 				treat_flag(ap, str, i, &flags);
 			flags.type = str[i];
 			check_flag(&flags);
