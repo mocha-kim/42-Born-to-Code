@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 18:13:08 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/30 19:31:23 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/30 21:01:30 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ void	check_flag(const char f, t_flags *flags)
 		flags->minus = 1;
 		flags->zero = 0;
 	}
-	if (f == '0' && flags->minus != 1 && flags->width == 0)
+	if (f == '0' && flags->minus != 1 && flags->point != 0)
 		flags->zero = 1;
 	if (f == '.')
-	{
 		flags->point = (flags->point == -1) ? 0 : -2;
-	}
 	if (f == '*')
 	{
 		if (flags->point == -1)

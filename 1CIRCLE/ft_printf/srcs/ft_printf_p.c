@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 17:53:20 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/30 19:32:58 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/01/30 21:11:48 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ static int	ft_printf_pa(t_flags *flags)
 	int	count;
 
 	count = 0;
+	if (flags->minus)
+		count += ft_printf("0x");
 	while (flags->width-- - 2 > 0)
 		count += ft_putchar(' ');
-	count += ft_printf("0x");
+	if (!flags->minus)
+		count += ft_printf("0x");
 	return (count);
 }
 
