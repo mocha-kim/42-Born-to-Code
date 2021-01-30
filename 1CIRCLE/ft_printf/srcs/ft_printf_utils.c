@@ -5,93 +5,67 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 18:55:51 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/28 21:27:53 by sunhkim          ###   ########.fr       */
+/*   Created: 2021/01/20 18:41:05 by sunhkim           #+#    #+#             */
+/*   Updated: 2021/01/30 19:02:15 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-t_flags	init_flags(void)
+int		ft_putchar(char c)
 {
-	t_flags flags;
-
-	flags.minus = 0;
-	flags.zero = 0;
-	flags.dot = -1;
-	flags.star = -1;
-	flags.width = -1;
-	flags.type = 0;
-	return (flags);
+	write(1, &c, 1);
+	return (1);
 }
 
-char	*get_blanks(int strlen, t_flags *flags)
+int		ft_putnbr(int n)
 {
-	int		i;
-	int		zero;
-	int		width;
-	char	*result;
+	unsigned	i;
+	int			count;
 
-	width = flags->width;
-	if (strlen >= width || width == -1)
-		return (NULL);
-	if (!(result = (char *)malloc(sizeof(char) * (width - strlen + 2))))
-		return (NULL);
-	i = 0;
-	zero = flags->zero;
-	while (i < width - strlen + 1)
+	count = 1;
+	if (n < 0)
 	{
-		if (zero)
-			result[i] = '0';
-		else
-			result[i] = ' ';
-		i++;
-	}
-	result[i] = 0;
-	return (result);
-}
-
-void	add_prec(char **str, size_t *strlen, t_flags *flags)
-{
-	int		i;
-	int		prec;
-	char	*zeros;
-	char	*tmp;
-
-	prec = flags->dot;
-	if (!(zeros = (char *)malloc(sizeof(char) * (prec - (int)strlen + 1))))
-		return ;
-	i = 0;
-	while (i < prec - (int)strlen + 1)
-	{
-		zeros[i] = '0';
-		i++;
-	}
-	zeros[i] = 0;
-	tmp = ft_strjoin(zeros, *str);
-	free(zeros);
-	free(*str);
-	*str = tmp;
-	*strlen = ft_strlen(*str);
-	return ;
-}
-
-int		print_buffer(char *str, char *blanks, t_flags *flags)
-{
-	int		result;
-	char	*buffer;
-
-	if (!blanks)
-	{
-		if (flags->minus)
-			buffer = ft_strjoin(str, blanks);
-		else
-			buffer = ft_strjoin(blanks, str);
+		ft_putchar('-');
+		i = n * -1;
+		count++;
 	}
 	else
-		buffer = ft_strdup(str);
-	ft_putstr(buffer);
-	result = ft_strlen(buffer);
-	free(buffer);
-	return (result);
+		i = n;
+	if (i >= 10)
+		count += ft_putnbr(i / 10);
+	ft_putchar(i % 10 + 48);
+	return (count);
+}
+
+int		ft_isnum(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
+}
+
+int		ft_numlen(int num)
+{
+	int i;
+
+	i = 1;
+	if (num < 0)
+		i++;
+	while (num >= 10 || num <= -10)
+	{
+		num /= 10;
+		i++;
+	}
+	return (i);
+}
+
+int		ft_strlen(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

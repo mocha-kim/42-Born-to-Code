@@ -5,108 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/20 18:18:47 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/28 21:31:08 by sunhkim          ###   ########.fr       */
+/*   Created: 2021/01/20 18:13:08 by sunhkim           #+#    #+#             */
+/*   Updated: 2021/01/30 19:31:23 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		print_arg(va_list ap, t_flags flags)
+void	init_flags(t_flags *flags)
 {
-	int		result;
-	char	type;
-
-	result = 0;
-	type = flags.type;
-	if (type == 'c')
-		result = print_char(va_arg(ap, int), &flags);
-	else if (type == 's')
-		result = print_str(va_arg(ap, char *), &flags);
-	if (type == 'p')
-		result = print_pointer(va_arg(ap, unsigned long), &flags);
-	if (type == 'd' || type == 'i')
-		result = print_int(va_arg(ap, int), &flags);
-	if (type == 'u')
-		result = print_uint(va_arg(ap, unsigned int), &flags);
-	if (type == 'x' || type == 'X')
-		result = print_ocint(va_arg(ap, unsigned int), &flags);
-	if (type == '%')
-		result = print_char('%', &flags);
-	return (result - 1);
+	flags->minus = 0;
+	flags->zero = 0;
+	flags->star = 0;
+	flags->point = -1;
+	flags->width = 0;
+	flags->len = 0;
+	flags->type = '\0';
 }
 
-void	treat_flag(va_list ap, char *str, int idx, t_flags *flags)
+void	check_flag(const char f, t_flags *flags)
 {
-	if (str[idx] == '-')
+	if (f == '-')
+	{
 		flags->minus = 1;
-	else if (str[idx] == '0')
-		flags->zero = 1;
-	else if (str[idx] == '.')
-		flags->dot = 0;
-	else if (str[idx] == '*')
-	{
-		if (flags->dot == -1)
-		{
-			flags->width = va_arg(ap, int);
-			if (flags->width < 0)
-			{
-				flags->minus = 1;
-				flags->width *= -1;
-			}
-		}
-		else
-			flags->dot = va_arg(ap, int);
-	}
-	else if (ft_isdigit(str[idx]))
-	{
-		flags->dot == -1 ? (flags->width = flags->width * 10 + str[idx] - 48)
-			: (flags->dot = flags->dot * 10 + str[idx] - 48);
-	}
-}
-
-void	check_flag(t_flags *flags)
-{
-	if (flags->minus && flags->zero)
 		flags->zero = 0;
+	}
+	if (f == '0' && flags->minus != 1 && flags->width == 0)
+		flags->zero = 1;
+	if (f == '.')
+	{
+		flags->point = (flags->point == -1) ? 0 : -2;
+	}
+	if (f == '*')
+	{
+		if (flags->point == -1)
+			flags->star = 1;
+		else
+			flags->star = (flags->star == 0) ? 2 : 3;
+	}
 }
 
-int		parse_str(va_list ap, char *str)
+int		read_flags(t_flags *flags, const char *str)
 {
-	int		i;
-	int		result;
-	t_flags	flags;
+	int i;
 
-	i = -1;
-	result = 0;
-	while (str[++i] != 0)
+	i = 0;
+	while (str[i] == '-' || str[i] == '*' || str[i] == '.' || ft_isnum(str[i]))
 	{
-		if (str[i] == '%')
-		{
-			flags = init_flags();
-			i++;
-			while (str[++i] != 0 && !ft_strchr("cspdiuxX%", str[i]))
-				treat_flag(ap, str, i, &flags);
-			flags.type = str[i];
-			check_flag(&flags);
-			result += print_arg(ap, flags);
-		}
+		check_flag(str[i], flags);
+		if (ft_isnum(str[i]))
+			while (ft_isnum(str[i]))
+			{
+				if (flags->point == -1)
+					flags->width = (flags->width * 10) + (str[i] - '0');
+				if (flags->point >= 0)
+					flags->point = (flags->point * 10) + (str[i] - '0');
+				i++;
+			}
 		else
-			ft_putchar(str[i]);
-		result++;
+			i++;
 	}
-	return (result);
+	flags->type = str[i];
+	flags->len = i;
+	return (i);
 }
 
 int		ft_printf(const char *str, ...)
 {
-	int		result;
-	char	*save;
-	va_list	ap;
+	int		count;
+	va_list	args;
+	t_flags	flags;
 
-	save = ft_strdup(str);
-	va_start(ap, str);
-	result = parse_str(ap, save);
-	va_end(ap);
-	return (result);
+	count = 0;
+	va_start(args, str);
+	while (*str)
+	{
+		if (*str == '%')
+		{
+			init_flags(&flags);
+			str++;
+			read_flags(&flags, str);
+			count += ft_by_type(&flags, args);
+			str = str + flags.len;
+		}
+		else
+			count += ft_putchar(*str);
+		str++;
+	}
+	va_end(args);
+	return (count);
 }
