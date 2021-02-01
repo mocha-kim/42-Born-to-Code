@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 17:53:20 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/30 21:11:48 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/02/01 16:22:39 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static int	ft_printf_pc(t_flags *flags, int len, char *end_hex)
 	len = len + 2;
 	pad_size = flags->width - len;
 	if (!flags->minus)
-		count += ft_padding(pad_size, flags->zero ? '0' : ' ');
+		count += ft_putflags(pad_size, flags->zero ? '0' : ' ');
 	count += ft_printf("0x%s", end_hex);
 	if (flags->minus)
-		count += ft_padding(pad_size, ' ');
+		count += ft_putflags(pad_size, ' ');
 	return (count);
 }
 
@@ -61,11 +61,11 @@ static int	ft_printf_pd(t_flags *flags, int len, char *end_hex)
 	count = 0;
 	pad_size = flags->width - flags->point;
 	if (!flags->minus)
-		count += ft_padding(pad_size, ' ');
-	count += ft_printf("0x") + ft_padding(flags->point - len, '0')
+		count += ft_putflags(pad_size, ' ');
+	count += ft_printf("0x") + ft_putflags(flags->point - len, '0')
 			+ ft_printf(end_hex);
 	if (flags->minus)
-		count += ft_padding(pad_size, ' ');
+		count += ft_putflags(pad_size, ' ');
 	return (count);
 }
 

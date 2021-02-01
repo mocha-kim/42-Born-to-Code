@@ -6,21 +6,11 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 17:03:43 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/30 19:33:44 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/02/01 16:20:20 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-int		ft_padding(int n, char c)
-{
-	int count;
-
-	count = 0;
-	while (n-- > 0)
-		count += ft_putchar(c);
-	return (count);
-}
 
 int		ft_count_digit(unsigned long int n)
 {

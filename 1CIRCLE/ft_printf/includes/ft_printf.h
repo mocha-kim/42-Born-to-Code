@@ -6,7 +6,7 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 18:11:36 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/02/01 15:48:59 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/02/01 16:20:58 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int				ft_strlen(char *s);
 ** ft_printf_utils2.c
 */
 
-int				ft_padding(int n, char c);
 int				ft_count_digit(unsigned long int n);
 char			*ft_itoa_base(unsigned long int n, char type);
 
