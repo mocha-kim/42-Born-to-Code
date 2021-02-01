@@ -6,13 +6,11 @@
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 18:13:08 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/02/01 15:47:55 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/02/01 15:57:00 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-
 
 void	check_flag(const char f, t_flags *flags)
 {
@@ -64,18 +62,18 @@ int		ft_by_type(t_flags *flags, va_list args)
 	int count;
 
 	count = 0;
-	if (flags->type == 'd' || flags->type == 'i')
-		count += ft_printf_d(flags, args);
-	else if (flags->type == 'x' || flags->type == 'X')
-		count += ft_printf_x(flags, args);
-	else if (flags->type == 'c')
+	if (flags->type == 'c')
 		count += ft_printf_c(flags, args);
 	else if (flags->type == 's')
 		count += ft_printf_s(flags, args);
+	else if (flags->type == 'd' || flags->type == 'i')
+		count += ft_printf_d(flags, args);
 	else if (flags->type == 'p')
 		count += ft_printf_p(flags, args);
 	else if (flags->type == 'u')
 		count += ft_printf_u(flags, args);
+	else if (flags->type == 'x' || flags->type == 'X')
+		count += ft_printf_x(flags, args);
 	else if (flags->type == '%')
 		count += ft_printf_percent(flags, args);
 	else
