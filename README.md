@@ -12,5 +12,10 @@
 | ---------- | :--------- | :----------:
 | netwhat | 100% | 4tries |
 | get_next_line | 115% | 2tries |
-| ft_printf | |  |
+| ft_printf | 100% |  |
 
+## Circle 2
+
+| Subject | Grade |  | 
+| ---------- | :--------- | :----------:
+| ft_server |  |  |
