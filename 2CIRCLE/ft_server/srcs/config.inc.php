@@ -154,3 +154,5 @@ $cfg['SaveDir'] = '';
  * in the doc/ folder or at <https://docs.phpmyadmin.net/>.
  */
 
+$cfg['PmaNoRelation_DisableWarning'] = true;
+$cfg['TranslationWarningThreshold'] = 1;
