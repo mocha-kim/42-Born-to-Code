@@ -32,7 +32,7 @@ cp -rp tmp/wp-config.php /var/www/html/wordpress
 
 # Create mySQL table
 service mysql start
-echo "CREATE DATABASE IF NOT EXISTS 'wordpress';" | mysql -u root --skip-password
+echo "CREATE DATABASE IF NOT EXISTS wordpress;" | mysql -u root --skip-password
 echo "CREATE USER IF NOT EXISTS 'sunhkim'@'localhost' IDENTIFIED BY 'sunhkim';" | mysql -u root --skip-password
 echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'sunhkim'@'localhost' WITH GRANT OPTION;" | mysql -u root --skip-password
 echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost' WITH GRANT OPTION;" | mysql -u root --skip-password
