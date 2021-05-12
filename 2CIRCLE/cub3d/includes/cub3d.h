@@ -64,73 +64,73 @@ typedef struct  s_info
 {
     void        *mlx;
     void        *win;
-    double      posX;
-    double      posY;
-    double      dirX;
-    double      dirY;
-    double      planeX;
-    double      planeY;
+    double      pos_x;
+    double      pos_y;
+    double      dir_x;
+    double      dir_y;
+    double      pln_x;
+    double      pln_y;
     int         score;
     t_img       img;
     int         **buf;
-	double		*zBuffer;
+	double		*z_buf;
     int         sprite_num;
     t_sprite    *sprite;
     int         **texture;
-    double      moveSpeed;
-    double      rotSpeed;
+    double      mv_speed;
+    double      rot_speed;
     t_key       key;
     t_config    conf;
 }               t_info;
 
 typedef struct  s_vetor
 {
-    double  rayDirX;
-    double  rayDirY;
-    double  sideDistX;
-    double  sideDistY;
-    double  deltaDistX;
-    double  deltaDistY;
-	double  perpWallDist;
-    int     mapX;
-    int     mapY;
-    int     stepX;
-    int     stepY;
+    double  r_dir_x;
+    double  r_dir_y;
+    double  side_dst_x;
+    double  side_dst_y;
+    double  delt_dst_x;
+    double  delt_dst_y;
+	double  prp_wal_dst;
+    int     map_x;
+    int     map_y;
+    int     step_x;
+    int     step_y;
     int     side;
 }               t_vector;
 
 typedef struct  s_back_line
 {
-    int     lineHeight;
-    int     drawStart;
-    int     drawEnd;
+    int     l_height;
+    int     draw_strt;
+    int     draw_end;
     int     color;
-    double  wallX;
-    int     texX;
-    int     texY;
-    int     texNum;
-    double  floorXWall;
-    double  floorYWall;
-    int     floorTexX;
-    int     floorTexY;
+    double  wall_x;
+    int     tex_x;
+    int     tex_y;
+    int     tex_num;
+    double  flr_x_wall;
+    double  flr_y_wall;
+    int     flr_tex_x;
+    int     flr_tex_y;
 }               t_back_line;
 
 typedef struct  s_sprite_line
 {
-    double  transX;
-    double  transY;
+    double  trns_x;
+    double  trns_y;
 	double	x;
 	double	y;
-    int	    texX;
-    int	    texY;
-    int     vMoveScreen;
-    int     screenX;
+    int	    tex_x;
+    int	    tex_y;
+    int     v_ms_screen;
+    int     scrn_x;
     int     height;
     int     width;
-    int     drawStartX;
-    int     drawEndX;
-    int     drawStartY;
-    int     drawEndY;
+    int     draw_strt_x;
+    int     draw_end_x;
+    int     draw_strt_y;
+    int     draw_end_y;
     int     color;
 }               t_sprt_line;
 

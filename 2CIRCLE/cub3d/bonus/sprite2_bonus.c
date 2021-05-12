@@ -4,34 +4,34 @@ void	calc_sprite_pos(t_sprt_line *sprt, int *order, t_info *info, int i)
 {
 	double	inv_det;
 
-	sprt->x = info->sprite[order[i]].x - info->posX;
-	sprt->y = info->sprite[order[i]].y - info->posY;
-	inv_det = 1.0 / (info->planeX * info->dirY - info->dirX * info->planeY);
-	sprt->transX = inv_det * (info->dirY * sprt->x - info->dirX * sprt->y);
-	sprt->transY = inv_det * (-info->planeY * sprt->x + info->planeX * sprt->y);
-	sprt->screenX = (int)((info->conf.win_width / 2)
-				* (1 + sprt->transX / sprt->transY));
+	sprt->x = info->sprite[order[i]].x - info->pos_x;
+	sprt->y = info->sprite[order[i]].y - info->pos_y;
+	inv_det = 1.0 / (info->pln_x * info->dir_y - info->dir_x * info->pln_y);
+	sprt->trns_x = inv_det * (info->dir_y * sprt->x - info->dir_x * sprt->y);
+	sprt->trns_y = inv_det * (-info->pln_y * sprt->x + info->pln_x * sprt->y);
+	sprt->scrn_x = (int)((info->conf.win_width / 2)
+				* (1 + sprt->trns_x / sprt->trns_y));
 }
 
 void	calc_sprite_line(t_sprt_line *sprt, t_info *info)
 {
-	sprt->vMoveScreen = (int)(V_MOVE / sprt->transY);
-	sprt->height = (int)fabs((info->conf.win_height / sprt->transY) / V_DIV);
-	sprt->drawStartY = -sprt->height / 2 + info->conf.win_height
-						/ 2 + sprt->vMoveScreen;
-	if (sprt->drawStartY < 0)
-		sprt->drawStartY = 0;
-	sprt->drawEndY = sprt->height / 2 + info->conf.win_height
-						/ 2 + sprt->vMoveScreen;
-	if (sprt->drawEndY >= info->conf.win_height)
-		sprt->drawEndY = info->conf.win_height - 1;
-	sprt->width = (int)fabs((info->conf.win_height / sprt->transY) / U_DIV);
-	sprt->drawStartX = -sprt->width / 2 + sprt->screenX;
-	if (sprt->drawStartX < 0)
-		sprt->drawStartX = 0;
-	sprt->drawEndX = sprt->width / 2 + sprt->screenX;
-	if (sprt->drawEndX >= info->conf.win_width)
-		sprt->drawEndX = info->conf.win_width - 1;
+	sprt->v_ms_screen = (int)(V_MOVE / sprt->trns_y);
+	sprt->height = (int)fabs((info->conf.win_height / sprt->trns_y) / V_DIV);
+	sprt->draw_strt_y = -sprt->height / 2 + info->conf.win_height
+						/ 2 + sprt->v_ms_screen;
+	if (sprt->draw_strt_y < 0)
+		sprt->draw_strt_y = 0;
+	sprt->draw_end_y = sprt->height / 2 + info->conf.win_height
+						/ 2 + sprt->v_ms_screen;
+	if (sprt->draw_end_y >= info->conf.win_height)
+		sprt->draw_end_y = info->conf.win_height - 1;
+	sprt->width = (int)fabs((info->conf.win_height / sprt->trns_y) / U_DIV);
+	sprt->draw_strt_x = -sprt->width / 2 + sprt->scrn_x;
+	if (sprt->draw_strt_x < 0)
+		sprt->draw_strt_x = 0;
+	sprt->draw_end_x = sprt->width / 2 + sprt->scrn_x;
+	if (sprt->draw_end_x >= info->conf.win_width)
+		sprt->draw_end_x = info->conf.win_width - 1;
 }
 
 void	coord_sprite_tex(t_info *info, int *order, t_sprt_line *sprt, int i)
@@ -40,22 +40,22 @@ void	coord_sprite_tex(t_info *info, int *order, t_sprt_line *sprt, int i)
 	int	y;
 	int	d;
 
-	stripe = sprt->drawStartX - 1;
-	while (++stripe < sprt->drawEndX)
+	stripe = sprt->draw_strt_x - 1;
+	while (++stripe < sprt->draw_end_x)
 	{
-		sprt->texX = (int)((256 * (stripe - (-sprt->width / 2 + sprt->screenX))
+		sprt->tex_x = (int)((256 * (stripe - (-sprt->width / 2 + sprt->scrn_x))
 					* TEX_WIDTH / sprt->width) / 256);
-		if (sprt->transY > 0 && stripe > 0 && stripe < info->conf.win_width
-					&& sprt->transY < info->zBuffer[stripe])
+		if (sprt->trns_y > 0 && stripe > 0 && stripe < info->conf.win_width
+					&& sprt->trns_y < info->z_buf[stripe])
 		{
-			y = sprt->drawStartY - 1;
-			while (++y < sprt->drawEndY)
+			y = sprt->draw_strt_y - 1;
+			while (++y < sprt->draw_end_y)
 			{
-				d = (y - sprt->vMoveScreen) * 256 - info->conf.win_height * 128
+				d = (y - sprt->v_ms_screen) * 256 - info->conf.win_height * 128
 					+ sprt->height * 128;
-				sprt->texY = ((d * TEX_HEIGHT) / sprt->height) / 256;
+				sprt->tex_y = ((d * TEX_HEIGHT) / sprt->height) / 256;
 				sprt->color = info->texture[info->sprite[order[i]].texture]
-							[TEX_WIDTH * sprt->texY + sprt->texX];
+							[TEX_WIDTH * sprt->tex_y + sprt->tex_x];
 				if ((sprt->color & 0x00FFFFFF) != 0)
 					info->buf[y][stripe] = sprt->color;
 			}

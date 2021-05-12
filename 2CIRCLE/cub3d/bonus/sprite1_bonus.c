@@ -117,10 +117,10 @@ void	calc_sprite(t_info *info)
 	while (i < info->sprite_num)
 	{
 		sprite_order[i] = i;
-		sprite_dist[i] = ((info->posX - info->sprite[i].x)
-					* (info->posX - info->sprite[i].x)
-					+ (info->posY - info->sprite[i].y)
-					* (info->posY - info->sprite[i].y));
+		sprite_dist[i] = ((info->pos_x - info->sprite[i].x)
+					* (info->pos_x - info->sprite[i].x)
+					+ (info->pos_y - info->sprite[i].y)
+					* (info->pos_y - info->sprite[i].y));
 		i++;
 	}
 	sort_sprites(sprite_order, sprite_dist, info->sprite_num);

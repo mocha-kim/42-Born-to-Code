@@ -28,8 +28,8 @@ void	clear_game(t_info *info, int status)
 			buf_free(info, info->conf.win_height - 1);
 		if (info->texture)
 			tex_free(info, TEXTURES - 1);
-		if (info->zBuffer)
-			free(info->zBuffer);
+		if (info->z_buf)
+			free(info->z_buf);
 		if (info->sprite)
 			free(info->sprite);
 		clear_window(info);

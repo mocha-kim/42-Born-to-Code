@@ -2,25 +2,25 @@
 
 void	calc_floor(t_back_line *line, t_vector *vec)
 {
-	if (vec->side == X_PLANE && vec->rayDirX > 0)
+	if (vec->side == X_PLANE && vec->r_dir_x > 0)
 	{
-		line->floorXWall = vec->mapX;
-		line->floorYWall = vec->mapY + line->wallX;
+		line->flr_x_wall = vec->map_x;
+		line->flr_y_wall = vec->map_y + line->wall_x;
 	}
-	else if (vec->side == X_PLANE && vec->rayDirX < 0)
+	else if (vec->side == X_PLANE && vec->r_dir_x < 0)
 	{
-		line->floorXWall = vec->mapX + 1.0;
-		line->floorYWall = vec->mapY + line->wallX;
+		line->flr_x_wall = vec->map_x + 1.0;
+		line->flr_y_wall = vec->map_y + line->wall_x;
 	}
-	else if (vec->side == Y_PLANE && vec->rayDirY > 0)
+	else if (vec->side == Y_PLANE && vec->r_dir_y > 0)
 	{
-		line->floorXWall = vec->mapX + line->wallX;
-		line->floorYWall = vec->mapY;
+		line->flr_x_wall = vec->map_x + line->wall_x;
+		line->flr_y_wall = vec->map_y;
 	}
 	else
 	{
-		line->floorXWall = vec->mapX + line->wallX;
-		line->floorYWall = vec->mapY + 1.0;
+		line->flr_x_wall = vec->map_x + line->wall_x;
+		line->flr_y_wall = vec->map_y + 1.0;
 	}
 }
 
@@ -28,9 +28,9 @@ void	coord_floor_color(int x, t_back_line *line, t_info *info)
 {
 	int		y;
 
-	if (line->drawEnd < 0)
-		line->drawEnd = info->conf.win_height;
-	y = line->drawEnd + 1;
+	if (line->draw_end < 0)
+		line->draw_end = info->conf.win_height;
+	y = line->draw_end + 1;
 	while (y < info->conf.win_height)
 	{
 		info->buf[y][x] = info->conf.cf_color[1];

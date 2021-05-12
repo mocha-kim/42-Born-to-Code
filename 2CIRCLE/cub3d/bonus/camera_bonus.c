@@ -5,21 +5,21 @@ void	move_vertical(t_info *info, int direction)
 	int	tmp_x;
 	int	tmp_y;
 
-	tmp_x = info->posX + direction * info->dirX * info->moveSpeed;
-	tmp_y = info->posY + direction * info->dirY * info->moveSpeed;
+	tmp_x = info->pos_x + direction * info->dir_x * info->mv_speed;
+	tmp_y = info->pos_y + direction * info->dir_y * info->mv_speed;
 	if (direction == 1)
 	{
-		if (!ft_strrchr("14", info->conf.map[tmp_x][(int)info->posY]))
-			info->posX += info->dirX * info->moveSpeed;
-		if (!ft_strrchr("14", info->conf.map[(int)info->posX][tmp_y]))
-			info->posY += info->dirY * info->moveSpeed;
+		if (!ft_strrchr("14", info->conf.map[tmp_x][(int)info->pos_y]))
+			info->pos_x += info->dir_x * info->mv_speed;
+		if (!ft_strrchr("14", info->conf.map[(int)info->pos_x][tmp_y]))
+			info->pos_y += info->dir_y * info->mv_speed;
 	}
 	if (direction == -1)
 	{
-		if (!ft_strrchr("14", info->conf.map[tmp_x][(int)info->posY]))
-			info->posX -= info->dirX * info->moveSpeed;
-		if (!ft_strrchr("14", info->conf.map[(int)info->posX][tmp_y]))
-			info->posY -= info->dirY * info->moveSpeed;
+		if (!ft_strrchr("14", info->conf.map[tmp_x][(int)info->pos_y]))
+			info->pos_x -= info->dir_x * info->mv_speed;
+		if (!ft_strrchr("14", info->conf.map[(int)info->pos_x][tmp_y]))
+			info->pos_y -= info->dir_y * info->mv_speed;
 	}
 }
 
@@ -28,22 +28,22 @@ void	move_horizontal(t_info *info, int direction)
 	int	tmp_x;
 	int	tmp_y;
 
-	tmp_x = info->posX + direction * info->planeX * info->moveSpeed;
-	tmp_y = info->posY + direction * info->planeY * info->moveSpeed;
+	tmp_x = info->pos_x + direction * info->pln_x * info->mv_speed;
+	tmp_y = info->pos_y + direction * info->pln_y * info->mv_speed;
 	if (direction == 1)
 	{
 		if (!ft_strrchr("14", info->conf.map[tmp_x][tmp_y]))
 		{
-			info->posX += info->planeX * info->moveSpeed;
-			info->posY += info->planeY * info->moveSpeed;
+			info->pos_x += info->pln_x * info->mv_speed;
+			info->pos_y += info->pln_y * info->mv_speed;
 		}
 	}
 	if (direction == -1)
 	{
 		if (!ft_strrchr("14", info->conf.map[tmp_x][tmp_y]))
 		{
-			info->posX -= info->planeX * info->moveSpeed;
-			info->posY -= info->planeY * info->moveSpeed;
+			info->pos_x -= info->pln_x * info->mv_speed;
+			info->pos_y -= info->pln_y * info->mv_speed;
 		}
 	}
 }
@@ -55,18 +55,18 @@ void	rotate(t_info *info, int direction)
 	double	tmp_x;
 	double	tmp_y;
 
-	old_dir_x = info->dirX;
-	tmp_x = info->dirX * cos(direction * info->rotSpeed);
-	tmp_y = info->dirY * sin(direction * info->rotSpeed);
-	info->dirX = tmp_x - tmp_y;
-	tmp_x = old_dir_x * sin(direction * info->rotSpeed);
-	tmp_y = info->dirY * cos(direction * info->rotSpeed);
-	info->dirY = tmp_x + tmp_y;
-	old_pln_x = info->planeX;
-	tmp_x = info->planeX * cos(direction * info->rotSpeed);
-	tmp_y = info->planeY * sin(direction * info->rotSpeed);
-	info->planeX = tmp_x - tmp_y;
-	tmp_x = old_pln_x * sin(direction * info->rotSpeed);
-	tmp_y = info->planeY * cos(direction * info->rotSpeed);
-	info->planeY = tmp_x + tmp_y;
+	old_dir_x = info->dir_x;
+	tmp_x = info->dir_x * cos(direction * info->rot_speed);
+	tmp_y = info->dir_y * sin(direction * info->rot_speed);
+	info->dir_x = tmp_x - tmp_y;
+	tmp_x = old_dir_x * sin(direction * info->rot_speed);
+	tmp_y = info->dir_y * cos(direction * info->rot_speed);
+	info->dir_y = tmp_x + tmp_y;
+	old_pln_x = info->pln_x;
+	tmp_x = info->pln_x * cos(direction * info->rot_speed);
+	tmp_y = info->pln_y * sin(direction * info->rot_speed);
+	info->pln_x = tmp_x - tmp_y;
+	tmp_x = old_pln_x * sin(direction * info->rot_speed);
+	tmp_y = info->pln_y * cos(direction * info->rot_speed);
+	info->pln_y = tmp_x + tmp_y;
 }

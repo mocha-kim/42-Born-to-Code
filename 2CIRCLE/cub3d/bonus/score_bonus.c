@@ -7,8 +7,8 @@ static void	calc_score(t_info *info)
 	i = 0;
 	while (i < info->sprite_num)
 	{
-		if ((int)info->posX == (int)info->sprite[i].x
-		&& (int)info->posY == (int)info->sprite[i].y
+		if ((int)info->pos_x == (int)info->sprite[i].x
+		&& (int)info->pos_y == (int)info->sprite[i].y
 		&& info->sprite[i].texture == T_S)
 		{
 			info->sprite[i].x = info->sprite[info->sprite_num - 1].x;

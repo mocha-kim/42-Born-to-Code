@@ -34,7 +34,7 @@ void	calc_mininap_object(t_info *info)
 		draw_rectangle(info, info->sprite[i].y, info->sprite[i].x, 0x00FF00);
 		i++;
 	}
-	draw_rectangle(info, info->posY, info->posX, 0xFF0000);
+	draw_rectangle(info, info->pos_y, info->pos_x, 0xFF0000);
 }
 
 void	calc_minimap(t_info *info)

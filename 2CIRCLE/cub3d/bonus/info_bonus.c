@@ -4,7 +4,7 @@ void	ptr_init(t_info *info)
 {
 	info->buf = 0;
 	info->texture = 0;
-	info->zBuffer = 0;
+	info->z_buf = 0;
 	info->img.img_ptr = 0;
 	info->img.data = 0;
 	info->mlx = 0;
@@ -16,23 +16,23 @@ void	dir_init(t_info *info)
 {
 	if (info->conf.dir == 'N')
 	{
-		info->dirY = -1;
-		info->planeX = 0.66;
+		info->dir_y = -1;
+		info->pln_x = 0.66;
 	}
 	else if (info->conf.dir == 'S')
 	{
-		info->dirY = 1;
-		info->planeX = -0.66;
+		info->dir_y = 1;
+		info->pln_x = -0.66;
 	}
 	else if (info->conf.dir == 'W')
 	{
-		info->dirX = -1;
-		info->planeY = -0.66;
+		info->dir_x = -1;
+		info->pln_y = -0.66;
 	}
 	else
 	{
-		info->dirX = 1;
-		info->planeY = 0.66;
+		info->dir_x = 1;
+		info->pln_y = 0.66;
 	}
 }
 
@@ -76,19 +76,19 @@ void	key_init(t_info *info)
 
 int		info_init(t_info *info)
 {
-	info->posX = info->conf.pos_x + 0.5;
-	info->posY = info->conf.pos_y + 0.5;
-	info->dirX = 0;
-	info->dirY = 0;
-	info->planeX = 0;
-	info->planeY = 0;
+	info->pos_x = info->conf.pos_x + 0.5;
+	info->pos_y = info->conf.pos_y + 0.5;
+	info->dir_x = 0;
+	info->dir_y = 0;
+	info->pln_x = 0;
+	info->pln_y = 0;
 	info->score = 0;
 	dir_init(info);
-	info->moveSpeed = 0.05;
-	info->rotSpeed = 0.05;
+	info->mv_speed = 0.05;
+	info->rot_speed = 0.05;
 	key_init(info);
 	if (buf_init(info) == -1 || tex_init(info) == -1)
 		return (-1);
-	info->zBuffer = (double*)malloc(sizeof(double) * info->conf.win_width);
+	info->z_buf = (double*)malloc(sizeof(double) * info->conf.win_width);
 	return (0);
 }

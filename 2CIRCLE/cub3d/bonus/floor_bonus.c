@@ -2,25 +2,25 @@
 
 void	calc_floor(t_back_line *line, t_vector *vec)
 {
-	if (vec->side == X_PLANE && vec->rayDirX > 0)
+	if (vec->side == X_PLANE && vec->r_dir_x > 0)
 	{
-		line->floorXWall = vec->mapX;
-		line->floorYWall = vec->mapY + line->wallX;
+		line->flr_x_wall = vec->map_x;
+		line->flr_y_wall = vec->map_y + line->wall_x;
 	}
-	else if (vec->side == X_PLANE && vec->rayDirX < 0)
+	else if (vec->side == X_PLANE && vec->r_dir_x < 0)
 	{
-		line->floorXWall = vec->mapX + 1.0;
-		line->floorYWall = vec->mapY + line->wallX;
+		line->flr_x_wall = vec->map_x + 1.0;
+		line->flr_y_wall = vec->map_y + line->wall_x;
 	}
-	else if (vec->side == Y_PLANE && vec->rayDirY > 0)
+	else if (vec->side == Y_PLANE && vec->r_dir_y > 0)
 	{
-		line->floorXWall = vec->mapX + line->wallX;
-		line->floorYWall = vec->mapY;
+		line->flr_x_wall = vec->map_x + line->wall_x;
+		line->flr_y_wall = vec->map_y;
 	}
 	else
 	{
-		line->floorXWall = vec->mapX + line->wallX;
-		line->floorYWall = vec->mapY + 1.0;
+		line->flr_x_wall = vec->map_x + line->wall_x;
+		line->flr_y_wall = vec->map_y + 1.0;
 	}
 }
 
@@ -32,18 +32,18 @@ void	coord_floor_tex(int x, t_back_line *line, t_vector *vec, t_info *info)
 
 	if (info->conf.tex_path[T_F] == 0 && info->conf.tex_path[T_C] == 0)
 		return ;
-	if (line->drawEnd < 0)
-		line->drawEnd = info->conf.win_height;
-	y = line->drawEnd + 1;
+	if (line->draw_end < 0)
+		line->draw_end = info->conf.win_height;
+	y = line->draw_end + 1;
 	while (y < info->conf.win_height)
 	{
 		weight = (info->conf.win_height / (2.0 * y - info->conf.win_height))
-				/ vec->perpWallDist;
-		line->floorTexX = (int)((weight * line->floorXWall + (1.0 - weight)
-							* info->posX) * TEX_WIDTH) % TEX_WIDTH;
-		line->floorTexY = (int)((weight * line->floorYWall + (1.0 - weight)
-							* info->posY) * TEX_HEIGHT) % TEX_HEIGHT;
-		tex_tmp = TEX_WIDTH * line->floorTexY + line->floorTexX;
+				/ vec->prp_wal_dst;
+		line->flr_tex_x = (int)((weight * line->flr_x_wall + (1.0 - weight)
+							* info->pos_x) * TEX_WIDTH) % TEX_WIDTH;
+		line->flr_tex_y = (int)((weight * line->flr_y_wall + (1.0 - weight)
+							* info->pos_y) * TEX_HEIGHT) % TEX_HEIGHT;
+		tex_tmp = TEX_WIDTH * line->flr_tex_y + line->flr_tex_x;
 		if (info->conf.tex_path[T_F] != 0)
 			info->buf[y][x] = info->texture[T_F][tex_tmp];
 		if (info->conf.tex_path[T_C] != 0)
@@ -59,9 +59,9 @@ void	coord_floor_color(int x, t_back_line *line, t_info *info)
 
 	if (info->conf.cf_color[0] == -1 && info->conf.cf_color[1] == -1)
 		return ;
-	if (line->drawEnd < 0)
-		line->drawEnd = info->conf.win_height;
-	y = line->drawEnd + 1;
+	if (line->draw_end < 0)
+		line->draw_end = info->conf.win_height;
+	y = line->draw_end + 1;
 	while (y < info->conf.win_height)
 	{
 		if (info->conf.cf_color[1] != -1)
