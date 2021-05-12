@@ -1,49 +1,79 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 16:21:31 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/04/02 16:21:33 by sunhkim          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/cub3d.h"
+
+int		tex_init(t_info *info)
+{
+	int i;
+	int j;
+
+	info->texture = (int **)malloc(sizeof(int *) * TEXTURES);
+	if (!(info->texture))
+		return (-1);
+	i = 0;
+	while (i < TEXTURES)
+	{
+		info->texture[i] = (int *)malloc(sizeof(int) *
+				(TEX_HEIGHT * TEX_WIDTH));
+		if (!(info->texture[i]))
+		{
+			tex_free(info, i);
+			return (-1);
+		}
+		j = 0;
+		while (j < TEX_HEIGHT * TEX_WIDTH)
+		{
+			info->texture[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
 
 void	load_image(t_info *info, int *texture, char *path, t_img *img)
 {
-    printf(">> load_image : %s\n", path);
-	img->img_ptr = mlx_xpm_file_to_image(info->mlx, path, &img->width, &img->height);
-    if (!(img->img_ptr))
-        error_exit("image loading failed");
-	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
-    if (!(img->data))
-        error_exit("image loading failed");
-    for (int y = 0; y < img->height; y++)
+	int	x;
+	int	y;
+
+	img->img_ptr = mlx_xpm_file_to_image(info->mlx, path,
+			&img->width, &img->height);
+	if (!(img->img_ptr))
+		error_exit(info, "Error: texture loading failed\n", 1);
+	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp,
+			&img->size_l, &img->endian);
+	if (!(img->data))
+		error_exit(info, "Error: texture data loading failed\n", 1);
+	y = 0;
+	while (y < img->height)
 	{
-		for (int x = 0; x < img->width; x++)
+		x = 0;
+		while (x < img->width)
 		{
 			texture[img->width * y + x] = img->data[img->width * y + x];
+			x++;
 		}
+		y++;
 	}
-	mlx_destroy_image(info->mlx, img->img_ptr);\
+	mlx_destroy_image(info->mlx, img->img_ptr);
 }
 
-void    load_texture(t_info *info)
+void	load_texture(t_info *info)
 {
-    t_img   img;
+	t_img	img;
 
-	load_image(info, info->texture[0], "textures/eagle.xpm", &img);
-	load_image(info, info->texture[1], "textures/redbrick.xpm", &img);
-	load_image(info, info->texture[2], "textures/purplestone.xpm", &img);
-	load_image(info, info->texture[3], "textures/greystone.xpm", &img);
-	load_image(info, info->texture[4], "textures/bluestone.xpm", &img);
-	load_image(info, info->texture[5], "textures/mossy.xpm", &img);
-	load_image(info, info->texture[6], "textures/wood.xpm", &img);
-	load_image(info, info->texture[7], "textures/colorstone.xpm", &img);
-	load_image(info, info->texture[8], "textures/barrel.xpm", &img);
-	load_image(info, info->texture[9], "textures/pillar.xpm", &img);
-	load_image(info, info->texture[10], "textures/greenlight.xpm", &img);
+	load_image(info, info->texture[T_NO], info->conf.tex_path[T_NO], &img);
+	load_image(info, info->texture[T_SO], info->conf.tex_path[T_SO], &img);
+	load_image(info, info->texture[T_WE], info->conf.tex_path[T_WE], &img);
+	load_image(info, info->texture[T_EA], info->conf.tex_path[T_EA], &img);
+	if (info->conf.tex_path[T_S])
+		load_image(info, info->texture[T_S], info->conf.tex_path[T_S], &img);
+}
+
+void	tex_free(t_info *info, int i)
+{
+	while (i >= 0)
+	{
+		free(info->texture[i]);
+		i--;
+	}
+	free(info->texture);
 }
