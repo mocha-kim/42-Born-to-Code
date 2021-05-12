@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   close.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/12 17:43:45 by sunhkim           #+#    #+#             */
+/*   Updated: 2021/05/12 17:45:02 by sunhkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 int		error_exit(t_info *info, char *message, int status)
@@ -35,4 +47,3 @@ void	clear_game(t_info *info, int status)
 		clear_window(info);
 	}
 }
-
