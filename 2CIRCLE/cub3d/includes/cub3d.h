@@ -135,7 +135,7 @@ typedef struct	s_sprite_line
 	double		y;
 	int			tex_x;
 	int			tex_y;
-	int			v_ms_screen;
+	int			v_mv_screen;
 	int			scrn_x;
 	int			height;
 	int			width;

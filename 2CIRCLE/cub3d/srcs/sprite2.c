@@ -27,14 +27,14 @@ void	calc_sprite_pos(t_sprt_line *sprt, int *order, t_info *info, int i)
 
 void	calc_sprite_line(t_sprt_line *sprt, t_info *info)
 {
-	sprt->v_ms_screen = (int)(V_MOVE / sprt->trns_y);
+	sprt->v_mv_screen = (int)(V_MOVE / sprt->trns_y);
 	sprt->height = (int)fabs((info->conf.win_height / sprt->trns_y) / V_DIV);
 	sprt->draw_strt_y = -sprt->height / 2 + info->conf.win_height
-						/ 2 + sprt->v_ms_screen;
+						/ 2 + sprt->v_mv_screen;
 	if (sprt->draw_strt_y < 0)
 		sprt->draw_strt_y = 0;
 	sprt->draw_end_y = sprt->height / 2 + info->conf.win_height
-						/ 2 + sprt->v_ms_screen;
+						/ 2 + sprt->v_mv_screen;
 	if (sprt->draw_end_y >= info->conf.win_height)
 		sprt->draw_end_y = info->conf.win_height - 1;
 	sprt->width = (int)fabs((info->conf.win_height / sprt->trns_y) / U_DIV);
@@ -63,7 +63,7 @@ void	coord_sprite_tex(t_info *info, int *order, t_sprt_line *sprt, int i)
 			y = sprt->draw_strt_y - 1;
 			while (++y < sprt->draw_end_y)
 			{
-				d = (y - sprt->v_ms_screen) * 256 - info->conf.win_height * 128
+				d = (y - sprt->v_mv_screen) * 256 - info->conf.win_height * 128
 					+ sprt->height * 128;
 				sprt->tex_y = ((d * TEX_HEIGHT) / sprt->height) / 256;
 				sprt->color = info->texture[info->sprite[order[i]].texture]
