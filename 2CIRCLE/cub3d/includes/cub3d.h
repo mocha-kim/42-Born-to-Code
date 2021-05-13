@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 15:58:49 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/03/27 15:59:37 by sunhkim          ###   ########.fr       */
+/*   Created: 2021/05/12 17:33:39 by sunhkim           #+#    #+#             */
+/*   Updated: 2021/05/12 17:37:06 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,173 +14,251 @@
 # define CUB3D_H
 
 # include "../mlx/mlx.h"
+# include "../config/config.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
 # include <string.h>
 
-# define NS 1
-# define EW 0
+# define Y_PLANE 1
+# define X_PLANE 0
 
 # define EVENT_KEY_PRESS	2
 # define EVENT_KEY_RELEASE	3
 # define EVENT_KEY_EXIT		17
 
 # define KEY_ESC  53
-# define KEY_W    13
-# define KEY_A    0
-# define KEY_S    1
-# define KEY_D    2
+# define KEY_W	13
+# define KEY_A	0
+# define KEY_S	1
+# define KEY_D	2
 # define KEY_UP   126
 # define KEY_DOWN 125
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 
-# define MAP_WIDTH 24
-# define MAP_HEIGHT 24
-# define WIN_WIDTH 640
-# define WIN_HEIGHT 480
 # define TEX_WIDTH 64
 # define TEX_HEIGHT 64
 
+# define U_DIV 1
+# define V_DIV 1
+# define V_MOVE 0.0
+
 typedef struct	s_img
 {
-	void	    *img_ptr;
-	int		    *data;
-	int		    size_l;
-	int		    bpp;
-	int		    endian;
-	int		    width;
-	int		    height;
+	void		*img_ptr;
+	int			*data;
+	int			size_l;
+	int			bpp;
+	int			endian;
+	int			width;
+	int			height;
 }				t_img;
 
-typedef struct  s_key
+typedef struct	s_key
 {
-	int			a;
+	int			right;
+	int			left;
 	int			w;
 	int			s;
+	int			a;
 	int			d;
-	int			esc;
-}               t_key;
+}				t_key;
 
-
-typedef struct  s_info
+typedef struct	s_sprite
 {
-    void        *mlx;
-    void        *win;
-    double      posX;
-    double      posY;
-    double      dirX;
-    double      dirY;
-    double      planeX;
-    double      planeY;
-    t_img       img;
-    int         map[MAP_HEIGHT][MAP_WIDTH];
-    int         buf[WIN_HEIGHT][WIN_WIDTH];
-	double		zBuffer[WIN_WIDTH];
-    int         **texture;
-    double      moveSpeed;
-    double      rotSpeed;
-    t_key       key;
-}               t_info;
+	double		x;
+	double		y;
+	int			texture;
+}				t_sprite;
 
-typedef struct  s_vetor
+typedef struct	s_info
 {
-    double  rayDirX;
-    double  rayDirY;
-    double  sideDistX;
-    double  sideDistY;
-    double  deltaDistX;
-    double  deltaDistY;
-	double  perpWallDist;
-    int     mapX;
-    int     mapY;
-    int     stepX;
-    int     stepY;
-    int     side;
-}               t_vector;
+	void		*mlx;
+	void		*win;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		pln_x;
+	double		pln_y;
+	int			score;
+	t_img		img;
+	int			**buf;
+	double		*z_buf;
+	int			sprite_num;
+	t_sprite	*sprite;
+	int			**texture;
+	double		mv_speed;
+	double		rot_speed;
+	t_key		key;
+	t_config	conf;
+}				t_info;
 
-typedef struct  s_line
+typedef struct	s_vetor
 {
-    int     lineHeight;
-    int     drawStart;
-    int     drawEnd;
-    int     color;
-    double  wallX;
-    int     texX;
-    int     texY;
-    int     texNum;
-    double  floorXWall;
-    double  floorYWall;
-    int     floorTexX;
-    int     floorTexY;
-}               t_line;
+	double		r_dir_x;
+	double		r_dir_y;
+	double		side_dst_x;
+	double		side_dst_y;
+	double		delt_dst_x;
+	double		delt_dst_y;
+	double		prp_wal_dst;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	int			side;
+}				t_vector;
+
+typedef struct	s_back_line
+{
+	int			l_height;
+	int			draw_strt;
+	int			draw_end;
+	int			color;
+	double		wall_x;
+	int			tex_x;
+	int			tex_y;
+	int			tex_num;
+	double		flr_x_wall;
+	double		flr_y_wall;
+	int			flr_tex_x;
+	int			flr_tex_y;
+}				t_back_line;
+
+typedef struct	s_sprite_line
+{
+	double		trns_x;
+	double		trns_y;
+	double		x;
+	double		y;
+	int			tex_x;
+	int			tex_y;
+	int			v_ms_screen;
+	int			scrn_x;
+	int			height;
+	int			width;
+	int			draw_strt_x;
+	int			draw_end_x;
+	int			draw_strt_y;
+	int			draw_end_y;
+	int			color;
+}				t_sprt_line;
+
+typedef struct	s_pair
+{
+	double		dist;
+	int			order;
+}				t_pair;
 
 /*
 ** main.c
 */
 
-int		main_loop(t_info *info);
-int 	main_close(t_info *info);
-void    error_exit(char *message);
-void    draw(t_info *info);
+int				main_loop(t_info *info);
+int				main_close(t_info *info);
+void			draw(t_info *info);
 
 /*
-** init.c
+** info.c
 */
 
-int 	window_init(t_info *info);
-void	info_init(t_info *info);
-void    tex_free(t_info *info, int i);
-int     tex_init(t_info *info);
-void	game_init(t_info *info);
+void			ptr_init(t_info *info);
+void			dir_init(t_info *info);
+int				buf_init(t_info *info);
+void			key_init(t_info *info);
+int				info_init(t_info *info);
+
+/*
+** window.c
+*/
+
+int				window_init(t_info *info);
+void			clear_window(t_info *info);
+
+/*
+** close.c
+*/
+
+int				error_exit(t_info *info, char *message, int status);
+void			buf_free(t_info *info, int i);
+void			clear_game(t_info *info, int status);
 
 /*
 ** wall1.c
 */
 
-void    calc_vars(int x, t_vector *vec, t_info *info);
-void    calc_dists(t_vector *vec, t_info *info);
-void    ray_cast(t_vector *vec, t_info *info);
-void    calc_back(t_info *info);
+void			calc_vars(int x, t_vector *vec, t_info *info);
+void			calc_dists(t_vector *vec, t_info *info);
+void			ray_cast(t_vector *vec, t_info *info);
+void			calc_back(t_info *info);
 
 /*
 ** wall2.c
 */
 
-void    calc_line(t_line *line, t_vector *vec, t_info *info);
-void    calc_wall(t_line *line, t_vector *vec, t_info *info);
-void    coord_wall_texture(int x, t_line *line, t_vector *vec, t_info *info);
+void			calc_line(t_back_line *line, t_vector *vec, t_info *info);
+void			calc_wall(t_back_line *line, t_vector *vec, t_info *info);
+void			coord_wall_tex(int x, t_back_line *line, t_info *info);
 
 /*
 ** floor.c
 */
 
-void    calc_floor(t_line *line, t_vector *vec);
-int     calc_pattern(double weight, t_line *line, t_info *info);
-void    coord_floor_texture(int x, t_line *line, t_vector *vec, t_info *info);
+void			calc_floor(t_back_line *line, t_vector *vec);
+void			coord_floor_color(int x, t_back_line *line, t_info *info);
 
 /*
 ** texture.c
 */
 
-void	load_image(t_info *info, int *texture, char *path, t_img *img);
-void    load_texture(t_info *info);
+int				tex_init(t_info *info);
+void			load_image(t_info *info, int *texture, char *path, t_img *img);
+void			load_texture(t_info *info);
+void			tex_free(t_info *info, int i);
 
 /*
-** sprite.c
+** sprite1.c
 */
 
-void    clac_sprite(t_info *info);
+int				malloc_sprite(t_info *info);
+int				sprite_init(t_info *info);
+void			sort_order(t_pair *sprites, int amount);
+void			sort_sprites(int *order, double *dist, int amount);
+void			calc_sprite(t_info *info);
+
+/*
+** sprite2.c
+*/
+
+void			calc_sprite_pos(t_sprt_line *sprt, int *order,
+								t_info *info, int i);
+void			calc_sprite_line(t_sprt_line *sprt, t_info *info);
+void			coord_sprite_tex(t_info *info, int *order,
+								t_sprt_line *sprite, int i);
 
 /*
 ** key_handling.c
 */
 
-void    move(t_info *info, int direction);
-void    rotate(t_info *info, int direction);
-int     key_update(t_info *info);
-int     key_press(int key, t_info *info);
-int		key_release(int key, t_info *info);
+int				key_update(t_info *info);
+int				key_press(int key, t_info *info);
+int				key_release(int key, t_info *info);
 
-# endif
+/*
+** camera.c
+*/
+
+void			move_vertical(t_info *info, int direction);
+void			move_horizontal(t_info *info, int direction);
+void			rotate(t_info *info, int direction);
+
+/*
+** save_bmp.c
+*/
+
+int				save_image(t_info *info);
+int				write_bmp_header(int file, int filesize, t_info *info);
+
+#endif
