@@ -1,13 +1,13 @@
 # 42-Born-to-Code
 42 학습 기록용 레포지토리 입니다.
 
-## Circle 0
+## 0 Circle
 
 | Subject | Grade |  | 
 | ---------- | :--------- | :----------:
 | Libft | 107% | missing bonus rule in Makefile |
 
-## Circle 1
+## 1 Circle
 
 | Subject | Grade |  | 
 | ---------- | :--------- | :----------:
@@ -15,9 +15,10 @@
 | get_next_line | 115% | 2tries |
 | ft_printf | 100% |  |
 
-## Circle 2
+## 2 Circle
 
 | Subject | Grade |  | 
 | ---------- | :--------- | :----------:
 | ft_server | 100% | 2tries |
 | cub3D | 107% |  |
+| push_swap |  |  |
