@@ -19,4 +19,5 @@
 
 | Subject | Grade |  | 
 | ---------- | :--------- | :----------:
-| ft_server |  |  |
+| ft_server | 100% | 2tries |
+| cub3D | 107% |  |
