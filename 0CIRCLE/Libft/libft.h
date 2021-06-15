@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunhkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 19:23:05 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/01/28 20:54:56 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/06/15 20:00:59 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,32 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 ** Additional functions
 */
 
+typedef struct	s_dlist
+{
+	void			*content;
+	struct s_dlist	*prev;
+	struct s_dlist	*next;
+}				t_dlist;
+
 void			ft_putchar(char c);
 void			ft_putstr(char *str);
 void			ft_strdel(char **as);
 char			*ft_strnew(size_t size);
 char			*ft_utoa(unsigned int value);
 char			*ft_utoa_base(unsigned int n, char *base, int b_len);
+int				ft_count_strchr(char c, char *str);
+int				ft_strcmp(const char *s1, const char *s2);
+
+/*
+** double linked list
+*/
+
+t_dlist			*ft_dlstnew(void *content);
+void			ft_dlstadd_front(t_dlist **lst, t_dlist *new);
+int				ft_dlstsize(t_dlist *lst);
+t_dlist			*ft_dlstlast(t_dlist *lst);
+void			ft_dlstadd_back(t_dlist **lst, t_dlist *new);
+void			ft_dlstdelone(t_dlist *lst, void (*del)(void *));
+void			ft_dlstclear(t_dlist **lst, void (*del)(void *));
 
 #endif
