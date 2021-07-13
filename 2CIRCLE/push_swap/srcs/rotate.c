@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 20:38:06 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/06/29 17:02:34 by sunhkim          ###   ########.fr       */
+/*   Created: 2021/05/21 16:40:54 by sunhkim           #+#    #+#             */
+/*   Updated: 2021/05/21 18:03:49 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
-char	*ft_strnew(size_t size)
-{
-	char	*str;
-
-	if (!(str = (char*)malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	ft_memset(str, 0, size + 1);
-	return (str);
-}
+/*
+** rotate.c
+** ra : rotate a - shift up all elements of stack a by 1. The first element becomes the last one.
+** rb : rotate b - shift up all elements of stack b by 1. The first element becomes the last one.
+** rr : ra and rb at the same time.
+*/

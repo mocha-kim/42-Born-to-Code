@@ -6,34 +6,70 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:05:14 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/05/19 21:08:37 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/05/21 18:09:06 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include "../libft/libft.h"
+
+typedef struct	s_node
+{
+	t_node		*prev;
+	t_node		*next;
+	int			num;
+}				t_node;
+
+typedef struct	s_stack
+{
+	t_node	*head;
+	t_node	*tail;
+	size_t	size;
+	size_t	high;
+	size_t	low;
+}				t_stack;
+
+typedef struct	s_info
+{
+	t_stack	a;
+	t_stack	b;
+}				t_info;
 
 /*
-** sa : swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements).
-** sb : swap b - swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements).
-** ss : sa and sb at the same time.
+** swap.c
 */
 
-/*
-** pa : push a - take the first element at the top of b and put it at the top of a. Do nothing if b is empty.
-** pb : push b - take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
-*/
+
 
 /*
-** ra : rotate a - shift up all elements of stack a by 1. The first element becomes the last one.
-** rb : rotate b - shift up all elements of stack b by 1. The first element becomes the last one.
-** rr : ra and rb at the same time.
+** push.c
 */
 
+
+
 /*
-** rra : reverse rotate a - shift down all elements of stack a by 1. The last element becomes the first one.
-** rrb : reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
-** rrr : rra and rrb at the same time.
+** rotate.c
 */
+
+
+
+/*
+** rrotate.c
+*/
+
+
+/*
+** node.c
+*/
+
+size_t	ft_list_size(t_node *node);
+void	ft_list_add_back(t_node **head, t_node *new_node);
+void	ft_list_add_front(t_node **head, t_node *new_node);
+t_node	*ft_node_last(t_node *node);
+t_node	*ft_node_new(int num);
 
 #endif

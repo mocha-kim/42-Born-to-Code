@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 20:38:06 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/06/29 17:02:34 by sunhkim          ###   ########.fr       */
+/*   Created: 2021/05/21 16:40:47 by sunhkim           #+#    #+#             */
+/*   Updated: 2021/05/21 18:04:39 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
-char	*ft_strnew(size_t size)
-{
-	char	*str;
-
-	if (!(str = (char*)malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	ft_memset(str, 0, size + 1);
-	return (str);
-}
+/*
+** pa : push a - take the first element at the top of b and put it at the top of a. Do nothing if b is empty.
+** pb : push b - take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
+*/
