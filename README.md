@@ -20,11 +20,11 @@
 |   Subject  |  Grade |        | 
 | ---------- | ------ | ------ |
 |  ft_server |  100%  | 2tries |
-|    cub3D   |  107%  | w.[AYoungSn](https://github.com/AYoungSn) |
+|    cub3D   |  107%  | w.[yoahn](https://github.com/AYoungSn) |
 |  push_swap |  |  |
 
 ## 3 Circle
 
 |   Subject  |  Grade |            | 
 | ---------- | ------ | ---------- |
-|  minishell |  |  |
+|  minishell |  | w.[yoahn](https://github.com/AYoungSn) |
