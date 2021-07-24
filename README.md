@@ -1,30 +1,37 @@
 # 42-Born-to-Code
 42 학습 기록용 레포지토리 입니다.
 
-## 0 Circle
+## 0Circle
 
-|   Subject  |  Grade |            | 
-| ---------- | ------ | ---------- |
-|    Libft   |  107%  | missing bonus rule in Makefile |
+|     Subject    |  Grade |            | 
+| -------------- | ------ | ---------- |
+|      Libft     |  107%  | missing bonus rule in Makefile |
 
-## 1 Circle
+## 1Circle
 
-|    Subject    |  Grade |        | 
-| ------------- | ------ | ------ |
-|    netwhat    |  100%  | 4tries |
-| get_next_line |  115%  | 2tries |
-|   ft_printf   |  100%  |        |
+|     Subject    |  Grade |            | 
+| -------------- | ------ | ---------- |
+|     netwhat    |  100%  | 4tries |
+|  get_next_line |  115%  | 2tries |
+|    ft_printf   |  100%  |        |
 
-## 2 Circle
+## 2Circle
 
-|   Subject  |  Grade |        | 
-| ---------- | ------ | ------ |
-|  ft_server |  100%  | 2tries |
-|    cub3D   |  107%  | w.[yoahn](https://github.com/AYoungSn) |
-|  push_swap |  |  |
+|     Subject    |  Grade |            | 
+| -------------- | ------ | ---------- |
+|    ft_server   |  100%  | 2tries |
+|    push_swap   |  |  |
 
-## 3 Circle
+## 3Circle
 
-|   Subject  |  Grade |            | 
-| ---------- | ------ | ---------- |
-|  minishell |  | w.[yoahn](https://github.com/AYoungSn) |
+|     Subject    |  Grade |            | 
+| -------------- | ------ | ---------- |
+|    minishell   |  100%  | w.[yoahn](https://github.com/AYoungSn) |
+|  Philosophers  |  |  |
+
+## 4Circle
+
+|     Subject    |  Grade |            | 
+| -------------- | ------ | ---------- |
+|    ft_server   |  100%  | 2tries |
+|      cub3D     |  107%  | w.[yoahn](https://github.com/AYoungSn) (2->4Circle)|
