@@ -3,22 +3,28 @@
 
 ## 0 Circle
 
-| Subject | Grade |  | 
-| ---------- | :--------- | :----------:
-| Libft | 107% | missing bonus rule in Makefile |
+|   Subject  |  Grade |            | 
+| ---------- | ------ | ---------- |
+|    Libft   |  107%  | missing bonus rule in Makefile |
 
 ## 1 Circle
 
-| Subject | Grade |  | 
-| ---------- | :--------- | :----------:
-| netwhat | 100% | 4tries |
-| get_next_line | 115% | 2tries |
-| ft_printf | 100% |  |
+|    Subject    |  Grade |        | 
+| ------------- | ------ | ------ |
+|    netwhat    |  100%  | 4tries |
+| get_next_line |  115%  | 2tries |
+|   ft_printf   |  100%  |        |
 
 ## 2 Circle
 
-| Subject | Grade |  | 
-| ---------- | :--------- | :----------:
-| ft_server | 100% | 2tries |
-| cub3D | 107% |  |
-| push_swap |  |  |
+|   Subject  |  Grade |        | 
+| ---------- | ------ | ------ |
+|  ft_server |  100%  | 2tries |
+|    cub3D   |  107%  | w.[yoahn](https://github.com/AYoungSn) |
+|  push_swap |  |  |
+
+## 3 Circle
+
+|   Subject  |  Grade |            | 
+| ---------- | ------ | ---------- |
+|  minishell |  | w.[yoahn](https://github.com/AYoungSn) |
