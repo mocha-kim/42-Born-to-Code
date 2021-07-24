@@ -33,5 +33,4 @@
 
 |     Subject    |  Grade |            | 
 | -------------- | ------ | ---------- |
-|    ft_server   |  100%  | 2tries |
 |      cub3D     |  107%  | w.[yoahn](https://github.com/AYoungSn) (2->4Circle)|
