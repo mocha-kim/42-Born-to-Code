@@ -9,10 +9,10 @@
 
 ## 1Circle
 
-|                                          Subject                                          | Submit Date |  Grade |        | 
-| ----------------------------------------------------------------------------------------- | ----------- | ------ | ------ |
-| [get_next_line](https://github.com/mocha-kim/42-Born-to-Code/tree/main/1CIRCLE/ft_printf) |  2021-01-18 |  115%  | 2tries |
-|   [ft_printf](https://github.com/mocha-kim/42-Born-to-Code/tree/main/1CIRCLE/ft_printf)   |  2021-02-01 |  100%  |        |
+|                                          Subject                                              | Submit Date |  Grade |        | 
+| --------------------------------------------------------------------------------------------- | ----------- | ------ | ------ |
+| [get_next_line](https://github.com/mocha-kim/42-Born-to-Code/tree/main/1CIRCLE/get_next_line) |  2021-01-18 |  115%  | 2tries |
+|     [ft_printf](https://github.com/mocha-kim/42-Born-to-Code/tree/main/1CIRCLE/ft_printf)     |  2021-02-01 |  100%  |        |
 
 ## 2Circle
 
@@ -31,7 +31,7 @@
 
 |                                     Subject                                   | Submit Date |  Grade |                                                     | 
 | ----------------------------------------------------------------------------- | ----------- | ------ | --------------------------------------------------- |
-| [cub3D](https://github.com/mocha-kim/42-Born-to-Code/tree/main/4CIRCLE/cub3d) |  2021-05-13 |  107%  | w.[yoahn](https://github.com/AYoungSn) / 2->4Circle |
+| [cub3d](https://github.com/mocha-kim/42-Born-to-Code/tree/main/4CIRCLE/cub3d) |  2021-05-13 |  107%  | w.[yoahn](https://github.com/AYoungSn) / 2->4Circle |
 
 ## Outer Circle
 
