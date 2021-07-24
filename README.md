@@ -33,4 +33,10 @@
 
 |     Subject    |  Grade |            | 
 | -------------- | ------ | ---------- |
-|      cub3D     |  107%  | w.[yoahn](https://github.com/AYoungSn) (2->4Circle)|
+|      cub3D     |  107%  | w.[yoahn](https://github.com/AYoungSn) / 2->4Circle)|
+
+## Outer Circle
+
+|     Subject    |  Grade |            | 
+| -------------- | ------ | ---------- |
+|     libasm     |  | 3->Outer Circle |
