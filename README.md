@@ -11,7 +11,6 @@
 
 |     Subject    |  Grade |            | 
 | -------------- | ------ | ---------- |
-|     netwhat    |  100%  | 4tries |
 |  get_next_line |  115%  | 2tries |
 |    ft_printf   |  100%  |        |
 
@@ -19,7 +18,6 @@
 
 |     Subject    |  Grade |            | 
 | -------------- | ------ | ---------- |
-|    ft_server   |  100%  | 2tries |
 |    push_swap   |  |  |
 
 ## 3Circle
@@ -40,3 +38,11 @@
 |     Subject    |  Grade |            | 
 | -------------- | ------ | ---------- |
 |     libasm     |  | 3->Outer Circle |
+
+## Removed Subjects
+
+|     Subject    |  Grade |            | 
+| -------------- | ------ | ---------- |
+|     netwhat    |  100%  | 4tries / 1->removed |
+|    ft_server   |  100%  | 2tries / 2->removed |
+
