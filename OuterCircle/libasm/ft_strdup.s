@@ -1,7 +1,8 @@
 section .text
-  global    _ft_strdup
-  extern    _malloc
-  extern    _ft_strlen
+	global	_ft_strdup
+	extern	_malloc
+	extern	_ft_strlen
+	extern	_ft_strcpy
 
 _ft_strdup:				; rdi = src
     mov	rax, 0

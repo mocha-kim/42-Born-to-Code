@@ -26,6 +26,5 @@ re:			fclean $(NAME)
 
 test:		$(NAME)
 			gcc -Wall -Werror -Wextra -L. -lasm -o $(TEST) test.c
-			./$(TEST) < Makefile
 
 .PHONY: 	all clean fclean re
