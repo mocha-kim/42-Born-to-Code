@@ -35,9 +35,9 @@
 
 ## Outer Circle
 
-|                                         Subject                                        | Submit Date |  Grade |            | 
-| -------------------------------------------------------------------------------------- | ----------- | ------ | ---------- |
-|     libasm     |  |  | 3->Outer Circle |
+|                                         Subject                                        | Submit Date |  Grade |                                                | 
+| -------------------------------------------------------------------------------------- | ----------- | ------ | ---------------------------------------------- |
+|   [libasm](https://github.com/mocha-kim/42-Born-to-Code/tree/main/OuterCircle/libasm)  |  2021-07-30 |   0%   | didn't check errors during syscalls / 3->Outer |
 
 ## Removed Subjects
 
