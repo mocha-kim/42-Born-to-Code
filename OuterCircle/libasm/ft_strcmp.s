@@ -30,7 +30,7 @@ last_char:
 	sub		dl, BYTE [rsi + rcx]
 	cmp		dl, 0
 	jz		equal
-	jl		inferior
+	jl		inf
 
 sup:
     mov rax, 1
