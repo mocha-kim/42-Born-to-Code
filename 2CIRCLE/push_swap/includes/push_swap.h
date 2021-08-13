@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:05:14 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/05/21 18:09:06 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/13 15:51:16 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,61 +15,124 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "../libft/libft.h"
+#include <stdio.h>
 
-typedef struct	s_node
-{
-	t_node		*prev;
-	t_node		*next;
-	int			num;
-}				t_node;
+# define DO_NOT 0
+# define SA 1
+# define SB 2
+# define RA 3
+# define RB 4
+# define RRA 5
+# define RRB 6
 
-typedef struct	s_stack
+typedef struct			s_node
 {
-	t_node	*head;
-	t_node	*tail;
-	size_t	size;
-	size_t	high;
-	size_t	low;
-}				t_stack;
+	struct s_node		*prev;
+	struct s_node		*next;
+	int					num;
+}						t_node;
 
-typedef struct	s_info
+typedef struct			s_stack
 {
-	t_stack	a;
-	t_stack	b;
-}				t_info;
+	t_node				*top;
+	int					size;
+}						t_stack;
+
+typedef struct			s_info
+{
+	t_stack				a;
+	t_stack				b;
+	char				**buf;
+}						t_info;
+
+/*
+**		main.c
+*/
+
+void					init_info(t_info *info);
+void					clear_info(t_info *info);
+
+/*
+** push_swap.c
+*/
+
+void					print_operation(int option);
+void					push_swap(t_info *info);
 
 /*
 ** swap.c
 */
 
-
+void					swap_sx(t_stack *stack, int opt);
+void					swap_ss(t_stack *a, t_stack *b);
 
 /*
 ** push.c
 */
 
-
+void					push_pa(t_stack *a, t_stack *b);
+void					push_pb(t_stack *a, t_stack *b);
 
 /*
 ** rotate.c
 */
 
-
-
-/*
-** rrotate.c
-*/
-
+void					rotate_rx(t_stack *stack, int opt);
+void					rotate_rr(t_stack *a, t_stack *b);
+void					r_rotate_rx(t_stack *stack, int opt);
+void					r_rotate_rr(t_stack *a, t_stack *b);
 
 /*
-** node.c
+** solve_small.c
 */
 
-size_t	ft_list_size(t_node *node);
-void	ft_list_add_back(t_node **head, t_node *new_node);
-void	ft_list_add_front(t_node **head, t_node *new_node);
-t_node	*ft_node_last(t_node *node);
-t_node	*ft_node_new(int num);
+void					solve_small(t_info *info);
+
+/*
+** solve.c
+*/
+
+void					solve_medium(t_info *info);
+
+/*
+** solve_large.c
+*/
+
+void					solve_large(t_info *info);
+
+/*
+** stack.c
+*/
+
+int						check_sorted_stack(t_stack *stack);
+void					find_min(int *min, t_stack *stack);
+void					find_max(int *max, t_stack *stack);
+void					find_min_max(int *min, int *max, t_stack *stack);
+
+/*
+** args.c
+*/
+
+int						check_save_args(int argc, char *argv[], t_info *info);
+
+/*
+** utils1.c
+*/
+
+size_t					ft_list_size(t_node *node);
+void					ft_list_add_back(t_node **head, t_node *new_node);
+void					ft_list_add_front(t_node **head, t_node *new_node);
+t_node					*ft_node_last(t_node *node);
+t_node					*ft_node_new(int num);
+
+/*
+** utils2.c
+*/
+
+void					ft_list_clear(t_node **head);
+int						ft_isdigit(int c);
+int						ft_isnum(char *str);
+int						ft_atoi(const char *str);
+size_t					ft_strlen(const char *s);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node.c                                             :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 16:40:41 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/05/21 18:02:50 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/13 12:56:50 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_list_add_back(t_node **head, t_node *new_node)
 	t_node	*tmp;
 
 	if (!*head)
-		ft_node_add_front(head, new_node);
+		ft_list_add_front(head, new_node);
 	else
 	{
 		tmp = ft_node_last(*head);

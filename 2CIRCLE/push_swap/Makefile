@@ -1,36 +1,42 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/08/13 12:30:33 by sunhkim           #+#    #+#              #
+#    Updated: 2021/08/13 16:13:52 by sunhkim          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		= push_swap
 
 INC_PATH	= ./includes
 SRC_PATH	= ./srcs
-LFT_PATH	= ./libft
 
 INCS		= -I $(INC_PATH)
-SRCS		= 
+SRCS		= $(SRC_PATH)/main.c $(SRC_PATH)/push_swap.c \
+			  $(SRC_PATH)/push.c $(SRC_PATH)/rotate.c $(SRC_PATH)/swap.c \
+			  $(SRC_PATH)/solve_small.c $(SRC_PATH)/solve_medium.c \
+			  $(SRC_PATH)/solve_large.c $(SRC_PATH)/args.c $(SRC_PATH)/stack.c \
+			  $(SRC_PATH)/utils1.c $(SRC_PATH)/utils2.c
 OBJS		= $(SRCS:.c=.o)
 
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
-LIBFT		= libft.a
+CFLAGS		= -Wall -Wextra -Werror 
 
-.c.o:
-		$(CC) $(CFLAGS) $(INCS) -c $< -o $(<:.c=.o)
-
-$(NAME):	$(LIBFT) $(OBJS)
+$(NAME):	$(OBJS)
 	$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS)
 	@echo $(NAME) : Created
 
-$(MLX):
-	@$(MAKE) -C $(LFT_PATH)
-
 all:	$(NAME)
 
-
 clean:
-	@$(MAKE) -C $(LFT_PATH) clean
-	rm -f $(OBJS) $(BNS_OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME) $(LFT_PATH)/$(LIBFT)
+	rm -f $(NAME)
 
 re:		fclean all
 

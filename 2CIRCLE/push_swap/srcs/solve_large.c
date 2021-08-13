@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrotate.c                                          :+:      :+:    :+:   */
+/*   solve_large.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/21 16:40:49 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/05/21 18:04:37 by sunhkim          ###   ########.fr       */
+/*   Created: 2021/08/13 15:17:31 by sunhkim           #+#    #+#             */
+/*   Updated: 2021/08/13 16:14:25 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/*
-** rra : reverse rotate a - shift down all elements of stack a by 1. The last element becomes the first one.
-** rrb : reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
-** rrr : rra and rrb at the same time.
-*/
+void	solve_large(t_info *info)
+{
+	if (info->a.size == 1)
+		return ;
+	else if (info->a.size == 2)
+	{
+		if (info->a.top->num > info->a.top->next->num)
+			swap_sx(&(info->a), SA);
+		return ;
+	}
+}
