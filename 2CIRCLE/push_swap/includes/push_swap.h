@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:05:14 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/13 15:51:16 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/16 17:38:07 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,20 @@ void					r_rotate_rr(t_stack *a, t_stack *b);
 ** solve_small.c
 */
 
+void					solve_3(t_info *info, char name);
 void					solve_small(t_info *info);
 
 /*
-** solve.c
+** solve_medium.c
 */
 
-void					solve_medium(t_info *info);
-
-/*
-** solve_large.c
-*/
-
-void					solve_large(t_info *info);
+int						solve_medium(t_info *info);
 
 /*
 ** stack.c
 */
 
-int						check_sorted_stack(t_stack *stack);
+int						check_sorted_stack(t_stack *stack, int dir);
 void					find_min(int *min, t_stack *stack);
 void					find_max(int *max, t_stack *stack);
 void					find_min_max(int *min, int *max, t_stack *stack);
@@ -134,5 +129,12 @@ int						ft_isdigit(int c);
 int						ft_isnum(char *str);
 int						ft_atoi(const char *str);
 size_t					ft_strlen(const char *s);
+
+/*
+** utils3.c
+*/
+
+size_t					ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char					**ft_split(char const *s, char c);
 
 #endif

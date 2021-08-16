@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:35:49 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/13 15:42:10 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/16 17:23:27 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ static void		solve_2(t_info *info)
 		swap_sx(&(info->a), SA);
 }
 
-static void		solve_3(t_info *info)
+void			solve_3(t_info *info, char name)
 {
 	int		max;
-	t_stack	*a;
+	t_stack	*stack;
 
-	a = &(info->a);
-	find_max(&max, a);
-	while (!check_sorted_stack(a))
+	stack = (name == 'a') ? &(info->a) : &(info->b);
+	find_max(&max, stack);
+	while (!check_sorted_stack(stack, 1))
 	{
-		if (a->top->num == max)
-			rotate_rx(a, RA);
-		else if (a->top->next->num == max)
-			r_rotate_rx(a, RRA);
+		if (stack->top->num == max)
+			(name == 'a') ? rotate_rx(stack, RA) : rotate_rx(stack, RB);
+		else if (stack->top->next->num == max)
+			(name == 'a') ? r_rotate_rx(stack, RRA) : r_rotate_rx(stack, RRB);
 		else
-			swap_sx(a, SA);
+			(name == 'a') ? swap_sx(stack, SA) : swap_sx(stack, SB);
 	}
 }
 
@@ -46,7 +46,7 @@ static void		solve_4(t_info *info)
 	while (a->top->num != min)
 		rotate_rx(a, RA);
 	push_pb(&(info->a), &(info->b));
-	solve_3(info);
+	solve_3(info, 'a');
 	push_pa(&(info->a), &(info->b));
 }
 
@@ -68,7 +68,7 @@ static void		solve_5(t_info *info)
 			rotate_rx(a, RA);
 		i++;
 	}
-	solve_3(info);
+	solve_3(info, 'a');
 	if (info->b.top->num == max)
 		rotate_rx(&(info->b), RB);
 	push_pa(&(info->a), &(info->b));
@@ -81,7 +81,7 @@ void			solve_small(t_info *info)
 	if (info->a.size == 2)
 		solve_2(info);
 	else if (info->a.size == 3)
-		solve_3(info);
+		solve_3(info, 'a');
 	else if (info->a.size == 4)
 		solve_4(info);
 	else if (info->a.size == 5)

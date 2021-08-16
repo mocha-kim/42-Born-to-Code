@@ -6,60 +6,58 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:26:09 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/13 15:39:09 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/16 15:58:31 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	check_args(int i, char *argv[], int *num)
+static int	check_args(int *num, t_node **list, char *str)
 {
-	int j;
+	t_node	*tmp;
 
-	if (argv[i][0] == '-' && num[i - 1] > 0)
+	*num = ft_atoi(str);
+	if (str[0] == '-' && *num > 0)
 		return (-1);
-	if ((argv[i][0] == '+' || ft_isdigit(argv[i][0])) && num[i - 1] < 0)
+	if ((str[0] == '+' || ft_isdigit(str[0])) && *num < 0)
 		return (-1);
-	j = 0;
-	while (j < i - 1)
+	tmp = *list;
+	if (tmp)
 	{
-		if (num[i - 1] == num[j])
-			return (-1);
-		j++;
+		while (tmp->next)
+		{
+			if (tmp->num == *num)
+				return (-1);
+			tmp = tmp->next;
+		}
 	}
-	return (1);
-}
-
-static int	save_args(int argc, int *num, t_info *info)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		ft_list_add_back(&(info->a.top), ft_node_new(num[i - 1]));
-		i++;
-	}
-	info->a.size = argc - 1;
 	return (1);
 }
 
 int			check_save_args(int argc, char *argv[], t_info *info)
 {
-	int	i;
-	int	*num;
+	int		i;
+	int		j;
+	int		num;
+	int		args_n;
+	char	**tmp;
 
 	i = 1;
-	num = malloc(sizeof(int) * (argc - 1));
+	args_n = 0;
 	while (i < argc)
 	{
-		if (!ft_isnum(argv[i]))
-			return (-1);
-		num[i - 1] = ft_atoi(argv[i]);
-		if (check_args(i, argv, num) == -1)
-			return (-1);
+		j = 0;
+		tmp = ft_split(argv[i], ' ');
+		while (tmp[j])
+		{
+			if (check_args(&num, &(info->a.top), tmp[j]) == -1)
+				return (-1);
+			ft_list_add_back(&(info->a.top), ft_node_new(num));
+			j++;
+		}
+		args_n += j;
 		i++;
 	}
-	save_args(argc, num, info);
+	info->a.size = args_n;
 	return (1);
 }
