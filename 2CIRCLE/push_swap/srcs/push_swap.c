@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:21:07 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/16 16:44:06 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/17 17:56:11 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,10 @@ void	push_swap(t_info *info)
 {
 	if (info->a.size == 1)
 		return ;
-	if (check_sorted_stack(&(info->a), 1))
+	if (check_sorted_stack(&(info->a), 1, info->a.size))
 		return ;
 	if (info->a.size <= 5)
 		solve_small(info);
-	else if (info->a.size <= 100)
-		solve_medium(info, 0);
 	else
-		solve_large(info);
+		solve(info);
 }

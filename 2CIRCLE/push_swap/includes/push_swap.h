@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:05:14 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/16 17:38:07 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/17 18:00:46 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,16 @@ typedef struct			s_info
 {
 	t_stack				a;
 	t_stack				b;
-	char				**buf;
 }						t_info;
+
+typedef struct			s_sort
+{
+	int					ra_num;
+	int					rb_num;
+	int					pa_num;
+	int					pb_num;
+}						t_sort;
+
 
 /*
 **		main.c
@@ -90,16 +98,19 @@ void					solve_3(t_info *info, char name);
 void					solve_small(t_info *info);
 
 /*
-** solve_medium.c
+** solve.c
 */
 
-int						solve_medium(t_info *info);
+void		print_debug(t_info *info);
+int						solve(t_info *info);
+void					sort_a(t_info *info, int size);
+void					sort_b(t_info *info, int size);
 
 /*
 ** stack.c
 */
 
-int						check_sorted_stack(t_stack *stack, int dir);
+int						check_sorted_stack(t_stack *stack, int dir, int size);
 void					find_min(int *min, t_stack *stack);
 void					find_max(int *max, t_stack *stack);
 void					find_min_max(int *min, int *max, t_stack *stack);

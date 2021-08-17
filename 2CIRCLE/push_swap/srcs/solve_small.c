@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:35:49 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/16 17:23:27 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/17 18:00:50 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			solve_3(t_info *info, char name)
 
 	stack = (name == 'a') ? &(info->a) : &(info->b);
 	find_max(&max, stack);
-	while (!check_sorted_stack(stack, 1))
+	while (!check_sorted_stack(stack, 1, 3))
 	{
 		if (stack->top->num == max)
 			(name == 'a') ? rotate_rx(stack, RA) : rotate_rx(stack, RB);
@@ -33,13 +33,14 @@ void			solve_3(t_info *info, char name)
 			(name == 'a') ? r_rotate_rx(stack, RRA) : r_rotate_rx(stack, RRB);
 		else
 			(name == 'a') ? swap_sx(stack, SA) : swap_sx(stack, SB);
+		print_debug(info);
 	}
 }
 
 static void		solve_4(t_info *info)
 {
-	t_stack *a;
 	int		min;
+	t_stack *a;
 
 	a = &(info->a);
 	find_min(&min, a);
@@ -52,10 +53,10 @@ static void		solve_4(t_info *info)
 
 static void		solve_5(t_info *info)
 {
-	t_stack *a;
+	int		i;
 	int		min;
 	int		max;
-	int		i;
+	t_stack *a;
 
 	a = &(info->a);
 	find_min_max(&min, &max, a);

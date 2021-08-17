@@ -6,27 +6,25 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 12:09:01 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/16 16:43:32 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/17 18:05:31 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		check_sorted_stack(t_stack *stack, int dir)
+int		check_sorted_stack(t_stack *stack, int dir, int size)
 {
-	t_node *tmp;
+	int		i;
+	t_node	*tmp;
 
+	i = 0;
 	tmp = stack->top;
-	while (tmp->next)
+	while (i < size - 1)
 	{
-		if (dir && tmp->num < tmp->next->num)
+		if ((dir && tmp->num < tmp->next->num) ||( !dir && tmp->num > tmp->next->num))
 		{
 			tmp = tmp->next;
-			continue ;
-		}
-		else if (!dir && tmp->num > tmp->next->num)
-		{
-			tmp = tmp->next;
+			i++;
 			continue ;
 		}
 		else
