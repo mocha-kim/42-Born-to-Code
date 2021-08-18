@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 12:09:01 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/17 18:05:31 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/18 20:27:52 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		check_sorted_stack(t_stack *stack, int dir, int size)
 	tmp = stack->top;
 	while (i < size - 1)
 	{
-		if ((dir && tmp->num < tmp->next->num) ||( !dir && tmp->num > tmp->next->num))
+		if ((dir && tmp->num < tmp->next->num) || (!dir && tmp->num > tmp->next->num))
 		{
 			tmp = tmp->next;
 			i++;
@@ -33,38 +33,44 @@ int		check_sorted_stack(t_stack *stack, int dir, int size)
 	return (1);
 }
 
-void	find_min(int *min, t_stack *stack)
+void	find_min(int *min, t_stack *stack, int size)
 {
+	int			i;
 	t_node		*tmp;
 
 	*min = 0;
 	tmp = stack->top;
 	*min = stack->top->num;
-	while (tmp)
+	i = 0;
+	while (i < size)
 	{
 		if (tmp->num < *min)
 			*min = tmp->num;
 		tmp = tmp->next;
+		i++;
 	}
 }
 
-void	find_max(int *max, t_stack *stack)
+void	find_max(int *max, t_stack *stack, int size)
 {
+	int			i;
 	t_node		*tmp;
 
 	*max = 0;
 	tmp = stack->top;
 	*max = stack->top->num;
-	while (tmp)
+	i = 0;
+	while (i < size)
 	{
 		if (tmp->num > *max)
 			*max = tmp->num;
 		tmp = tmp->next;
+		i++;
 	}
 }
 
-void	find_min_max(int *min, int *max, t_stack *stack)
+void	find_min_max(int *min, int *max, t_stack *stack, int size)
 {
-	find_max(max, stack);
-	find_min(min, stack);
+	find_max(max, stack, size);
+	find_min(min, stack, size);
 }

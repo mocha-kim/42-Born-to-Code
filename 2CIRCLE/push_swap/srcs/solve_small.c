@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:35:49 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/17 18:00:50 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/18 19:53:32 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,21 @@ static void		solve_2(t_info *info)
 		swap_sx(&(info->a), SA);
 }
 
-void			solve_3(t_info *info, char name)
+static void		solve_3(t_info *info)
 {
 	int		max;
 	t_stack	*stack;
 
-	stack = (name == 'a') ? &(info->a) : &(info->b);
-	find_max(&max, stack);
+	stack = &(info->a);
+	find_max(&max, stack, 3);
 	while (!check_sorted_stack(stack, 1, 3))
 	{
 		if (stack->top->num == max)
-			(name == 'a') ? rotate_rx(stack, RA) : rotate_rx(stack, RB);
+			rotate_rx(stack, RA);
 		else if (stack->top->next->num == max)
-			(name == 'a') ? r_rotate_rx(stack, RRA) : r_rotate_rx(stack, RRB);
+			r_rotate_rx(stack, RRA);
 		else
-			(name == 'a') ? swap_sx(stack, SA) : swap_sx(stack, SB);
-		print_debug(info);
+			swap_sx(stack, SA);
 	}
 }
 
@@ -43,11 +42,11 @@ static void		solve_4(t_info *info)
 	t_stack *a;
 
 	a = &(info->a);
-	find_min(&min, a);
+	find_min(&min, a, 4);
 	while (a->top->num != min)
 		rotate_rx(a, RA);
 	push_pb(&(info->a), &(info->b));
-	solve_3(info, 'a');
+	solve_3(info);
 	push_pa(&(info->a), &(info->b));
 }
 
@@ -59,7 +58,7 @@ static void		solve_5(t_info *info)
 	t_stack *a;
 
 	a = &(info->a);
-	find_min_max(&min, &max, a);
+	find_min_max(&min, &max, a, 5);
 	i = 0;
 	while (i <= a->size)
 	{
@@ -69,7 +68,7 @@ static void		solve_5(t_info *info)
 			rotate_rx(a, RA);
 		i++;
 	}
-	solve_3(info, 'a');
+	solve_3(info);
 	if (info->b.top->num == max)
 		rotate_rx(&(info->b), RB);
 	push_pa(&(info->a), &(info->b));
@@ -82,7 +81,7 @@ void			solve_small(t_info *info)
 	if (info->a.size == 2)
 		solve_2(info);
 	else if (info->a.size == 3)
-		solve_3(info, 'a');
+		solve_3(info);
 	else if (info->a.size == 4)
 		solve_4(info);
 	else if (info->a.size == 5)

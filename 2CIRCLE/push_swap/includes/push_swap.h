@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:05:14 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/17 18:00:46 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/18 19:53:42 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void					r_rotate_rr(t_stack *a, t_stack *b);
 ** solve_small.c
 */
 
-void					solve_3(t_info *info, char name);
 void					solve_small(t_info *info);
 
 /*
@@ -111,9 +110,9 @@ void					sort_b(t_info *info, int size);
 */
 
 int						check_sorted_stack(t_stack *stack, int dir, int size);
-void					find_min(int *min, t_stack *stack);
-void					find_max(int *max, t_stack *stack);
-void					find_min_max(int *min, int *max, t_stack *stack);
+void					find_min(int *min, t_stack *stack, int size);
+void					find_max(int *max, t_stack *stack, int size);
+void					find_min_max(int *min, int *max, t_stack *stack, int size);
 
 /*
 ** args.c

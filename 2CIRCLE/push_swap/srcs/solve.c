@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:49:25 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/17 19:23:24 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/18 20:14:00 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,18 +93,12 @@ void		sort_a(t_info *info, int size)
 	int		p2;
 	t_sort	sort;
 
-	printf(">> sort_a %d\n", size);
-	if (size == 1)
+	if (size <= 1 || check_sorted_stack(&(info->a), 1, size))
 		return ;
 	else if (size == 2)
 	{
 		if (info->a.top->num > info->a.top->next->num)
 			swap_sx(&(info->a), SA);
-		return ;
-	}
-	else if (size == 3)
-	{
-		solve_3(info, 'a');
 		return ;
 	}
 	find_pivots(&(info->a), &p1, &p2, size);
@@ -121,7 +115,7 @@ void		sort_a(t_info *info, int size)
 		{
 			push_pb(&(info->a), &(info->b));
 			(sort.pb_num)++;
-			if (info->b.top->num >= p1)
+			if (info->b.top && (info->b.top->num >= p1))
 			{
 				rotate_rx(&(info->b), RB);
 				(sort.rb_num)++;
@@ -130,16 +124,13 @@ void		sort_a(t_info *info, int size)
 		i++;
 	}
 	i = 0;
-	printf("p1: %d, p2: %d\n", p1, p2);
-	print_debug(info);
-	printf("ra: %d, rb: %d\n", sort.ra_num, sort.rb_num);
-	while (i < sort.ra_num)
+	while ((sort.ra_num != 0) && (i < (sort.ra_num % info->a.size)))
 	{
 		r_rotate_rx(&(info->a), RRA);
 		i++;
 	}
 	i = 0;
-	while (i < sort.rb_num)
+	while ((sort.rb_num != 0) && (i < (sort.rb_num % info->b.size)))
 	{
 		r_rotate_rx(&(info->b), RRB);
 		i++;
@@ -156,7 +147,8 @@ void		sort_b(t_info *info, int size)
 	int		p2;
 	t_sort	sort;
 
-	printf(">> sort_b %d\n", size);
+	if (size == 0)
+		return ;
 	if (size == 1)
 	{
 		push_pa(&(info->a), &(info->b));
@@ -164,18 +156,20 @@ void		sort_b(t_info *info, int size)
 	}
 	else if (size == 2)
 	{
-		if (info->b.top->num > info->b.top->next->num)
+		if (info->b.top->num < info->b.top->next->num)
 			swap_sx(&(info->b), SB);
 		push_pa(&(info->a), &(info->b));
 		push_pa(&(info->a), &(info->b));
 		return ;
 	}
-	else if (size == 3)
+	else if (check_sorted_stack(&(info->b), 0, size))
 	{
-		solve_3(info, 'b');
-		push_pa(&(info->a), &(info->b));
-		push_pa(&(info->a), &(info->b));
-		push_pa(&(info->a), &(info->b));
+		i = 0;
+		while (i < size)
+		{
+			push_pa(&(info->a), &(info->b));
+			i++;
+		}
 		return ;
 	}
 	find_pivots(&(info->b), &p1, &p2, size);
@@ -183,7 +177,7 @@ void		sort_b(t_info *info, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (info->a.top->num < p1)
+		if (info->b.top->num < p1)
 		{
 			rotate_rx(&(info->b), RB);
 			(sort.rb_num)++;
@@ -192,7 +186,7 @@ void		sort_b(t_info *info, int size)
 		{
 			push_pa(&(info->a), &(info->b));
 			(sort.pa_num)++;
-			if (info->b.top->num < p2)
+			if (info->a.top && (info->a.top->num < p2))
 			{
 				rotate_rx(&(info->a), RA);
 				(sort.ra_num)++;
@@ -200,21 +194,17 @@ void		sort_b(t_info *info, int size)
 		}
 		i++;
 	}
-	printf("p1: %d, p2: %d\n", p1, p2);
-	print_debug(info);
-	// return ;
 	sort_a(info, sort.pa_num - sort.ra_num);
 	i = 0;
-	printf("ra: %d, rb: %d\n", sort.ra_num, sort.rb_num);
-	while (i < sort.ra_num)
+	while ((sort.ra_num != 0) && (i < (sort.ra_num % info->a.size)))
 	{
 		r_rotate_rx(&(info->a), RRA);
 		i++;
 	}
 	i = 0;
-	while (i < sort.rb_num)
+	while ((sort.rb_num != 0) && (i < (sort.rb_num % info->b.size)))
 	{
-		r_rotate_rx(&(info->b), RRA);
+		r_rotate_rx(&(info->b), RRB);
 		i++;
 	}
 	sort_a(info, sort.ra_num);
