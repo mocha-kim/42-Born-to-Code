@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:26:09 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/16 15:58:31 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/19 16:16:49 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,19 @@ static int	check_args(int *num, t_node **list, char *str)
 {
 	t_node	*tmp;
 
+	if (!ft_isnum(str))
+		return (-1);
 	*num = ft_atoi(str);
 	if (str[0] == '-' && *num > 0)
 		return (-1);
 	if ((str[0] == '+' || ft_isdigit(str[0])) && *num < 0)
 		return (-1);
 	tmp = *list;
-	if (tmp)
+	while (tmp)
 	{
-		while (tmp->next)
-		{
-			if (tmp->num == *num)
-				return (-1);
-			tmp = tmp->next;
-		}
+		if (tmp->num == *num)
+			return (-1);
+		tmp = tmp->next;
 	}
 	return (1);
 }

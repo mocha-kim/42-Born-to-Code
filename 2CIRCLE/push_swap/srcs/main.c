@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 18:02:18 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/18 20:29:01 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/19 17:02:19 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_info(t_info *info)
 {
+	info->buf = NULL;
 	info->a.size = 0;
 	info->a.top = NULL;
 	info->b.size = 0;
@@ -41,16 +42,8 @@ int		main(int argc, char *argv[])
 		clear_info(&info);
 		return (0);
 	}
+	
 	push_swap(&info);
-
-	// t_node *tmp;
-	// tmp = info.a.top;
-	// while (tmp)
-	// {
-	// 	printf("%d ", tmp->num);
-	// 	tmp = tmp->next;
-	// }
-	// printf("\n");
 
 	clear_info(&info);
 	return (0);

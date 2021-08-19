@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:35:49 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/18 19:53:32 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/19 17:01:35 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		solve_2(t_info *info)
 {
 	if (info->a.top->num > info->a.top->next->num)
-		swap_sx(&(info->a), SA);
+		swap_sx(&(info->buf), &(info->a), SA);
 }
 
 static void		solve_3(t_info *info)
@@ -28,11 +28,11 @@ static void		solve_3(t_info *info)
 	while (!check_sorted_stack(stack, 1, 3))
 	{
 		if (stack->top->num == max)
-			rotate_rx(stack, RA);
+			rotate_rx(&(info->buf), stack, RA);
 		else if (stack->top->next->num == max)
-			r_rotate_rx(stack, RRA);
+			r_rotate_rx(&(info->buf), stack, RRA);
 		else
-			swap_sx(stack, SA);
+			swap_sx(&(info->buf), stack, SA);
 	}
 }
 
@@ -44,10 +44,10 @@ static void		solve_4(t_info *info)
 	a = &(info->a);
 	find_min(&min, a, 4);
 	while (a->top->num != min)
-		rotate_rx(a, RA);
-	push_pb(&(info->a), &(info->b));
+		rotate_rx(&(info->buf), a, RA);
+	push_pb(&(info->buf), &(info->a), &(info->b));
 	solve_3(info);
-	push_pa(&(info->a), &(info->b));
+	push_pa(&(info->buf), &(info->a), &(info->b));
 }
 
 static void		solve_5(t_info *info)
@@ -63,17 +63,17 @@ static void		solve_5(t_info *info)
 	while (i <= a->size)
 	{
 		if (a->top->num == min || a->top->num == max)
-			push_pb(&(info->a), &(info->b));
+			push_pb(&(info->buf), &(info->a), &(info->b));
 		else
-			rotate_rx(a, RA);
+			rotate_rx(&(info->buf), a, RA);
 		i++;
 	}
 	solve_3(info);
 	if (info->b.top->num == max)
-		rotate_rx(&(info->b), RB);
-	push_pa(&(info->a), &(info->b));
-	push_pa(&(info->a), &(info->b));
-	rotate_rx(a, RA);
+		rotate_rx(&(info->buf), &(info->b), RB);
+	push_pa(&(info->buf), &(info->a), &(info->b));
+	push_pa(&(info->buf), &(info->a), &(info->b));
+	rotate_rx(&(info->buf), a, RA);
 }
 
 void			solve_small(t_info *info)

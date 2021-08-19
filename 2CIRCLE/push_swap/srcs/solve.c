@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:49:25 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/18 20:14:00 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/19 16:45:42 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		sort_a(t_info *info, int size)
 	else if (size == 2)
 	{
 		if (info->a.top->num > info->a.top->next->num)
-			swap_sx(&(info->a), SA);
+			swap_sx(&(info->buf), &(info->a), SA);
 		return ;
 	}
 	find_pivots(&(info->a), &p1, &p2, size);
@@ -108,16 +108,16 @@ void		sort_a(t_info *info, int size)
 	{
 		if (info->a.top->num >= p2)
 		{
-			rotate_rx(&(info->a), RA);
+			rotate_rx(&(info->buf), &(info->a), RA);
 			(sort.ra_num)++;
 		}
 		else
 		{
-			push_pb(&(info->a), &(info->b));
+			push_pb(&(info->buf), &(info->a), &(info->b));
 			(sort.pb_num)++;
 			if (info->b.top && (info->b.top->num >= p1))
 			{
-				rotate_rx(&(info->b), RB);
+				rotate_rx(&(info->buf), &(info->b), RB);
 				(sort.rb_num)++;
 			}
 		}
@@ -126,13 +126,13 @@ void		sort_a(t_info *info, int size)
 	i = 0;
 	while ((sort.ra_num != 0) && (i < (sort.ra_num % info->a.size)))
 	{
-		r_rotate_rx(&(info->a), RRA);
+		r_rotate_rx(&(info->buf), &(info->a), RRA);
 		i++;
 	}
 	i = 0;
 	while ((sort.rb_num != 0) && (i < (sort.rb_num % info->b.size)))
 	{
-		r_rotate_rx(&(info->b), RRB);
+		r_rotate_rx(&(info->buf), &(info->b), RRB);
 		i++;
 	}
 	sort_a(info, sort.ra_num);
@@ -151,15 +151,15 @@ void		sort_b(t_info *info, int size)
 		return ;
 	if (size == 1)
 	{
-		push_pa(&(info->a), &(info->b));
+		push_pa(&(info->buf), &(info->a), &(info->b));
 		return ;
 	}
 	else if (size == 2)
 	{
 		if (info->b.top->num < info->b.top->next->num)
-			swap_sx(&(info->b), SB);
-		push_pa(&(info->a), &(info->b));
-		push_pa(&(info->a), &(info->b));
+			swap_sx(&(info->buf), &(info->b), SB);
+		push_pa(&(info->buf), &(info->a), &(info->b));
+		push_pa(&(info->buf), &(info->a), &(info->b));
 		return ;
 	}
 	else if (check_sorted_stack(&(info->b), 0, size))
@@ -167,7 +167,7 @@ void		sort_b(t_info *info, int size)
 		i = 0;
 		while (i < size)
 		{
-			push_pa(&(info->a), &(info->b));
+			push_pa(&(info->buf), &(info->a), &(info->b));
 			i++;
 		}
 		return ;
@@ -179,16 +179,16 @@ void		sort_b(t_info *info, int size)
 	{
 		if (info->b.top->num < p1)
 		{
-			rotate_rx(&(info->b), RB);
+			rotate_rx(&(info->buf), &(info->b), RB);
 			(sort.rb_num)++;
 		}
 		else
 		{
-			push_pa(&(info->a), &(info->b));
+			push_pa(&(info->buf), &(info->a), &(info->b));
 			(sort.pa_num)++;
 			if (info->a.top && (info->a.top->num < p2))
 			{
-				rotate_rx(&(info->a), RA);
+				rotate_rx(&(info->buf), &(info->a), RA);
 				(sort.ra_num)++;
 			}
 		}
@@ -198,13 +198,13 @@ void		sort_b(t_info *info, int size)
 	i = 0;
 	while ((sort.ra_num != 0) && (i < (sort.ra_num % info->a.size)))
 	{
-		r_rotate_rx(&(info->a), RRA);
+		r_rotate_rx(&(info->buf), &(info->a), RRA);
 		i++;
 	}
 	i = 0;
 	while ((sort.rb_num != 0) && (i < (sort.rb_num % info->b.size)))
 	{
-		r_rotate_rx(&(info->b), RRB);
+		r_rotate_rx(&(info->buf), &(info->b), RRB);
 		i++;
 	}
 	sort_a(info, sort.ra_num);

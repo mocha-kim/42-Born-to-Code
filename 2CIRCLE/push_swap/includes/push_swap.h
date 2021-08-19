@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:05:14 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/18 19:53:42 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/19 17:11:17 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,21 @@
 # define DO_NOT 0
 # define SA 1
 # define SB 2
-# define RA 3
-# define RB 4
-# define RRA 5
-# define RRB 6
+# define SS 3
+# define RA 4
+# define RB 5
+# define RR 6
+# define RRA 7
+# define RRB 8
+# define RRR 9
+# define PA 10
+# define PB 11
+
+typedef struct 			s_list
+{
+	struct s_list		*next;
+	char				*content;
+}						t_list;
 
 typedef struct			s_node
 {
@@ -42,6 +53,7 @@ typedef struct			s_info
 {
 	t_stack				a;
 	t_stack				b;
+	t_list				*buf;
 }						t_info;
 
 typedef struct			s_sort
@@ -64,31 +76,32 @@ void					clear_info(t_info *info);
 ** push_swap.c
 */
 
-void					print_operation(int option);
+void					add_operation(t_list **buf, int option);
+void					print_operation(t_list **buf);
 void					push_swap(t_info *info);
 
 /*
 ** swap.c
 */
 
-void					swap_sx(t_stack *stack, int opt);
-void					swap_ss(t_stack *a, t_stack *b);
+void					swap_sx(t_list **buf, t_stack *stack, int opt);
+void					swap_ss(t_list **buf, t_stack *a, t_stack *b);
 
 /*
 ** push.c
 */
 
-void					push_pa(t_stack *a, t_stack *b);
-void					push_pb(t_stack *a, t_stack *b);
+void					push_pa(t_list **buf, t_stack *a, t_stack *b);
+void					push_pb(t_list **buf, t_stack *a, t_stack *b);
 
 /*
 ** rotate.c
 */
 
-void					rotate_rx(t_stack *stack, int opt);
-void					rotate_rr(t_stack *a, t_stack *b);
-void					r_rotate_rx(t_stack *stack, int opt);
-void					r_rotate_rr(t_stack *a, t_stack *b);
+void					rotate_rx(t_list **buf, t_stack *stack, int opt);
+void					rotate_rr(t_list **buf, t_stack *a, t_stack *b);
+void					r_rotate_rx(t_list **buf, t_stack *stack, int opt);
+void					r_rotate_rr(t_list **buf, t_stack *a, t_stack *b);
 
 /*
 ** solve_small.c
@@ -146,5 +159,14 @@ size_t					ft_strlen(const char *s);
 
 size_t					ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char					**ft_split(char const *s, char c);
+
+/*
+** utils4.c
+*/
+
+char					*ft_strdup(const char *s1);
+t_list					*ft_lstnew(char *content);
+void					ft_lstadd_back(t_list **lst, t_list *new);
+void					ft_lstclear(t_list **lst);
 
 #endif

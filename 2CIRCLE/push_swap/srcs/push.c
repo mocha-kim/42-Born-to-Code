@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 16:40:47 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/13 15:00:35 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/19 17:12:41 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** pb : push b - take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
 */
 
-void	push_pa(t_stack *a, t_stack *b)
+void	push_pa(t_list **buf, t_stack *a, t_stack *b)
 {
 	t_node *node;
 
@@ -40,10 +40,10 @@ void	push_pa(t_stack *a, t_stack *b)
 	}
 	a->top = node;
 	a->size++;
-	write(1, "pa\n", 4);
+	add_operation(buf, PA);
 }
 
-void	push_pb(t_stack *a, t_stack *b)
+void	push_pb(t_list **buf, t_stack *a, t_stack *b)
 {
 	t_node *node;
 
@@ -66,5 +66,5 @@ void	push_pb(t_stack *a, t_stack *b)
 	}
 	b->top = node;
 	b->size++;
-	write(1, "pb\n", 4);
+	add_operation(buf, PB);
 }

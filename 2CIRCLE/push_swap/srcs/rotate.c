@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 16:40:54 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/13 15:12:11 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/19 17:10:46 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,28 @@
 ** rr : ra and rb at the same time.
 */
 
-void	rotate_rx(t_stack *stack, int opt)
+void	rotate_rx(t_list **buf, t_stack *stack, int opt)
 {
 	t_node *tmp;
+	t_node *last;
 
 	if (stack->size < 2)
 		return ;
 	tmp = stack->top;
+	last = ft_node_last(stack->top);
 	stack->top = stack->top->next;
 	tmp->next = NULL;
+	tmp->prev = last;
+	last->next = tmp;
 	stack->top->prev = NULL;
-	ft_list_add_back(&stack->top, tmp);
-	print_operation(opt);
+	add_operation(buf, opt);
 }
 
-void	rotate_rr(t_stack *a, t_stack *b)
+void	rotate_rr(t_list **buf, t_stack *a, t_stack *b)
 {
-	rotate_rx(a, DO_NOT);
-	rotate_rx(b, DO_NOT);
-	write(1, "rr\n", 4);
+	rotate_rx(buf, a, DO_NOT);
+	rotate_rx(buf, b, DO_NOT);
+	add_operation(buf, RR);
 }
 
 /*
@@ -46,7 +49,7 @@ void	rotate_rr(t_stack *a, t_stack *b)
 ** rrr : rra and rrb at the same time.
 */
 
-void	r_rotate_rx(t_stack *stack, int opt)
+void	r_rotate_rx(t_list **buf, t_stack *stack, int opt)
 {
 	t_node *tmp;
 
@@ -57,12 +60,12 @@ void	r_rotate_rx(t_stack *stack, int opt)
 		tmp->prev->next = NULL;
 	tmp->prev = NULL;
 	ft_list_add_front(&stack->top, tmp);
-	print_operation(opt);
+	add_operation(buf, opt);
 }
 
-void	r_rotate_rr(t_stack *a, t_stack *b)
+void	r_rotate_rr(t_list **buf, t_stack *a, t_stack *b)
 {
-	r_rotate_rx(a, DO_NOT);
-	r_rotate_rx(b, DO_NOT);
-	write(1, "rrr\n", 5);
+	r_rotate_rx(buf, a, DO_NOT);
+	r_rotate_rx(buf, b, DO_NOT);
+	add_operation(buf, RRR);
 }
