@@ -6,13 +6,13 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:24:56 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/20 16:40:33 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:48:27 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static unsigned int	count_word(const char *s, char c, int *substr_len)
+static unsigned int	count_word(const char *s, char c, unsigned int *substr_len)
 {
 	int		i;
 	int		count;
