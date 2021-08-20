@@ -6,20 +6,15 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 16:40:47 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/19 17:12:41 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:34:15 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/*
-** pa : push a - take the first element at the top of b and put it at the top of a. Do nothing if b is empty.
-** pb : push b - take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
-*/
-
 void	push_pa(t_list **buf, t_stack *a, t_stack *b)
 {
-	t_node *node;
+	t_node	*node;
 
 	if (b->size == 0)
 		return ;
@@ -45,7 +40,7 @@ void	push_pa(t_list **buf, t_stack *a, t_stack *b)
 
 void	push_pb(t_list **buf, t_stack *a, t_stack *b)
 {
-	t_node *node;
+	t_node	*node;
 
 	if (a->size == 0)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 15:31:34 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/20 15:46:10 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:31:32 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	rotate_push_b(t_sort *sort, t_info *info, int size)
 	}
 }
 
-void		sort_b(t_info *info, int size)
+void	sort_b(t_info *info, int size)
 {
 	int		i;
 	t_sort	sort;

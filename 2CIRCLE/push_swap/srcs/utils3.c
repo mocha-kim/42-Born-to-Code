@@ -6,17 +6,18 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:24:56 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/16 15:54:30 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:40:33 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static unsigned int	count_word(const char *s, char c)
+static unsigned int	count_word(const char *s, char c, int *substr_len)
 {
 	int		i;
 	int		count;
 
+	*substr_len = 0;
 	if (!s[0])
 		return (0);
 	i = 0;
@@ -39,7 +40,7 @@ static unsigned int	count_word(const char *s, char c)
 	return (count);
 }
 
-static void			find_next_str(char **str, unsigned int *len, char c)
+static void	find_next_str(char **str, unsigned int *len, char c)
 {
 	unsigned int	i;
 
@@ -57,7 +58,7 @@ static void			find_next_str(char **str, unsigned int *len, char c)
 	}
 }
 
-static char			**freee(char **result)
+static char	**freee(char **result)
 {
 	unsigned int	i;
 
@@ -96,7 +97,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (srcsize);
 }
 
-char				**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	unsigned int	i;
 	unsigned int	substr_num;
@@ -106,16 +107,17 @@ char				**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	substr_num = count_word(s, c);
-	if (!(result = (char **)malloc(sizeof(char *) * (substr_num + 1))))
+	substr_num = count_word(s, c, &substr_len);
+	result = (char **)malloc(sizeof(char *) * (substr_num + 1));
+	if (!result)
 		return (NULL);
 	i = 0;
 	substr = (char *)s;
-	substr_len = 0;
 	while (i < substr_num)
 	{
 		find_next_str(&substr, &substr_len, c);
-		if (!(result[i] = (char *)malloc(sizeof(char) * (substr_len + 1))))
+		result[i] = (char *)malloc(sizeof(char) * (substr_len + 1));
+		if (!result[i])
 			return (freee(result));
 		ft_strlcpy(result[i], substr, substr_len + 1);
 		i++;

@@ -6,13 +6,13 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 16:36:38 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/20 15:33:57 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:41:30 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-char			*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	int		i;
 	int		s1_len;
@@ -23,7 +23,8 @@ char			*ft_strdup(const char *s1)
 	s1_len = 0;
 	while (s1[s1_len] != 0)
 		s1_len++;
-	if (!(result = (char *)malloc(sizeof(char) * (s1_len + 1))))
+	result = (char *)malloc(sizeof(char) * (s1_len + 1));
+	if (!result)
 		return (0);
 	i = 0;
 	while (i < s1_len)
@@ -35,14 +36,14 @@ char			*ft_strdup(const char *s1)
 	return (result);
 }
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
 
-int		ft_isnum(char *str)
+int	ft_isnum(char *str)
 {
 	int	i;
 
@@ -58,7 +59,7 @@ int		ft_isnum(char *str)
 	return (1);
 }
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int			i;
 	int			sign;
@@ -66,7 +67,7 @@ int		ft_atoi(const char *str)
 
 	i = 0;
 	while (str[i] != 0 && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-				|| str[i] == '\f' || str[i] == '\r' || str[i] == '\v'))
+			|| str[i] == '\f' || str[i] == '\r' || str[i] == '\v'))
 		i++;
 	sign = 1;
 	if (str[i] == '-' || str[i] == '+')

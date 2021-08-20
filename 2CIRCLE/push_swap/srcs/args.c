@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:26:09 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/19 16:16:49 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:29:26 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	check_args(int *num, t_node **list, char *str)
 	return (1);
 }
 
-int			check_save_args(int argc, char *argv[], t_info *info)
+int	check_save_args(int argc, char *argv[], t_info *info)
 {
 	int		i;
 	int		j;

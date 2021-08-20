@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:05:14 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/20 15:47:08 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:27:26 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,40 +29,39 @@
 # define PA 10
 # define PB 11
 
-typedef struct 			s_list
+typedef struct s_list
 {
 	struct s_list		*next;
 	char				*content;
 }						t_list;
 
-typedef struct			s_node
+typedef struct s_node
 {
 	struct s_node		*prev;
 	struct s_node		*next;
 	int					num;
 }						t_node;
 
-typedef struct			s_stack
+typedef struct s_stack
 {
 	t_node				*top;
 	int					size;
 }						t_stack;
 
-typedef struct			s_info
+typedef struct s_info
 {
 	t_stack				a;
 	t_stack				b;
 	t_list				*buf;
 }						t_info;
 
-typedef struct			s_sort
+typedef struct s_sort
 {
 	int					ra_num;
 	int					rb_num;
 	int					pa_num;
 	int					pb_num;
 }						t_sort;
-
 
 /*
 **		main.c
@@ -135,7 +134,7 @@ void					sort_b(t_info *info, int size);
 int						check_sorted_stack(t_stack *stack, int dir, int size);
 void					find_min(int *min, t_stack *stack, int size);
 void					find_max(int *max, t_stack *stack, int size);
-void					find_min_max(int *min, int *max, t_stack *stack, int size);
+void					find_min_max(int *min, int *max, t_stack *s, int size);
 
 /*
 ** args.c

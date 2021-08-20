@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:21:22 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/20 15:34:03 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:36:48 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ void	ft_list_clear(t_node **head)
 	}
 }
 
-t_list			*ft_lstnew(char *content)
+t_list	*ft_lstnew(char *content)
 {
 	t_list	*new;
 
-	if (!(new = malloc(sizeof(t_list))))
+	new = malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
 	new->content = content;
 	new->next = NULL;
@@ -44,7 +45,7 @@ static t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void			ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
@@ -57,9 +58,9 @@ void			ft_lstadd_back(t_list **lst, t_list *new)
 	last->next = new;
 }
 
-void			ft_lstclear(t_list **lst)
+void	ft_lstclear(t_list **lst)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	while (*lst)
 	{

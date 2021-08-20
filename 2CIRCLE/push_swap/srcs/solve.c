@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 15:49:25 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/20 15:35:19 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:30:45 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	sort_num(int *num, int size)
 	}
 }
 
-int			find_pivots(t_stack *stack, int *p1, int *p2, int size)
+int	find_pivots(t_stack *stack, int *p1, int *p2, int size)
 {
 	int		i;
 	int		*num;
@@ -57,7 +57,7 @@ int			find_pivots(t_stack *stack, int *p1, int *p2, int size)
 	return (1);
 }
 
-void		init_sort_info(t_sort *sort)
+void	init_sort_info(t_sort *sort)
 {
 	sort->ra_num = 0;
 	sort->rb_num = 0;
@@ -65,7 +65,7 @@ void		init_sort_info(t_sort *sort)
 	sort->pb_num = 0;
 }
 
-int			solve(t_info *info)
+int	solve(t_info *info)
 {
 	sort_a(info, info->a.size);
 	return (1);

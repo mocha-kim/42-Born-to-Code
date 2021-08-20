@@ -6,13 +6,13 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 12:09:01 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/18 20:27:52 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:35:57 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		check_sorted_stack(t_stack *stack, int dir, int size)
+int	check_sorted_stack(t_stack *stack, int dir, int size)
 {
 	int		i;
 	t_node	*tmp;
@@ -21,7 +21,8 @@ int		check_sorted_stack(t_stack *stack, int dir, int size)
 	tmp = stack->top;
 	while (i < size - 1)
 	{
-		if ((dir && tmp->num < tmp->next->num) || (!dir && tmp->num > tmp->next->num))
+		if ((dir && tmp->num < tmp->next->num)
+			|| (!dir && tmp->num > tmp->next->num))
 		{
 			tmp = tmp->next;
 			i++;

@@ -6,19 +6,19 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:35:49 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/19 17:01:35 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:34:57 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void		solve_2(t_info *info)
+static void	solve_2(t_info *info)
 {
 	if (info->a.top->num > info->a.top->next->num)
 		swap_sx(&(info->buf), &(info->a), SA);
 }
 
-static void		solve_3(t_info *info)
+static void	solve_3(t_info *info)
 {
 	int		max;
 	t_stack	*stack;
@@ -36,10 +36,10 @@ static void		solve_3(t_info *info)
 	}
 }
 
-static void		solve_4(t_info *info)
+static void	solve_4(t_info *info)
 {
 	int		min;
-	t_stack *a;
+	t_stack	*a;
 
 	a = &(info->a);
 	find_min(&min, a, 4);
@@ -50,12 +50,12 @@ static void		solve_4(t_info *info)
 	push_pa(&(info->buf), &(info->a), &(info->b));
 }
 
-static void		solve_5(t_info *info)
+static void	solve_5(t_info *info)
 {
 	int		i;
 	int		min;
 	int		max;
-	t_stack *a;
+	t_stack	*a;
 
 	a = &(info->a);
 	find_min_max(&min, &max, a, 5);
@@ -76,7 +76,7 @@ static void		solve_5(t_info *info)
 	rotate_rx(&(info->buf), a, RA);
 }
 
-void			solve_small(t_info *info)
+void	solve_small(t_info *info)
 {
 	if (info->a.size == 2)
 		solve_2(info);

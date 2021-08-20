@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 18:02:18 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/20 15:30:09 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 16:33:33 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	clear_info(t_info *info)
 		ft_lstclear(&(info->buf));
 }
 
-int		main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_info info;
+	t_info	info;
 
 	init_info(&info);
 	if (argc == 1)
