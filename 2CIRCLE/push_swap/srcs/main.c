@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 18:02:18 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/20 16:33:33 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 17:01:07 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	if (check_save_args(argc, argv, &info) == -1)
 	{
-		write(1, "Error\n", 7);
+		write(2, "Error\n", 7);
 		clear_info(&info);
 		return (0);
 	}
