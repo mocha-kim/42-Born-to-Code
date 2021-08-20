@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 18:02:18 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/19 17:02:19 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 15:30:09 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	clear_info(t_info *info)
 		ft_list_clear(&(info->a.top));
 	if (info->b.top)
 		ft_list_clear(&(info->b.top));
+	if (info->buf)
+		ft_lstclear(&(info->buf));
 }
 
 int		main(int argc, char *argv[])
@@ -42,9 +44,7 @@ int		main(int argc, char *argv[])
 		clear_info(&info);
 		return (0);
 	}
-	
 	push_swap(&info);
-
 	clear_info(&info);
 	return (0);
 }

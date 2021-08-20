@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 16:36:38 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/19 16:48:57 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 15:33:57 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,48 +35,64 @@ char			*ft_strdup(const char *s1)
 	return (result);
 }
 
-t_list			*ft_lstnew(char *content)
+int		ft_isdigit(int c)
 {
-	t_list	*new;
-
-	if (!(new = malloc(sizeof(t_list))))
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
-static t_list	*ft_lstlast(t_list *lst)
+int		ft_isnum(char *str)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+	int	i;
 
-void			ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*last;
-
-	if (!*lst)
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
 	{
-		*lst = new;
-		return ;
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
 	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	return (1);
 }
 
-void			ft_lstclear(t_list **lst)
+int		ft_atoi(const char *str)
 {
-	t_list *tmp;
+	int			i;
+	int			sign;
+	long long	result;
 
-	while (*lst)
+	i = 0;
+	while (str[i] != 0 && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+				|| str[i] == '\f' || str[i] == '\r' || str[i] == '\v'))
+		i++;
+	sign = 1;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		tmp = (*lst)->next;
-		free((*lst)->content);
-		free(*lst);
-		(*lst) = tmp;
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
+	result = 0;
+	while (str[i] != 0 && str[i] >= '0' && str[i] <= '9')
+	{
+		result *= 10;
+		result += str[i] - '0';
+		i++;
+	}
+	if (result >= 2147483648 || result < -2147483648)
+		return (sign * -127);
+	return (result * sign);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	unsigned int	len;
+
+	len = 0;
+	while (s[len] != 0)
+		len++;
+	return (len);
 }

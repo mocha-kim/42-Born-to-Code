@@ -6,7 +6,7 @@
 #    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/13 12:30:33 by sunhkim           #+#    #+#              #
-#    Updated: 2021/08/19 16:46:39 by sunhkim          ###   ########.fr        #
+#    Updated: 2021/08/20 15:34:31 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ INCS		= -I $(INC_PATH)
 SRCS		= $(SRC_PATH)/main.c $(SRC_PATH)/push_swap.c \
 			  $(SRC_PATH)/push.c $(SRC_PATH)/rotate.c $(SRC_PATH)/swap.c \
 			  $(SRC_PATH)/solve_small.c $(SRC_PATH)/solve.c \
+			  $(SRC_PATH)/sort_a.c $(SRC_PATH)/sort_b.c \
 			  $(SRC_PATH)/args.c $(SRC_PATH)/stack.c $(SRC_PATH)/utils1.c \
 			  $(SRC_PATH)/utils2.c $(SRC_PATH)/utils3.c $(SRC_PATH)/utils4.c
 OBJS		= $(SRCS:.c=.o)

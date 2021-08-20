@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:21:07 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/19 17:12:24 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 15:17:19 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void					print_operation(t_list **buf)
 	tmp = *buf;
 	while (tmp)
 	{
-		write(1, tmp->content, ft_strlen(tmp->content) + 1);
+		write(1, tmp->content, ft_strlen(tmp->content));
 		tmp = tmp->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:21:22 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/13 14:07:13 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 15:34:03 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,64 +24,48 @@ void	ft_list_clear(t_node **head)
 	}
 }
 
-int		ft_isdigit(int c)
+t_list			*ft_lstnew(char *content)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	t_list	*new;
+
+	if (!(new = malloc(sizeof(t_list))))
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
 
-int		ft_isnum(char *str)
+static t_list	*ft_lstlast(t_list *lst)
 {
-	int	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
 
-int		ft_atoi(const char *str)
+void			ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int			i;
-	int			sign;
-	long long	result;
+	t_list	*last;
 
-	i = 0;
-	while (str[i] != 0 && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-				|| str[i] == '\f' || str[i] == '\r' || str[i] == '\v'))
-		i++;
-	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
+	if (!*lst)
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		*lst = new;
+		return ;
 	}
-	result = 0;
-	while (str[i] != 0 && str[i] >= '0' && str[i] <= '9')
-	{
-		result *= 10;
-		result += str[i] - '0';
-		i++;
-	}
-	if (result >= 2147483648 || result < -2147483648)
-		return (sign * -127);
-	return (result * sign);
+	last = ft_lstlast(*lst);
+	last->next = new;
 }
 
-size_t	ft_strlen(const char *s)
+void			ft_lstclear(t_list **lst)
 {
-	unsigned int	len;
+	t_list *tmp;
 
-	len = 0;
-	while (s[len] != 0)
-		len++;
-	return (len);
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free((*lst)->content);
+		free(*lst);
+		(*lst) = tmp;
+	}
 }

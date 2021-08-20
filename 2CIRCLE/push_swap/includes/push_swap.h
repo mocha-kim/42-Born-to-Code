@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:05:14 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/08/19 17:11:17 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/08/20 15:47:08 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#include <stdio.h>
 
 # define DO_NOT 0
 # define SA 1
@@ -113,9 +112,20 @@ void					solve_small(t_info *info);
 ** solve.c
 */
 
-void		print_debug(t_info *info);
+int						find_pivots(t_stack *stack, int *p1, int *p2, int size);
+void					init_sort_info(t_sort *sort);
 int						solve(t_info *info);
+
+/*
+** sort_a.c
+*/
+
 void					sort_a(t_info *info, int size);
+
+/*
+** sort_b.c
+*/
+
 void					sort_b(t_info *info, int size);
 
 /*
@@ -148,10 +158,9 @@ t_node					*ft_node_new(int num);
 */
 
 void					ft_list_clear(t_node **head);
-int						ft_isdigit(int c);
-int						ft_isnum(char *str);
-int						ft_atoi(const char *str);
-size_t					ft_strlen(const char *s);
+t_list					*ft_lstnew(char *content);
+void					ft_lstadd_back(t_list **lst, t_list *new);
+void					ft_lstclear(t_list **lst);
 
 /*
 ** utils3.c
@@ -165,8 +174,9 @@ char					**ft_split(char const *s, char c);
 */
 
 char					*ft_strdup(const char *s1);
-t_list					*ft_lstnew(char *content);
-void					ft_lstadd_back(t_list **lst, t_list *new);
-void					ft_lstclear(t_list **lst);
+int						ft_isdigit(int c);
+int						ft_isnum(char *str);
+int						ft_atoi(const char *str);
+size_t					ft_strlen(const char *s);
 
 #endif
