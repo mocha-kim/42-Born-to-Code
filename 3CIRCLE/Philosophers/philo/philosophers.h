@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:16:17 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/08 19:08:25 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/09 14:56:47 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,42 @@
 
 typedef struct s_info
 {
+	int	num;
 	int	die;
 	int	eat;
 	int	sleep;
 	int	must_eat;
+	pthread_mutex_t		m_write;
+	pthread_mutex_t		*m_fork;
 }	t_info;
 
 typedef struct s_philo
 {
-	int					id;
+	int	id;
+	pthread_t				t_id;
+	pthread_mutex_t			*fork_r;
+	pthread_mutex_t			*fork_l;
 }	t_philo;
 
 /*
 ** philosophers.c
 */
 
+int		philosophers(t_info *info, t_philo **philos);
+
+/*
+** parse.c
+*/
+
+int	parse_args(t_info *info, int argc, char *argv[]);
 
 /*
 ** utils.c
 */
 
+int		print_err(int error);
+int		ft_isdigit(int c);
+int		ft_isnum(char *str);
+int		ft_atoi(const char *str);
 
 #endif

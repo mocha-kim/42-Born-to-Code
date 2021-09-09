@@ -6,19 +6,22 @@
 #    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/02 19:42:16 by sunhkim           #+#    #+#              #
-#    Updated: 2021/09/08 19:08:53 by sunhkim          ###   ########.fr        #
+#    Updated: 2021/09/09 14:40:53 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME	= philo
 
-OBJS = $(SRCS:.c=.o)
-SRCS = main.c philosophers.c utils.c
+OBJS	= $(SRCS:.c=.o)
+SRCS	= main.c philosophers.c parse.c utils.c
 
-CFLAGS		= -Wall -Wextra -Werror -pthread
+CFLAGS	= -Wall -Wextra -Werror -pthread -fsanitize=address
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo $(NAME) : Created
 
 all:	$(NAME)
