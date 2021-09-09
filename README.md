@@ -22,10 +22,10 @@
 
 ## 3Circle
 
-|                                           Subject                                          | Submit Date |  Grade |                                        | 
-| ------------------------------------------------------------------------------------------ | ----------- | ------ | -------------------------------------- |
-|    [minishell](https://github.com/mocha-kim/42-Born-to-Code/tree/main/3CIRCLE/minishell)   |  2021-07-24 |  100%  | w.[yoahn](https://github.com/AYoungSn) |
-|  Philosophers  |  |  |
+|                                           Subject                                           | Submit Date |  Grade |                                        | 
+| ------------------------------------------------------------------------------------------- | ----------- | ------ | -------------------------------------- |
+|    [minishell](https://github.com/mocha-kim/42-Born-to-Code/tree/main/3CIRCLE/minishell)    |  2021-07-24 |  100%  | w.[yoahn](https://github.com/AYoungSn) |
+| [Philosophers](https://github.com/mocha-kim/42-Born-to-Code/tree/main/3CIRCLE/Philosophers) |  |  |
 
 ## 4Circle
 
