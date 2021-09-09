@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 19:24:39 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/09 14:33:48 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/09 17:21:58 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@ static int check_args(t_info *info, int argc)
 	if (argc == 6 && info->must_eat < 1)
 		return (0);
 	return (1);
+}
+
+static void	init_info_mutex(t_info *info)
+{
+	int	i;
+
+	i = 0;
+	pthread_mutex_init(&info->m_write, NULL);
+	while (i < info->num)
+	{
+		pthread_mutex_init(&info->m_forks[i], NULL);
+		i++;
+	}
 }
 
 int	parse_args(t_info *info, int argc, char *argv[])
@@ -41,5 +54,6 @@ int	parse_args(t_info *info, int argc, char *argv[])
 		info->must_eat = ft_atoi(argv[5]);
 	if (!check_args(info, argc))
 		return (0);
+	init_info_mutex(info);
 	return (1);
 }

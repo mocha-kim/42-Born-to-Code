@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 18:52:10 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/09 14:57:39 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/09 17:51:50 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	init_philos(t_info *info, t_philo **philos)
 	{
 		philos[i] = malloc(sizeof(t_philo));
 		philos[i]->id = i;
+		philos[i]->num_eat = 0;
+		philos[i]->time_hunger = 0;
 		i++;
 	}
 }
