@@ -6,28 +6,31 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:52:34 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/09 18:24:05 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/10 15:36:45 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*thread(void *data)
+static int	philo_routine(t_info *info, t_philo *philo, int sig)
 {
-
+	
 }
 
-int	threading(t_info *info, t_philo **philos)
+void	*thread(void *data)
 {
-	int	i;
+	t_philo	*philo;
+	t_info	*info;
+	int		sig;
 
-	i = 0;
-	while (i < info->num)
+	philo = (t_philo *)data;
+	info = philo->info;
+	philo->num_eat = 0;
+	sig = 0;
+	while ((info->has_6th_arg && (philo->num_eat < info->must_eat))
+			|| (!(info->has_6th_arg) && !sig))
 	{
-		philos[i]->info = info;
-		if (pthread_create(philos[i]->t_id, NULL, thread, philos[i]) != 0)
-			return (ft_exit("Pthread did not return 0\n"));
-		i++;
+		if (!philo_routine(info, philo, sig))
+			return ;
 	}
-	return (1);
 }

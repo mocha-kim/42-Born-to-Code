@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 18:52:10 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/09 17:51:50 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/10 15:43:18 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	init_info(t_info *info)
 	info->eat = 0;
 	info->sleep = 0;
 	info->must_eat = 0;
+	info->has_6th_arg = 0;
+	info->sig = 0;
 }
 
 static void	init_philos(t_info *info, t_philo **philos)

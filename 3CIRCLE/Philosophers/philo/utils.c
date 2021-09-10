@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 19:16:39 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/09 14:33:19 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/10 15:21:24 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	print_err(int error)
 		write(1, "Error : Invalid Arguments\n", 27);
 	else if (error == ERR_MEM)
 		write(1, "Error : Malloc Error\n", 22);
+	else if (error == ERR_PTH)
+		write(1, "Error : Pthread not returned\n", 30);
 	return (0);
 }
 
