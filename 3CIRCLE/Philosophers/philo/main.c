@@ -6,37 +6,11 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 18:52:10 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/10 15:43:18 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/13 20:06:02 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-static void	init_info(t_info *info)
-{
-	info->num = 0;
-	info->die = 0;
-	info->eat = 0;
-	info->sleep = 0;
-	info->must_eat = 0;
-	info->has_6th_arg = 0;
-	info->sig = 0;
-}
-
-static void	init_philos(t_info *info, t_philo **philos)
-{
-	int	i;
-
-	i = 0;
-	while (i < info->num)
-	{
-		philos[i] = malloc(sizeof(t_philo));
-		philos[i]->id = i;
-		philos[i]->num_eat = 0;
-		philos[i]->time_hunger = 0;
-		i++;
-	}
-}
 
 int	main(int argc, char *argv[])
 {
@@ -53,6 +27,7 @@ int	main(int argc, char *argv[])
 	if (philos != NULL)
 	{
 		init_philos(&info, philos);
+		init_philos_mutex(&info, philos);
 		philosophers(&info, philos);
 	}
 	return (0);
