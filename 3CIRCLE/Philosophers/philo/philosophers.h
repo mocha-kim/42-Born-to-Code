@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:16:17 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/13 20:04:26 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/16 18:35:45 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@
 # include <pthread.h>
 # include <sys/errno.h>
 
+typedef struct s_philo
+{
+	int					id;
+	int					num_eat;
+	long int			time_hunger;
+	pthread_t			t_id;
+	pthread_mutex_t		*fork_r;
+	pthread_mutex_t		*fork_l;
+	pthread_mutex_t		eating;
+	void				*info;
+}	t_philo;
+
 typedef struct s_info
 {
 	int					num;
@@ -39,25 +51,15 @@ typedef struct s_info
 	pthread_mutex_t		m_write;
 	pthread_mutex_t		m_stop;
 	pthread_mutex_t		m_forks[200];
+	t_philo				philos[200];
 }	t_info;
-
-typedef struct s_philo
-{
-	int					id;
-	int					num_eat;
-	long int			time_hunger;
-	pthread_t			t_id;
-	pthread_mutex_t		*fork_r;
-	pthread_mutex_t		*fork_l;
-	pthread_mutex_t		eating;
-	t_info				*info;
-}	t_philo;
 
 /*
 ** philosophers.c
 */
 
-int			philosophers(t_info *info, t_philo **philos);
+void		philo_alone(t_info *info);
+int			philosophers(t_info *info);
 
 /*
 ** init.c
@@ -65,8 +67,8 @@ int			philosophers(t_info *info, t_philo **philos);
 
 void		init_info(t_info *info);
 int			init_info_mutex(t_info *info);
-void		init_philos(t_info *info, t_philo **philos);
-void		init_philos_mutex(t_info *info, t_philo **philos);
+void		init_philos(t_info *info);
+int			init_philos_mutex(t_info *info);
 
 /*
 ** parse.c
@@ -86,6 +88,13 @@ void		*thread(void *data);
 
 void		sleep_time(t_info *info, long int time);
 long int	get_time(t_info *info);
+
+/*
+** check.cs
+*/
+
+int			check_death(t_info *info, int *sig);
+int			check_stop(t_info *info, int *sig);
 
 /*
 ** utils.c

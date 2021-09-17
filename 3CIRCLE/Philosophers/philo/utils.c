@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 19:16:39 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/13 18:50:01 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/16 19:39:30 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	print_err(int error)
 
 void	print_state(t_info *info, t_philo *philo, char *str, int *sig)
 {
-	if (check_stop(info, sig) == 0)
+	if (check_stop(info, sig))
 		return ;
 	pthread_mutex_lock(&(info->m_write));
-	printf("%lums %d %s\n", get_time(info), philo->id + 1, str);
+	printf("%lu %d %s\n", get_time(info), philo->id + 1, str);
 	pthread_mutex_unlock(&(info->m_write));
 }
 

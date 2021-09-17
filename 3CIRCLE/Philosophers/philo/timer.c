@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 18:44:34 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/13 19:43:34 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/16 19:39:45 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sleep_time(t_info *info, long int time)
 		current = get_time(info);
 		if (info->num != 1)
 		{
-			if (check_stop(info, &sig) == 0 && time != info->eat)
+			if (check_stop(info, &sig) && time != info->eat)
 				break ;
 		}
 	}
