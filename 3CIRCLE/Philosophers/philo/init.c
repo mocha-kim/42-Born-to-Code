@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 18:12:31 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/16 18:26:31 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/21 19:06:19 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_info(t_info *info)
 	info->time_start = 0;
 }
 
-int		init_info_mutex(t_info *info)
+int	init_info_mutex(t_info *info)
 {
 	int	i;
 
@@ -56,7 +56,7 @@ void	init_philos(t_info *info)
 	}
 }
 
-int		init_philos_mutex(t_info *info)
+int	init_philos_mutex(t_info *info)
 {
 	int	i;
 
