@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:55:55 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/17 17:58:26 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/25 16:49:04 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	is_dead(t_info *info, t_philo *philo, long int t_n, long int t_l)
 		pthread_mutex_unlock(&info->m_stop);
 		pthread_mutex_lock(&info->m_write);
 		if (!(info->has_6th_arg))
-			printf("%lu %d %s\n", get_time(info), philo->id + 1, "is dead");
+			printf("%lu %d %s\n", get_time(info), philo->id + 1, "is died");
 		pthread_mutex_unlock(&info->m_write);
 		return (0);
 	}

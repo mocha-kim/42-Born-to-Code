@@ -6,7 +6,7 @@
 #    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/02 19:42:16 by sunhkim           #+#    #+#              #
-#    Updated: 2021/09/16 18:16:50 by sunhkim          ###   ########.fr        #
+#    Updated: 2021/09/25 16:49:07 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= philo
 OBJS	= $(SRCS:.c=.o)
 SRCS	= main.c philosophers.c init.c parse.c threads.c check.c timer.c utils.c
 
-CFLAGS	= -Wall -Wextra -Werror -pthread -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -pthread
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
