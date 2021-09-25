@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:52:34 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/17 18:03:19 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/21 19:08:36 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	*thread(void *data)
 	philo->num_eat = 0;
 	sig = 0;
 	while ((info->has_6th_arg && (philo->num_eat < info->must_eat))
-			|| (!(info->has_6th_arg) && !sig))
+		|| (!(info->has_6th_arg) && !sig))
 	{
 		if (!philo_routine(info, philo, &sig))
 			return (NULL);

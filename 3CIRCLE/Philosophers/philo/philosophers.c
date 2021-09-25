@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:11:02 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/17 17:50:39 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/21 19:08:13 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	philo_alone(t_info *info)
 {
 	struct timeval	t;
-	
+
 	gettimeofday(&t, NULL);
 	info->time_start = t.tv_sec * 1000 + t.tv_usec / 1000;
 	printf("%lu %d has taken a fork\n", get_time(info), 1);
@@ -27,7 +27,7 @@ static void	philo_check_join(t_info *info)
 {
 	int	i;
 	int	sig;
-	
+
 	i = 0;
 	sig = 0;
 	while (1)
@@ -44,7 +44,7 @@ static void	philo_check_join(t_info *info)
 
 int	philosophers(t_info *info)
 {
-	int	i;
+	int				i;
 	struct timeval	t;
 
 	i = 0;

@@ -6,13 +6,13 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 19:24:39 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/13 18:13:09 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/09/21 19:07:17 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static int check_args(t_info *info)
+static int	check_args(t_info *info)
 {
 	if (info->num < 1 || info->num < 1 || info->die < 1
 		|| info->eat < 1 || info->sleep < 1)
