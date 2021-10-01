@@ -6,13 +6,13 @@
 #    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 22:03:27 by sunhkim           #+#    #+#              #
-#    Updated: 2021/09/30 22:08:41 by sunhkim          ###   ########.fr        #
+#    Updated: 2021/10/01 16:55:41 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= account
 
-SRCS			= account.cpp
+SRCS			= Account.cpp tests.cpp
 OBJS			= $(SRCS:.cpp=.o)
 
 CC				= clang++
