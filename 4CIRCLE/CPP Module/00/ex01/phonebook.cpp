@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:13:52 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/30 22:09:51 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/05 16:00:34 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	Phonebook::SearchPhonebook(void)
 	int			max = 8;
 	std::string	str;
 
-	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	std::cout << ".----------.----------.----------.----------." << std::endl;
 	std::cout << "|index     |first name|last name |nickname  |" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	for (int i = 0; i < 8; i++)
@@ -91,7 +91,7 @@ int	Phonebook::SearchPhonebook(void)
 		{
 			max = i;
 			if (max == 0)
-				std::cout << "| There is no contact in Phonebook. |" << std::endl;
+				std::cout << "|     There is no contact in Phonebook.     |" << std::endl;
 			break ;
 		}
 		str = std::to_string(this->contacts[i].getIndex());
@@ -108,7 +108,7 @@ int	Phonebook::SearchPhonebook(void)
 		std::cout << "|" << str;
 		std::cout << "|" << std::endl;
 	}
-	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	std::cout << ".----------.----------.----------.----------." << std::endl;
 	std::cout << "You can search contact by index";
 	std::cout << "(or stop searching by '9')." << std::endl;
 	while (1)
