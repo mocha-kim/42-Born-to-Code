@@ -6,14 +6,14 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:24:13 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/09/30 19:20:01 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/05 19:07:16 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
-# include <string>
+#include <string>
 
 class Contact
 {
