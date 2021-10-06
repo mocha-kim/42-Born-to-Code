@@ -32,8 +32,8 @@
 |                                     Subject                                   | Submit Date |  Grade |                                                     | 
 | ----------------------------------------------------------------------------- | ----------- | ------ | --------------------------------------------------- |
 | [cub3d](https://github.com/mocha-kim/42-Born-to-Code/tree/main/4CIRCLE/cub3d) |  2021-05-13 |  107%  | w.[yoahn](https://github.com/AYoungSn) / 2->4Circle |
-| CPP Module 00 |  |  |  |
-| CPP Module 01 |  |  |  |
+| [CPP Module 00](https://github.com/mocha-kim/42-Born-to-Code/tree/main/4CIRCLE/CPP%20Module/00) | 2021-10-05 |  100%  |  |
+| [CPP Module 01](https://github.com/mocha-kim/42-Born-to-Code/tree/main/4CIRCLE/CPP%20Module/01) |  |  |  |
 | CPP Module 02 |  |  |  |
 | CPP Module 03 |  |  |  |
 | CPP Module 04 |  |  |  |
