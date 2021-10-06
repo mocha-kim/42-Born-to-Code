@@ -6,11 +6,11 @@
 #    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/05 18:59:59 by sunhkim           #+#    #+#              #
-#    Updated: 2021/10/05 19:12:53 by sunhkim          ###   ########.fr        #
+#    Updated: 2021/10/06 20:36:02 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= zombie
+NAME			= string
 
 SRCS			= main.cpp
 OBJS			= $(SRCS:.cpp=.o)
