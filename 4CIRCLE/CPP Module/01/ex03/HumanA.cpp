@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 21:14:41 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/06 21:41:38 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/07 01:38:11 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ HumanA::HumanA(std::string name, Weapon &weapon)
 	if (name == "")
 	{
 		std::cout << "[Warning] HumanA create failed: HumanA must have name" << std::endl;
-		return ;
+		throw ;
 	}
 	if (weapon.getType() == "")
 	{
 		std::cout << "[Warning] HumanA create failed: New Weapon must have type." << std::endl;
-		return ;
+		throw ;
 	}
 	this->name = name;
 	this->weapon = &weapon;

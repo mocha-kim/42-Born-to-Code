@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 21:10:42 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/06 21:49:43 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/07 01:38:18 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ HumanB::HumanB(std::string name)
 	if (name == "")
 	{
 		std::cout << "[Warning] HumanB create failed: HumanB must have name" << std::endl;
-		return ;
+		throw ;
 	}
 	this->name = name;
 	this->weapon = nullptr;
