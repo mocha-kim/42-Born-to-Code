@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 16:45:56 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/12 17:12:03 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/12 17:24:23 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ private:
 public:
 	ClapTrap();
 	ClapTrap(std::string name);
-	ClapTrap(ClapTrap const &copy);
+	ClapTrap(const ClapTrap &copy);
 	~ClapTrap();
 
 	ClapTrap	&operator=(const ClapTrap &op);
 
-	void	attack(std::string const &target);
+	void	attack(const std::string &target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 };
