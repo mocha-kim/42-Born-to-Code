@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:23:28 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/12 19:55:27 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/12 20:20:12 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,20 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &op)
 	return (*this);
 }
 
+void	ScavTrap::attack(std::string const &target)
+{
+	this->_prefix();
+	std::cout << "attacks " << target << ", causing " << this->damage << " points of damage!" << std::endl;
+}
+
 void	ScavTrap::guardGate()
 {
 	this->_prefix();
 	std::cout << "have entered in Gate keeper mode" << std::endl;
+}
+
+void	ScavTrap::debug()
+{
+	this->_prefix();
+	std::cout << "(" << this->hitpoints << ", " << this->energy << ", " << this->damage << ")" << std::endl;
 }
