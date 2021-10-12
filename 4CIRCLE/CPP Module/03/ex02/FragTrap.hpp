@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 18:53:33 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/12 19:19:47 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/12 20:20:15 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ public:
 
 	FragTrap	&operator=(const FragTrap &op);
 
+	void		attack(const std::string &target);
 	void		highFiveGuys();
+	void		debug();
 };
 
 #endif

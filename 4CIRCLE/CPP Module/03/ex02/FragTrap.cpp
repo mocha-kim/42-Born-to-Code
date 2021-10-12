@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 18:53:36 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/12 19:55:14 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/12 20:23:00 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ FragTrap::FragTrap()
 {
 	this->name = "";
 	this->hitpoints = 100;
-	this->energy = 50;
-	this->damage = 20;
+	this->energy = 100;
+	this->damage = 30;
 	this->_prefix();
 	std::cout << "\bdefault constructor called" << std::endl;
 }
@@ -25,8 +25,8 @@ FragTrap::FragTrap()
 FragTrap::FragTrap(std::string name):ClapTrap(name)
 {
 	this->hitpoints = 100;
-	this->energy = 50;
-	this->damage = 20;
+	this->energy = 100;
+	this->damage = 30;
 	this->_prefix();
 	std::cout << "name constructor called" << std::endl;
 }
@@ -62,8 +62,20 @@ FragTrap	&FragTrap::operator=(const FragTrap &op)
 	return (*this);
 }
 
+void	FragTrap::attack(std::string const &target)
+{
+	this->_prefix();
+	std::cout << "attacks " << target << ", causing " << this->damage << " points of damage!" << std::endl;
+}
+
 void	FragTrap::highFiveGuys()
 {
 	this->_prefix();
 	std::cout << "wants to give high fives" << std::endl;
+}
+
+void	FragTrap::debug()
+{
+	this->_prefix();
+	std::cout << "(" << this->hitpoints << ", " << this->energy << ", " << this->damage << ")" << std::endl;
 }

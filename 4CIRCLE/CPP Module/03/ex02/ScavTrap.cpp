@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:23:28 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/12 19:54:59 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/12 20:14:17 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &op)
 	this->energy = op.energy;
 	this->damage = op.damage;
 	return (*this);
+}
+
+void	ScavTrap::attack(std::string const &target)
+{
+	this->_prefix();
+	std::cout << "attacks " << target << ", causing " << this->damage << " points of damage!" << std::endl;
 }
 
 void	ScavTrap::guardGate()
