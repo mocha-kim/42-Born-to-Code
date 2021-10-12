@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 18:53:36 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/12 19:18:03 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/12 19:55:14 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ FragTrap::FragTrap()
 	std::cout << "\bdefault constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name):ClapTrap(name)
 {
-	this->name = name;
 	this->hitpoints = 100;
 	this->energy = 50;
 	this->damage = 20;
@@ -32,9 +31,8 @@ FragTrap::FragTrap(std::string name)
 	std::cout << "name constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &copy)
+FragTrap::FragTrap(const FragTrap &copy):ClapTrap(copy.name)
 {
-	this->name = copy.name;
 	this->hitpoints = copy.hitpoints;
 	this->energy = copy.energy;
 	this->damage = copy.damage;
@@ -50,7 +48,7 @@ FragTrap::~FragTrap()
 
 void	FragTrap::_prefix()
 {
-	std::cout << "ScavTrap " << this->name << " ";
+	std::cout << "FragTrap " << this->name << " ";
 }
 
 FragTrap	&FragTrap::operator=(const FragTrap &op)

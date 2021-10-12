@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:12:20 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/12 19:18:56 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/12 19:57:43 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,18 @@
 
 int	main()
 {
-	ClapTrap	trapA = ClapTrap("trapA");
-	ClapTrap	trapB("trapB");
-	FragTrap	trapC("trapC");
+	FragTrap	trapA("trapA");
 	
 	// trapA.debug();
-	// trapB.debug();
-	// trapC.debug();
 
 	trapA.attack("Frog");
 	trapA.takeDamage(4);
-	trapB.takeDamage(2);
-	trapC.takeDamage(8);
 	// trapA.debug();
-	// trapB.debug();
-	// trapC.debug();
 	
-	trapB.attack("Frog");
-	trapB.beRepaired(2);
-	trapC.highFiveGuys();
+	trapA.beRepaired(2);
 	// trapA.debug();
-	// trapB.debug();
-	// trapC.debug();
+
+	trapA.highFiveGuys();
 	
 	return (0);
 }

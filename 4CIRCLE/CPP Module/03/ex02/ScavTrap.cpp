@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:23:28 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/12 18:30:35 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/12 19:54:59 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ ScavTrap::ScavTrap()
 	std::cout << "\bdefault constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
-	this->name = name;
 	this->hitpoints = 100;
 	this->energy = 50;
 	this->damage = 20;
@@ -32,9 +31,8 @@ ScavTrap::ScavTrap(std::string name)
 	std::cout << "name constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &copy)
+ScavTrap::ScavTrap(ScavTrap const &copy):ClapTrap(copy.name)
 {
-	this->name = copy.name;
 	this->hitpoints = copy.hitpoints;
 	this->energy = copy.energy;
 	this->damage = copy.damage;
