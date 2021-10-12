@@ -6,12 +6,12 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:22:58 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/12 17:55:30 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/12 18:54:13 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAV_TRAP_HPP
-#define SCAV_TRAP_HPP
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
 
