@@ -6,13 +6,13 @@
 #    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 21:15:35 by sunhkim           #+#    #+#              #
-#    Updated: 2021/10/12 21:16:01 by sunhkim          ###   ########.fr        #
+#    Updated: 2021/10/13 17:57:01 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= polymorphism
 
-SRCS			= main.cpp
+SRCS			= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS			= $(SRCS:.cpp=.o)
 
 CXX				= clang++
