@@ -6,13 +6,13 @@
 #    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 21:15:35 by sunhkim           #+#    #+#              #
-#    Updated: 2021/10/12 21:16:19 by sunhkim          ###   ########.fr        #
+#    Updated: 2021/10/13 19:18:49 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= diamondtrap
+NAME			= brain
 
-SRCS			= main.cpp
+SRCS			= main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 OBJS			= $(SRCS:.cpp=.o)
 
 CXX				= clang++
