@@ -6,13 +6,13 @@
 #    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 21:15:35 by sunhkim           #+#    #+#              #
-#    Updated: 2021/10/12 21:16:53 by sunhkim          ###   ########.fr        #
+#    Updated: 2021/10/13 22:14:28 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= diamondtrap
+NAME			= interface
 
-SRCS			= main.cpp
+SRCS			= main.cpp AMateria.cpp MateriaSource.cpp Character.cpp Ice.cpp Cure.cpp
 OBJS			= $(SRCS:.cpp=.o)
 
 CXX				= clang++
