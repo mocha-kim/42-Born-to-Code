@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 20:19:53 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/06 20:29:03 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/14 17:10:52 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 		zombies[i].announce();
 	delete [] zombies;
 
-	std::cout << "======== TEST2 : 8 zombies named zozombie ========" << std::endl;
+	std::cout << "======== TEST2 : 9 zombies named zozombie ========" << std::endl;
 	zombies = zombieHorde(9, "zozombie");
 
 	for (int i = 0; i < 9; i++)
