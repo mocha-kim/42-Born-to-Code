@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 00:53:27 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/13 18:35:43 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/19 16:27:50 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Cat::Cat():Animal("Cat")
 Cat::Cat(const Cat &copy):Animal("Cat")
 {
 	this->_prefix();
+	this->type = copy.type;
 	std::cout << "copy constructor called" << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 00:53:31 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/13 18:35:50 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/19 16:27:48 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Dog::Dog():Animal("Dog")
 Dog::Dog(const Dog &copy):Animal("Dog")
 {
 	this->_prefix();
+	this->type = copy.type;
 	std::cout << "copy constructor called" << std::endl;
 }
 
