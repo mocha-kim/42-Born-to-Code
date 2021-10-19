@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 18:05:52 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/13 19:18:37 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/19 16:37:05 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ int	main()
 	Cat	*chaos = new Cat(brain);
 	Cat *tuxedo = new Cat(*black);
 	std::cout << std::endl;
+
+	std::cout << "Brain address: " << &brain << std::endl;
 	black->debug();
 	chaos->debug();
 	tuxedo->debug();
 	std::cout << std::endl;
+
 	delete black;
 	delete chaos;
 	delete tuxedo;
@@ -38,10 +41,13 @@ int	main()
 	Dog *kkam = new Dog(brain);
 	Dog *poodle = new Dog(*puppy);
 	std::cout << std::endl;
+
+	std::cout << "Brain address: " << &brain << std::endl;
 	puppy->debug();
 	kkam->debug();
 	poodle->debug();
 	std::cout << std::endl;
+	
 	delete puppy;
 	delete kkam;
 	delete poodle;
