@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 21:53:51 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/20 00:45:01 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/20 02:07:02 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	RobotomyRequestForm::execute(Bureaucrat const &bureaucrat) const
 	srand(time(0));
 	std::cout << "* VvrRRrrr vVVrrrrRrRRr vvvrrRrr *" << std::endl;
 	if ((rand() % 100) < 50)
-		std::cout << this->target << "has been robotomized successfully" << std::endl;
+		std::cout << this->target << " has been robotomized successfully" << std::endl;
 	else
-		std::cout << "robotization failed" << std::endl;
+		std::cout << this->target << " robotization failed" << std::endl;
 }
 
 
