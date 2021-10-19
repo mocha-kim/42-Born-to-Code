@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:50:40 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/13 21:54:02 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/18 19:46:04 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ public:
 	AMateria(std::string const & type);
 	AMateria(AMateria const & copy);
 	virtual ~AMateria();
+
+	AMateria &operator=(AMateria const & op);
 
 	std::string const &getType() const; //Returns the materia type
 	virtual AMateria *clone() const = 0;
