@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:19:31 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/13 19:48:50 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/19 16:44:58 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ int	main()
 
 	std::cout << "========== Test1: Cat ==========" << std::endl;
 	Cat	*chaos = new Cat();
+	std::cout << chaos->getType() << ": ";
 	chaos->makeSound();
 	delete chaos;
 	std::cout << std::endl;
 
 	std::cout << "========== Test2: Dog ==========" << std::endl;
 	Dog	*puppy = new Dog();
+	std::cout << puppy->getType() << ": ";
 	puppy->makeSound();
 	delete puppy;
 	std::cout << std::endl;
