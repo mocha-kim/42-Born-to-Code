@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:38:15 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/18 20:18:27 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/20 14:49:59 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Bureaucrat
 {
 public:
-	Bureaucrat(std::string name, int grade);
+	Bureaucrat(std::string const name, int grade);
 	Bureaucrat(Bureaucrat const &other);
 	~Bureaucrat();
 
@@ -44,8 +44,8 @@ public:
 	};
 
 private:
-	std::string	name;
-	int			grade;
+	std::string const	name;
+	int					grade;
 
 	Bureaucrat();
 };
