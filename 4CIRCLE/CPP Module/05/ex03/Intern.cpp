@@ -53,7 +53,7 @@ Form	*Intern::makeForm(std::string const &form, std::string const &target)
 				};
 	Form	*ret;
 
-	for (idx = 0; idx < 4; idx++)
+	for (idx = 0; idx < 3; idx++)
 		if (form == type[idx])
 			break ;
 	if (idx == 3)
