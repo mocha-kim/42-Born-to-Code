@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:38:20 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/19 21:51:37 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/20 15:24:22 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,22 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(std::string const name, int grade):
+	name(name), grade(grade)
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	this->name = name;
-	this->grade = grade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
+Bureaucrat::Bureaucrat(const Bureaucrat &other):
+	name(other.name), grade(other.grade)
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	this->name = other.name;
-	this->grade = other.grade;
 }
 
 
@@ -83,6 +81,42 @@ void				Bureaucrat::downGrade()
 		this->grade += 1;
 }
 
+void	Bureaucrat::signForm(Form &form)
+{
+	if (form.getIsSigned())
+		std::cout << this->name << " cannot sign " << form.getName()
+			<< " because it is already signed" << std::endl;
+	else
+	{
+		try
+		{
+			form.beSigned(*this);
+			std::cout << this->name << " signs " << form.getName() << std::endl;
+		}
+		catch(const std::exception &e)
+		{
+			std::cout << this->name << " cannot sign " << form.getName();
+			std::cout << " because " << e.what() << std::endl;
+		}
+		
+	}
+}
+
+void				Bureaucrat::executeForm(Form const & form)
+{
+	if (!form.getIsSigned())
+		std::cout << this->name << " cannot sign " << form.getName()
+			<< " because this form is unsigned" << std::endl;
+	else if (form.getExecGrade() < this->grade)
+		std::cout << this->name << " cannot execute " << form.getName()
+				<< " because bureaucrat's grade is too low." << std::endl;
+	else
+	{
+		form.execute(*this);
+		std::cout << this->name << " executes " << form.getName() << std::endl;
+	}
+}
+
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
@@ -96,27 +130,6 @@ std::string	Bureaucrat::getName() const
 int	Bureaucrat::getGrade() const
 {
 	return (this->grade);
-}
-
-void	Bureaucrat::signForm(Form &form)
-{
-	if (form.getIsSigned())
-		std::cout << this->name << " cannot sign " << form.getName()
-			<< " because it is already signed" << std::endl;
-	else
-	{
-		try
-		{
-			form.beSigned(*this);
-			std::cout << this->name << " signs " << form.getName() << std::endl;
-		}
-		catch(const std::exception& e)
-		{
-			std::cout << this->name << " cannot sign " << form.getName() << " because ";
-			std::cout << e.what() << std::endl;
-		}
-		
-	}
 }
 
 

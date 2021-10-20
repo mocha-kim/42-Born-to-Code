@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 22:09:27 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/20 01:01:58 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/20 15:24:55 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main()
 	try
 	{
 		sh->beSigned(*personA);
-		sh->execute(*personA);
+		personA->executeForm(*sh);
 	}
 	catch(const std::exception& e)
 	{
@@ -61,7 +61,7 @@ int	main()
 	std::cout << *ro << std::endl;
 	try
 	{
-		ro->execute(*personB);
+		personB->executeForm(*ro);
 	}
 	catch(const std::exception& e)
 	{
@@ -71,7 +71,7 @@ int	main()
 	try
 	{
 		ro->beSigned(*personB);
-		ro->execute(*personB);
+		personB->executeForm(*ro);
 	}
 	catch(const std::exception& e)
 	{
@@ -95,8 +95,8 @@ int	main()
 	std::cout << *pr << std::endl;
 	try
 	{
-		pr->beSigned(*personC);
-		pr->execute(*personC);
+		personC->signForm(*pr);
+		personC->executeForm(*pr);
 	}
 	catch(const std::exception& e)
 	{
