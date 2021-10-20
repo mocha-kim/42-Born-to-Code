@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:38:20 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/20 14:49:27 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/20 15:10:43 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,6 @@ void				Bureaucrat::downGrade()
 		this->grade += 1;
 }
 
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
-std::string	Bureaucrat::getName() const
-{
-	return (this->name);
-}
-
-int	Bureaucrat::getGrade() const
-{
-	return (this->grade);
-}
-
 void	Bureaucrat::signForm(Form &form)
 {
 	if (form.getIsSigned())
@@ -115,6 +100,21 @@ void	Bureaucrat::signForm(Form &form)
 		}
 		
 	}
+}
+
+
+/*
+** --------------------------------- ACCESSOR ---------------------------------
+*/
+
+std::string	Bureaucrat::getName() const
+{
+	return (this->name);
+}
+
+int	Bureaucrat::getGrade() const
+{
+	return (this->grade);
 }
 
 
