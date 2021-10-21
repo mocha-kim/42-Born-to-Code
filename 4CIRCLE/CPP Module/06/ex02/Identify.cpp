@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 20:05:17 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/21 20:14:00 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/21 20:29:49 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void identify(Base* p)
 	B	*b = dynamic_cast<B*>(p);
 	C	*c = dynamic_cast<C*>(p);
 
-	if (a != nullptr)
+	if (a != 0)
 		std::cout << "A";
-	else if (b != nullptr)
+	else if (b != 0)
 		std::cout << "B";
-	else if (c != nullptr)
+	else if (c != 0)
 		std::cout << "C";
 }
 
@@ -32,10 +32,10 @@ void identify(Base& p)
 	B	*b = dynamic_cast<B*>(&p);
 	C	*c = dynamic_cast<C*>(&p);
 
-	if (a != nullptr)
+	if (a != 0)
 		std::cout << "A";
-	else if (b != nullptr)
+	else if (b != 0)
 		std::cout << "B";
-	else if (c != nullptr)
+	else if (c != 0)
 		std::cout << "C";
 }
