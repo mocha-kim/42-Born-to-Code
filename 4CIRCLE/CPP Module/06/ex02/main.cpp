@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 19:43:54 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/21 20:25:46 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/22 13:52:42 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main()
 		std::cout << "/";
 	identify(*c);
 	std::cout << std::endl;
-	
+
 	delete a;
 	delete b;
 	delete c;
@@ -50,6 +50,6 @@ int	main()
 		std::cout << std::endl;
 		delete tmp;
 	}
-	
+
 	return (0);
 }
