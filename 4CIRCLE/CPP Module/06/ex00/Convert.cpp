@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:24:42 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/21 17:44:09 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/22 13:37:07 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	Convert::parse()
 {
 	std::string	val = this->value;
 
-	if (val.length() == 1 && std::isdigit(val[0]))
+	if (val.length() == 1 && !std::isdigit((int)val[0]))
 		return (TChar);
 	if (val.length() == 3 && val[0] == '\'' && val[2] == '\'')
 	{
@@ -135,7 +135,7 @@ int	Convert::parse()
 
 void	Convert::convertChar()
 {
-	char val = std::stoi(this->value);
+	char val = (int)(this->value[0]);
 	char	c = static_cast<char>(val);
 	int		i = static_cast<int>(val);
 	float	f = static_cast<float>(val);
@@ -213,23 +213,26 @@ void	Convert::convertDouble()
 
 void	Convert::printScalar(char c, int i, float f, double d)
 {
-	if (c)
+	if (c > std::numeric_limits<char>::max() || c < std::numeric_limits<char>::min())
+		std::cout << "char: impossible" << std::endl;
+	else
 	{
 		if (c < 32 || c > 126)
 			std::cout << "char: Non displayable" << std::endl;
 		else
 			std::cout << "char: \'" << c << "\'" << std::endl;
 	}
-	else
-		std::cout << "char: impossible" << std::endl;
+
 	if (this->flag)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << i << std::endl;
+
 	if (f - (int)f == (float)0)
 		std::cout << "float: " << f << ".0f" << std::endl;
 	else
 		std::cout << "float: " << f << "f" << std::endl;
+		
 	if (d - (int)d == (double)0)
 		std::cout << "double: " << d << ".0" << std::endl;
 	else
