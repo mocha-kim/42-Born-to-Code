@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 19:59:16 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/10/23 20:10:45 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/10/23 21:00:32 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int main(void) {
 	std::cout << aa << " " << ab << std::endl;
 	std::cout << max(aa, ab) << std::endl;
 	std::cout << min(aa, ab) << std::endl;
+	
 	return (0);
-
-	return 0;
 }
