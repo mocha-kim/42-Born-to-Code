@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 13:52:33 by sunhkim           #+#    #+#             */
-/*   Updated: 2021/11/06 21:50:25 by sunhkim          ###   ########.fr       */
+/*   Updated: 2021/11/07 15:36:31 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SPAN_HPP
 
 # include <vector>
-# include <iostream>
+# include <algorithm>
 
 class Span
 {
