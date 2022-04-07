@@ -1,17 +1,31 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/04/07 15:43:36 by sunhkim           #+#    #+#              #
+#    Updated: 2022/04/07 16:17:52 by sunhkim          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# **************************************************************************** #
+#    design sources from : https://pixelfrog-assets.itch.io/kings-and-pigs     #
+# **************************************************************************** #
+
 NAME		= so_long
 
 INC_PATH	= ./includes
 SRC_PATH	= ./srcs
 MMS_PATH	= ./mlx_beta
 MLX_PATH	= ./mlx
-BNS_PATH	= ./bonus
 
 INCS		= -I $(INC_PATH)
-SRCS		= $(SRC_PATH)/
+SRCS		= $(SRC_PATH)/main.c \
+			  $(SRC_PATH)/gnl.c $(SRC_PATH)/utils.c $(SRC_PATH)/utils2.c\
+			  $(SRC_PATH)/parsing.c
 OBJS		= $(SRCS:.c=.o)
-
-BNS_SRCS	= $(BNS_PATH)/
-BNS_OBJS	= $(BNS_SRCS:.c=.o)
 
 CC			= gcc
 CFLAGS		= -O3 -Wall -Wextra -Werror
@@ -34,13 +48,7 @@ $(MMS):
 	@$(MAKE) -C mlx_beta
 	cp $(MMS_PATH)/$(MMS) .
 
-$(BONUS):	$(MLX) $(BNS_OBJS) $(MMS)
-	$(CC) $(CFLAGS) $(INCS) -o $(NAME) -L $(MLX_PATH) $(MLXFLAGS) $(BNS_OBJS)
-	@echo $(NAME) : Created
-
 all:	$(NAME)
-
-bonus:	$(BONUS)
 
 clean:
 	@$(MAKE) -C mlx clean
