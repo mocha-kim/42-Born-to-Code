@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl.h                                              :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 15:37:25 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/07 23:06:53 by sunhkim          ###   ########.fr       */
+/*   Created: 2022/04/07 23:51:33 by sunhkim           #+#    #+#             */
+/*   Updated: 2022/04/08 00:28:14 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL_H
-#define GNL_H
+#include "../includes/utils.h"
 
-# include "utils.h"
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (fd < 0 || !s)
+		return ;
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+	}
+}
 
-# define BUFFER_SIZE 128
-# define OPEN_MAX 1024
-
-int				get_next_line(int fd, char **line);
-int				save_line(char **dest, char *src, char **save);
-
-#endif
+int ft_print_error(char *str)
+{
+	ft_putstr_fd("Error\n:", STDERR_FILENO);
+	ft_putstr_fd(str, STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
+	return (0);
+}

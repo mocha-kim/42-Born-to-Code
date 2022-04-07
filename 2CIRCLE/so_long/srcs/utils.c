@@ -6,22 +6,11 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:19:08 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/07 16:13:39 by sunhkim          ###   ########.fr       */
+/*   Updated: 2022/04/08 00:02:09 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils.h"
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (fd < 0 || !s)
-		return ;
-	while (*s)
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
-}
 
 int	ft_endcmp(char *str, char *s)
 {
@@ -54,9 +43,12 @@ int		ft_findchar(char *s)
 	return (i);
 }
 
-int ft_print_error(char *description)
+int		ft_strlen(char *s)
 {
-	ft_putstr_fd("Error\n:", STDERR_FILENO);
-	ft_putstr_fd(description, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

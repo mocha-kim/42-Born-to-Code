@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl.h                                              :+:      :+:    :+:   */
+/*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 15:37:25 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/07 23:06:53 by sunhkim          ###   ########.fr       */
+/*   Created: 2022/04/07 23:59:07 by sunhkim           #+#    #+#             */
+/*   Updated: 2022/04/08 00:09:12 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL_H
-#define GNL_H
+#ifndef LIST_H
+#define LIST_H
 
-# include "utils.h"
+typedef struct		s_list
+{
+	char			*content;
+	struct s_list	*next;
+}					t_list;
 
-# define BUFFER_SIZE 128
-# define OPEN_MAX 1024
-
-int				get_next_line(int fd, char **line);
-int				save_line(char **dest, char *src, char **save);
+t_list	*ft_lstnew(void *content);
+t_list	*lst_add_back(t_list **list, char *line);
+t_list	*ft_lstlast(t_list *lst);
+int	ft_lstclear(t_list **lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
 
 #endif
