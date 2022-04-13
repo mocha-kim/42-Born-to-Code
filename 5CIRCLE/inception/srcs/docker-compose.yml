@@ -12,6 +12,7 @@ services:
       - "3306"
     volumes:
       - mariadb:/var/lib/mysql
+
   nginx:
     container_name: nginx
     build: ./requirements/nginx/
@@ -25,6 +26,7 @@ services:
       - "443:443"
     volumes:
       - wordpress:/var/www/html
+
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress/
@@ -45,16 +47,14 @@ networks:
 
 volumes:
   mariadb:
-    name: mariadb_volume
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
       device: /home/$USER/data/mariadb
   wordpress:
-    name: wordpress_volume
     driver: local
     driver_opts:
-      type: none
-      o: bind
+      type: 'none'
+      o: 'bind'
       device: /home/$USER/data/wordpress
