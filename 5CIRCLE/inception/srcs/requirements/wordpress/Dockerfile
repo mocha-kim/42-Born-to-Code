@@ -1,7 +1,7 @@
 FROM	debian:buster
 
-COPY	./tools/setup_wp.sh		/tmp
-COPY	./conf/wp-config.php	/tmp
+COPY	./tools/init.sh /tmp
+COPY	./conf/wp-config.php /tmp
 
 RUN		apt-get update
 RUN		apt-get install -y php-fpm php-mysql curl dumb-init tar
@@ -14,4 +14,4 @@ ENTRYPOINT	["/usr/bin/dumb-init"]
 
 EXPOSE	9000
 
-CMD		["bash", "/tmp/setup_wp.sh"]
+CMD		["bash", "/tmp/init.sh"]

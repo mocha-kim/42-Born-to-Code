@@ -1,14 +1,8 @@
 #!/bin/sh
-
-if [ ! -d "/run/mysqld" ]; then
-	mkdir -p /run/mysqld
-	chown -R mysql:mysql /run/mysqld
-fi
-
 chown -R mysql:mysql /var/lib/mysql
 
 # init
-mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
+service mysql start
 
 echo "USE mysql;"
 echo "flush privileges;"
