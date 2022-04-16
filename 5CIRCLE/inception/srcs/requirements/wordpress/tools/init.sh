@@ -1,6 +1,6 @@
 #!bin/bash/
 mv wordpress/ /var/www/
-rm wordpress-5.9.3.tar.gz
+rm latest.tar.gz
 
 mv /tmp/wp-config.php /var/www/wordpress
 chown -R www-data:www-data /var/www/wordpress/

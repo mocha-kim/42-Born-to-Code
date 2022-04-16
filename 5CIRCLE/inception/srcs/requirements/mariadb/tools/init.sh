@@ -3,8 +3,8 @@ chown -R mysql:mysql /var/lib/mysql
 
 # init
 service mysql start
+mysql
 
-echo "USE mysql;"
 echo "flush privileges;"
 
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$DATABASE_ROOT_PWD';"
