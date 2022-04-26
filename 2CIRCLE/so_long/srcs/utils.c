@@ -6,25 +6,26 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:19:08 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/08 00:02:09 by sunhkim          ###   ########.fr       */
+/*   Updated: 2022/04/27 00:21:55 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils.h"
 
-int	ft_endcmp(char *str, char *s)
+int	ft_countc(char *str, char c)
 {
-	int size;
+	int count;
 	int	i;
 
-	size = ft_strlen(str) - 1;
-	i = ft_strlen(s) - 1;
-	while (i >= 0 && size >= 0)
+	count = 0;
+	i = 0;
+	while (str[i])
 	{
-		if (str[size--] != s[i--])
-			return (0);
+		if (str[i] == c)
+			count++;
+		i++;
 	}
-	return (1);
+	return (count);
 }
 
 int		ft_findchar(char *s)
@@ -51,4 +52,52 @@ int		ft_strlen(char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+char	*ft_strjoin_free(char *s1, char *s2)
+{
+	int		len1;
+	int		len2;
+	char	*result;
+
+	if (!s1 || !s2)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	result = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!(result))
+		return (0);
+	ft_strlcpy(result, s1, len1 + 1);
+	ft_strlcat(result, s2, len2 + len1 + 1);
+	free(s1);
+	free(s2);
+	return (result);
+}
+
+void	ft_remove_newline(char **str)
+{
+	int	i;
+	int	j;
+	int length;
+	char	*result;
+
+	i = 0;
+	length = ft_strlen(*str) - ft_countc(*str, '\n');
+	result = malloc(sizeof(char) * (length + 1));
+	if (!result)
+		return ;
+	i = 0;
+	j = 0;
+	while ((*str)[i])
+	{
+		if ((*str)[i] != '\n')
+		{
+			result[j] = (*str)[i];
+			j++;
+		}
+		i++;
+	}
+	result[i] = '\0';
+	free(*str);
+	*str = result;
 }

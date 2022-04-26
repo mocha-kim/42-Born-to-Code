@@ -6,7 +6,7 @@
 #    By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 15:43:36 by sunhkim           #+#    #+#              #
-#    Updated: 2022/04/07 23:24:50 by sunhkim          ###   ########.fr        #
+#    Updated: 2022/04/27 00:10:00 by sunhkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ SRC_PATH	= ./srcs
 MLX_PATH	= ./mlx
 
 INCS		= -I $(INC_PATH)
-SRCS		= $(SRC_PATH)/main.c $(SRC_PATH)/gnl.c $(SRC_PATH)/utils.c \
-			  $(SRC_PATH)/utils2.c $(SRC_PATH)/utils3.c $(SRC_PATH)/utils4.c \
-			  $(SRC_PATH)/parsing.c $(SRC_PATH)/game.c
+SRCS		= $(SRC_PATH)/main.c $(SRC_PATH)/gnl.c \
+			  $(SRC_PATH)/utils.c $(SRC_PATH)/utils2.c $(SRC_PATH)/utils3.c \
+			  $(SRC_PATH)/memory.c $(SRC_PATH)/parsing.c $(SRC_PATH)/game.c
 OBJS		= $(SRCS:.c=.o)
 
 CC			= gcc
-CFLAGS		= -O3 -Wall -Wextra -Werror
+CFLAGS		= -O3 -Wall -Wextra -Werror -fsanitize=address
 MLXFLAGS	= -Lmlx -lm -framework OpenGL -framework AppKit
 MLX			= libm.a
 

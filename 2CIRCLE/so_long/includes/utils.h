@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:20:50 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/08 00:31:46 by sunhkim          ###   ########.fr       */
+/*   Updated: 2022/04/27 00:41:18 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int	ft_endcmp(char *str, char *s);
+int	ft_countc(char *str, char c);
 int	ft_findchar(char *s);
 int	ft_strlen(char *s);
+char	*ft_strjoin_free(char *s1, char *s2);
+void	ft_remove_newline(char **str);
 
 char	*ft_substr(char *str, int start, int len);
 char	*ft_strdup(char *s1);
@@ -28,10 +30,6 @@ size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
 
 void	ft_putstr_fd(char *s, int fd);
 int	ft_print_error(char *str);
-
-
-char	*ft_strdup_free(char *s)
-int	ft_strlcpy_free(char *dst, char *src, int len)
-char	*ft_strjoin_free(char *s1, char *s2)
+int	check_file_name(char *path);
 
 #endif

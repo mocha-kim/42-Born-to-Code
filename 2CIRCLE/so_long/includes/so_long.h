@@ -6,21 +6,18 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:22:06 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/08 00:42:11 by sunhkim          ###   ########.fr       */
+/*   Updated: 2022/04/27 01:02:37 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define BACK 0
-# define WALL 1
-# define PLAYER 2
-# define TARGET 3
-# define EXIT 4
+#include "../mlx/mlx.h"
+#include <stdio.h>
 
-# define X_EVENT_KEY_PRESS			2
-# define X_EVENT_KEY_RELEASE		3
+# define X_EVENT_KEY_PRESS		2
+# define X_EVENT_KEY_RELEASE	3
 
 # define KEY_ESC		53
 # define KEY_W			13
@@ -38,9 +35,8 @@ typedef struct	s_info
 {
 	void		*mlx;
 	void		*win;
-	t_position	player;
-	char	*map_buffer;
-	int	*map;
+	t_position	pos;
+	char	*map;
 	int	height;
 	int	width;
 	void	*back_img;
@@ -51,16 +47,21 @@ typedef struct	s_info
 }				t_info;
 
 /* memory.c */
-int	init_info(t_info *info);
+void	init_info(t_info *info);
+void	init_mlx(t_info *i);
 int free_info_print_error(t_info *info, char *str);
 
 /* parsing.c */
 int read_map(t_info *info, char *path);
+int	read_first_line(t_info *info, int fd);
 int	check_map(t_info *info);
-int	check_wall(t_info *info);
-int check_elememts(t_info *info);
+int	check_wall(t_info *info, int i);
+void	check_elememts(char map, int *p, int *t, int *e);
 
 /* game.c */
-void	set_img(t_info *info);
+void	put_img(t_info *info, int h, int w);
+void	draw(t_info *info);
+void	clear_game(t_info *info);
+void	exit_game(t_info *info);
 
 #endif

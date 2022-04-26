@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:22:42 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/08 00:48:22 by sunhkim          ###   ########.fr       */
+/*   Updated: 2022/04/27 00:50:06 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,42 @@
 
 int read_map(t_info *info, char *path)
 {	
-	int  fd;
+	int	fd;
+	int	flag;
 	char *line;
 
-	fd = open(filename, O_RDONLY);
+	fd = open(path, O_RDONLY);
 	if (fd < -1)
 		return (free_info_print_error(info, "file open failed"));
-	line = get_next_line(fd);
-	info->height = 0;
-	info->width = ft_strlen(line) - 1;
-	info->map_buffer = ft_strdup_without_newline(line);
-	free(line);
-	while (line)
+	flag = read_first_line(info, fd);
+	while (flag)
 	{
-		info->hei++;
-		line = get_next_line(fd);
-		if (line)
+		info->height++;
+		flag = get_next_line(fd, &line);
+		if (flag != -1)
 		{
-			info->map_buffer = ft_strjoin_without_newline(info->map_buffer, line);
+			if (ft_strlen(line) != info->width)
+				return (free_info_print_error(info, "invalid map"));
+			info->map = ft_strjoin_free(info->map, line);
 		}
 	}
 	close(fd);
+	ft_remove_newline(&(info->map));
+	return (1);
+}
+
+int	read_first_line(t_info *info, int fd)
+{
+	int	flag;
+	char *line;
+
+	flag = get_next_line(fd, &line);
+	if (flag == -1)
+		return (free_info_print_error(info, "gnl failed"));
+	info->height++;
+	info->width = ft_strlen(line);
+	info->map = ft_strdup(line);
+	free(line);
 	return (1);
 }
 
@@ -47,47 +62,52 @@ int	check_map(t_info *info)
 	int	p;
 	int	t;
 	int	e;
+	int	flag;
 
-	if (game->hei * game->wid != ft_strlen(game->str_line))
-		return (free_info_print_error(info, "invalid map"));
+	printf("check : %d * %d / %d\n", info->height, info->width, ft_strlen(info->map));
 	i = 0;
 	p = 0;
 	t = 0;
 	e = 0;
-	while (i < ft_strlen(info->map_buffer))
+	while (info->map[i])
 	{
-		check_wall(info);
+		flag = check_wall(info, i);
+		if (!flag)
+			return (0);
 		check_elememts(info->map[i], &p, &t, &e);
 		i++;
 	}
+	if (p != 1 || t < 1 || e != 1)
+		return (free_info_print_error(info, "invalid map"));
 	return (1);
 }
 
-int	check_wall(t_info *info)
+int	check_wall(t_info *info, int i)
 {
 	if (i < info->width)
 	{
-		if (info->map[i] != WALL)
+		if (info->map[i] != '1')
 			return (free_info_print_error(info, "invalid map"));
 	}
 	else if (i % info->width == 0 || i % info->width == info->width - 1)
 	{
-		if (info->map[i] != WALL)
+		if (info->map[i] != '1')
 			return (free_info_print_error(info, "invalid map"));
 	}
-	else if (i > ft_strlen(info->map_buffer) - info->width)
+	else if (i > ft_strlen(info->map) - info->width)
 	{
-		if (info->map[i] != WALL)
+		if (info->map[i] != '1')
 			return (free_info_print_error(info, "invalid map"));
 	}
+	return (1);
 }
 
-void	check_elememts(int map, int *p, int *t, int *e)
+void	check_elememts(char map, int *p, int *t, int *e)
 {
-	if (map == PLAYER)
+	if (map == 'P')
 		(*p)++;
-	else if (map == TARGET)
+	else if (map == 'C')
 		(*t)++;
-	else if (map == EXIT)
+	else if (map == 'E')
 		(*e)++;
 }

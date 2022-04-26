@@ -6,46 +6,39 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 00:30:06 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/08 00:34:45 by sunhkim          ###   ########.fr       */
+/*   Updated: 2022/04/27 01:02:38 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../includes/utils.h"
 
-int	init_info(t_info *info)
+void	init_info(t_info *i)
 {
-	int	img_width;
-	int	img_height;
-	
-	info->player.x = 0;
-	info->player.y = 0;
-	info->height = 0;
-	info->width = 0;
+	i->pos.x = 0;
+	i->pos.y = 0;
+	i->height = 0;
+	i->width = 0;
+}
 
-	back_img = mlx_xpm_file_to_image(mlx, "./images/land.xpm", &img_width, &img_height);
-	wall_img = mlx_xpm_file_to_image(mlx, "./images/wall.xpm", &img_width, &img_height);
-	enemy_img = mlx_xpm_file_to_image(mlx, "./images/chara.xpm", &img_width, &img_height);
-	player_img = mlx_xpm_file_to_image(mlx, "./images/chest.xpm", &img_width, &img_height);
-	exit_img = mlx_xpm_file_to_image(mlx, "./images/chest_open.xpm", &img_width, &img_height);
+void	init_mlx(t_info *i)
+{
+	int	w;
+	int	h;
+	
+	i->mlx = mlx_init();
+	i->win = mlx_new_window(i->mlx, i->width * 64, i->height * 64, "mlx_project");
+
+	i->back_img = mlx_xpm_file_to_image(i->mlx, "./sprites/back.xpm", &w, &h);
+	i->wall_img = mlx_xpm_file_to_image(i->mlx, "./sprites/wall.xpm", &w, &h);
+	i->target_img = mlx_xpm_file_to_image(i->mlx, "./sprites/box.xpm", &w, &h);
+	i->player_img = mlx_xpm_file_to_image(i->mlx, "./sprites/king.xpm", &w, &h);
+	i->exit_img = mlx_xpm_file_to_image(i->mlx, "./sprites/door.xpm", &w, &h);
 }
 
 int free_info_print_error(t_info *info, char *str)
 {
-	int i;
-
-	i = 0;
 	if (info->map)
-	{
-		while (info->map[i])
-		{
-			if (info->map[i])
-				free(info->map[i]);
-			i++;
-		}
 		free(info->map);
-	}
-	if (info->map_buffer)
-		ft_lstclear(&info->map_buffer);
 	return (ft_print_error(str));
 }

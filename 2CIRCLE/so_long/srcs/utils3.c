@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 23:51:33 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/08 00:28:14 by sunhkim          ###   ########.fr       */
+/*   Updated: 2022/04/27 00:41:14 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,20 @@ int ft_print_error(char *str)
 	ft_putstr_fd(str, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
 	return (0);
+}
+
+int	check_file_name(char *path)
+{
+	int	i;
+
+	i = ft_strlen(path) - 1;
+	if (path[i--] != 'r')
+		return (ft_print_error("invalid map extension"));
+	if (path[i--] != 'e')
+		return (ft_print_error("invalid map extension"));
+	if (path[i--] != 'b')
+		return (ft_print_error("invalid map extension"));
+	if (path[i--] != '.')
+		return (ft_print_error("invalid map extension"));
+	return (1);
 }

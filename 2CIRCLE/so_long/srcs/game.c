@@ -12,29 +12,47 @@
 
 #include "../includes/so_long.h"
 
-void	set_img(t_info *info)
+void	put_img(t_info *info, int h, int w)
 {
-	int		hei;
-	int		wid;
+	if (info->map[h * info->width + w] == '1')
+		mlx_put_image_to_window(info->mlx, info->win, info->wall_img , w * 64, h * 64);
+	else if (info->map[h * info->width + w] == 'C')
+		mlx_put_image_to_window(info->mlx, info->win, info->target_img, w * 64, h * 64);
+	else if (info->map[h * info->width + w] == 'P')
+		mlx_put_image_to_window(info->mlx, info->win, info->player_img, w * 64, h * 64);
+	else if (info->map[h * info->width + w] == 'E')
+		mlx_put_image_to_window(info->mlx, info->win, info->exit_img, w * 64, h * 64);
+	else
+		mlx_put_image_to_window(info->mlx, info->win, info->back_img, w * 64, h * 64);
+}
 
-	hei = 0;
-	while (hei < info->height)
+void	draw(t_info *info)
+{
+	int		h;
+	int		w;
+
+	h = 0;
+	while (h < info->height)
 	{
-		wid = 0;
-		while (wid < info->width)
+		w = 0;
+		while (w < info->width)
 		{
-			if (info->str_line[hei * info->width + wid] == WALL)
-				mlx_put_image_to_window(info->mlx, info->win, info->wall_img , wid * 64, hei * 64);
-			else if (info->str_line[hei * info->width + wid] == TARGET)
-				mlx_put_image_to_window(info->mlx, info->win, info->target_img, wid * 64, hei * 64);
-			else if (info->str_line[hei * info->width + wid] == PLAYER)
-				mlx_put_image_to_window(info->mlx, info->win, info->player_img, wid * 64, hei * 64);
-			else if (info->str_line[hei * info->width + wid] == EXIT)
-				mlx_put_image_to_window(info->mlx, info->win, info->exit_img, wid * 64, hei * 64);
-			else
-				mlx_put_image_to_window(info->mlx, info->win, info->back_img, wid * 64, hei * 64);
-			wid++;
+			put_img(info, w, h);
+			w++;
 		}
-		hei++;
+		h++;
 	}
+}
+
+void	clear_game(t_info *info)
+{
+	exit_game(info);
+}
+
+void	exit_game(t_info *info)
+{
+	if (info->map)
+		free(info->map);
+	mlx_destroy_window(info->mlx, info->win);
+	exit(0);
 }
