@@ -48,6 +48,8 @@ int	check_map(t_info *info)
 	int	t;
 	int	e;
 
+	if (game->hei * game->wid != ft_strlen(game->str_line))
+		return (free_info_print_error(info, "invalid map"));
 	i = 0;
 	p = 0;
 	t = 0;
