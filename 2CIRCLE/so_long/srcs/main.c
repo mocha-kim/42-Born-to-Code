@@ -6,7 +6,7 @@
 /*   By: sunhkim <sunhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:19:17 by sunhkim           #+#    #+#             */
-/*   Updated: 2022/04/27 01:02:37 by sunhkim          ###   ########.fr       */
+/*   Updated: 2022/04/27 01:07:13 by sunhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ int	key_press(int keycode, t_info *info)
 	else if (keycode == KEY_D)
 		info->pos.x++;
 	else if (keycode == KEY_ESC)
-		exit(0);
-	info->map[y * info->width + x] = 0;
-	info->map[info->pos.y * info->width + info->pos.x] = 0;
+		exit_game(info);
+	info->map[y * info->width + x] = '0';
+	info->map[info->pos.y * info->width + info->pos.x] = 'P';
+	draw(info);
 	return (1);
 }
 
