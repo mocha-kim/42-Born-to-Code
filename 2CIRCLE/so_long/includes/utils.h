@@ -29,4 +29,9 @@ size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
 void	ft_putstr_fd(char *s, int fd);
 int	ft_print_error(char *str);
 
+
+char	*ft_strdup_free(char *s)
+int	ft_strlcpy_free(char *dst, char *src, int len)
+char	*ft_strjoin_free(char *s1, char *s2)
+
 #endif

@@ -15,19 +15,17 @@
 
 int				key_press(int keycode, t_info *info)
 {
-	static int a = 0;
-
 	if (keycode == KEY_W)
-		info->player->y++;
+		info->player.y++;
 	else if (keycode == KEY_S)
-		info->player->y--;
+		info->player.y--;
 	else if (keycode == KEY_A)
-		info->player->x--;
+		info->player.x--;
 	else if (keycode == KEY_D)
-		info->player->x++;
+		info->player.x++;
 	else if (keycode == KEY_ESC)
 		exit(0);
-	return (0);
+	return (1);
 }
 
 int	main(int argc, char *argv[])
@@ -40,17 +38,14 @@ int	main(int argc, char *argv[])
 	flag = read_map(&info, argv[1]);
 	if (flag)
 	{
-		info->map = malloc(sizeof(int*) * (info->map_col + 1));
-		if (!info->map)
-			return (free_info_print_error(info, "malloc failed"));
 		flag = parse_map(&info);
 		if (!flag)
 			return (0);
 		// start game
-		mlx = mlx_init();
-		win = mlx_new_window(mlx, 500, 500, "mlx_project");
-		mlx_hook(win, X_EVENT_KEY_RELEASE, 0, &key_press, &param);
-		mlx_loop(mlx);
+		info.mlx = mlx_init();
+		info.win = mlx_new_window(mlx, 500, 500, "mlx_project");
+		mlx_hook(info.win, X_EVENT_KEY_RELEASE, 0, &key_press, &info);
+		mlx_loop(info.mlx);
 	}
 	return (0);
 }

@@ -21,9 +21,9 @@ SRC_PATH	= ./srcs
 MLX_PATH	= ./mlx
 
 INCS		= -I $(INC_PATH)
-SRCS		= $(SRC_PATH)/main.c \
-			  $(SRC_PATH)/gnl.c $(SRC_PATH)/utils.c $(SRC_PATH)/utils2.c\
-			  $(SRC_PATH)/parsing.c
+SRCS		= $(SRC_PATH)/main.c $(SRC_PATH)/gnl.c $(SRC_PATH)/utils.c \
+			  $(SRC_PATH)/utils2.c $(SRC_PATH)/utils3.c $(SRC_PATH)/utils4.c \
+			  $(SRC_PATH)/parsing.c $(SRC_PATH)/game.c
 OBJS		= $(SRCS:.c=.o)
 
 CC			= gcc
