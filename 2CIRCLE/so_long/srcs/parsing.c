@@ -39,7 +39,7 @@ int read_map(t_info *info, char *path)
 		i++;
 	}
 	free(line);
-	info->map_col = i;
+	info->height = i;
 	return (1);
 }
 
@@ -71,7 +71,16 @@ int	parse_map(t_info *info)
 
 int parse_first_last_line(t_info *info, char *line)
 {
-	info->map_row = ft_strlen(info->map_buffer->content);
+	int	i;
+
+	info->width = ft_strlen(info->map_buffer->content);
+	i = 0;
+	while (i < info->width)
+	{
+		if (line[i] != 1)
+			return (0);
+	}
+	return (1);
 }
 
 int check_line(t_info *info, char *line)
@@ -107,18 +116,18 @@ int	parse_line(t_info *info, char *line, int i)
 	while (line[j])
 	{
 		if (line[j] == '0')
-			info->map[i][j] = 0;
+			info->map[i][j] = BACK;
 		else if (line[j] == '1')
-			info->map[i][j] = 1;
+			info->map[i][j] = WALL;
 		else if (line[j] == 'C')
-			info->map[i][j] = 2;
+			info->map[i][j] = PLAYER;
 		else if (line[j] == 'E')
-			info->map[i][j] = 3;
+			info->map[i][j] = TARGET;
 		else if (line[j] == 'P')
 		{
-			info->start.x = j;
-			info->start.y = i;
-			info->map[i][j] = 0;
+			info->player.x = j;
+			info->player.y = i;
+			info->map[i][j] = PLAYER;
 		}
 		j++;
 	}

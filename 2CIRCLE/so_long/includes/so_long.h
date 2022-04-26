@@ -15,6 +15,12 @@
 
 #include "list.h"
 
+#define BACK 0
+#define WALL 1
+#define PLAYER 2
+#define TARGET 3
+#define EXIT 4
+
 typedef struct	s_position
 {
 	int	x;
@@ -23,13 +29,18 @@ typedef struct	s_position
 
 typedef struct	s_info
 {
-	t_position	*targets;
-	t_position	map_exit;
-	t_position	start;
+	void		*mlx;
+	void		*win;
+	t_position	player;
 	t_list	*map_buffer;
 	int	**map;
-	int map_row;
-	int map_col;
+	int	height;
+	int	width;
+	void	*back_img;
+	void	*wall_img;
+	void	*enemy_img;
+	void	*player_img;
+	void	*exit_img;
 }				t_info;
 
 /* memory.c */
