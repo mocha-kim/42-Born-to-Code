@@ -43,6 +43,7 @@ typedef struct	s_info
 	void	*mlx;
 	void	*win;
 	t_position	pos;
+	int	exit_pos;
 	int	direction;
 	char	*map;
 	int	height;

@@ -117,8 +117,11 @@ int	check_elememts(t_info *info, int i, int *p, int *t, int *e)
 	else if (info->map[i] == 'C')
 		(*t)++;
 	else if (info->map[i] == 'E')
+	{
+		info->exit_pos = i;
 		(*e)++;
-	else if (info->map[i] != '0' && info->map[i] == '1')
+	}
+	else if (info->map[i] != '0' && info->map[i] != '1')
 		return (free_info_print_error(info, "invalid map(invalid elements)"));
 	return (1);
 }

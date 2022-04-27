@@ -54,13 +54,14 @@ int	move(t_info *info, t_position pre)
 	{
 		info->target_num--;
 	}
+	info->step_count++;
 	ft_putstr_fd("step: ", STDOUT_FILENO);
 	ft_putnbr_fd(info->step_count, STDOUT_FILENO);
 	ft_putchar_fd('\n', STDOUT_FILENO);
-	info->step_count++;
 	if (info->target_num == 0 && info->map[info->pos.y * info->width + info->pos.x] == 'E')
 		clear_game(info);
 	info->map[pre.y * info->width + pre.x] = '0';
+	info->map[info->exit_pos] = 'E';
 	info->map[info->pos.y * info->width + info->pos.x] = 'P';
 	return (1);
 }

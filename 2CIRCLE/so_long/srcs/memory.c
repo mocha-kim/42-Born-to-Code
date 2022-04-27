@@ -16,6 +16,7 @@ void	init_info(t_info *i)
 {
 	i->pos.x = 0;
 	i->pos.y = 0;
+	i->exit_pos = 0;
 	i->direction = RIGHT;
 	i->win_h = 0;
 	i->win_w = 0;
