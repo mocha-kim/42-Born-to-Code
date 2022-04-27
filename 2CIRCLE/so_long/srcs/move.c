@@ -42,6 +42,8 @@ int	key_press(int keycode, t_info *info)
 
 int	move(t_info *info, t_position pre)
 {
+	if (pre.x == info->pos.x && pre.y == info->pos.y)
+		return (0);
 	if (info->map[info->pos.y * info->width + info->pos.x] == '1')
 	{
 		info->pos.x = pre.x;
