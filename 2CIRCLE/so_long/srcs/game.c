@@ -16,20 +16,26 @@
 void	put_img(t_info *info, int h, int w)
 {
 	if (info->map[h * info->width + w] == '1')
-		mlx_put_image_to_window(info->mlx, info->win, info->wall_img, w * TILE, h * TILE);
+		mlx_put_image_to_window(info->mlx, info->win,
+			info->wall_img, w * TILE, h * TILE);
 	else if (info->map[h * info->width + w] == 'C')
-		mlx_put_image_to_window(info->mlx, info->win, info->target_img, w * TILE, h * TILE);
+		mlx_put_image_to_window(info->mlx, info->win,
+			info->target_img, w * TILE, h * TILE);
 	else if (info->map[h * info->width + w] == 'P')
 	{
 		if (info->direction == LEFT)
-			mlx_put_image_to_window(info->mlx, info->win, info->player_l_img, w * TILE, h * TILE);
+			mlx_put_image_to_window(info->mlx, info->win,
+				info->player_l_img, w * TILE, h * TILE);
 		else
-			mlx_put_image_to_window(info->mlx, info->win, info->player_r_img, w * TILE, h * TILE);
+			mlx_put_image_to_window(info->mlx, info->win,
+				info->player_r_img, w * TILE, h * TILE);
 	}
 	else if (info->map[h * info->width + w] == 'E')
-		mlx_put_image_to_window(info->mlx, info->win, info->exit_img, w * TILE, h * TILE);
+		mlx_put_image_to_window(info->mlx, info->win,
+			info->exit_img, w * TILE, h * TILE);
 	else
-		mlx_put_image_to_window(info->mlx, info->win, info->back_img, w * TILE, h * TILE);
+		mlx_put_image_to_window(info->mlx, info->win,
+			info->back_img, w * TILE, h * TILE);
 }
 
 void	draw_init_background(t_info *info)
@@ -44,9 +50,11 @@ void	draw_init_background(t_info *info)
 		while (w < info->width)
 		{
 			if (info->map[h * info->width + w] == '1')
-				mlx_put_image_to_window(info->mlx, info->win, info->wall_img, w * TILE, h * TILE);
+				mlx_put_image_to_window(info->mlx, info->win,
+					info->wall_img, w * TILE, h * TILE);
 			else
-				mlx_put_image_to_window(info->mlx, info->win, info->back_img, w * TILE, h * TILE);
+				mlx_put_image_to_window(info->mlx, info->win,
+					info->back_img, w * TILE, h * TILE);
 			w++;
 		}
 		h++;

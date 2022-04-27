@@ -14,12 +14,15 @@
 
 int	main(int argc, char *argv[])
 {
-	int	flag;
+	int		flag;
 	t_info	info;
 
 	if (argc != 2)
 		return (ft_print_error("invalid argument number"));
 	init_info(&info);
+	flag = check_file_name(argv[1]);
+	if (!flag)
+		return (0);
 	flag = read_map(&info, argv[1]);
 	if (flag)
 	{

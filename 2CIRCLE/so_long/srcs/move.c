@@ -15,7 +15,7 @@
 int	key_press(int keycode, t_info *info)
 {
 	t_position	pre_pos;
-	int	flag;
+	int			flag;
 
 	pre_pos.x = info->pos.x;
 	pre_pos.y = info->pos.y;
@@ -24,20 +24,18 @@ int	key_press(int keycode, t_info *info)
 	else if (keycode == KEY_S)
 		info->pos.y++;
 	else if (keycode == KEY_A)
-	{
 		info->pos.x--;
-		info->direction = LEFT;
-	}
 	else if (keycode == KEY_D)
-	{
 		info->pos.x++;
-		info->direction = RIGHT;
-	}
 	if (keycode == KEY_ESC)
 		exit_game(info);
+	if (keycode == KEY_A)
+		info->direction = LEFT;
+	else
+		info->direction = RIGHT;
 	flag = move(info, pre_pos);
 	if (!flag)
-		return (1);
+		return (0);
 	draw(info);
 	return (1);
 }
@@ -58,7 +56,8 @@ int	move(t_info *info, t_position pre)
 	ft_putstr_fd("step: ", STDOUT_FILENO);
 	ft_putnbr_fd(info->step_count, STDOUT_FILENO);
 	ft_putchar_fd('\n', STDOUT_FILENO);
-	if (info->target_num == 0 && info->map[info->pos.y * info->width + info->pos.x] == 'E')
+	if (info->target_num == 0
+		&& info->map[info->pos.y * info->width + info->pos.x] == 'E')
 		clear_game(info);
 	info->map[pre.y * info->width + pre.x] = '0';
 	info->map[info->exit_pos] = 'E';

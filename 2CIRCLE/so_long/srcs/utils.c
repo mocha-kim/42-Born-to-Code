@@ -14,7 +14,7 @@
 
 int	ft_countc(char *str, char c)
 {
-	int count;
+	int	count;
 	int	i;
 
 	count = 0;
@@ -28,23 +28,25 @@ int	ft_countc(char *str, char c)
 	return (count);
 }
 
-int		ft_findchar(char *s)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
 	i = 0;
-	if (!*s)
+	if (!s)
 		return (0);
-	while (s[i] || s[i] == '\n')
+	if (c == '\0')
+		return ((char *)&s[ft_strlen(s)]);
+	while (s[i] != '\0')
 	{
-		if (s[i] == '\n')
-			return (i);
+		if (s[i] == (char) c)
+			return ((char *)&s[i]);
 		i++;
 	}
-	return (i);
+	return (0);
 }
 
-int		ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
 	int	i;
 
@@ -76,9 +78,9 @@ char	*ft_strjoin_free(char *s1, char *s2)
 
 void	ft_remove_newline(char **str)
 {
-	int	i;
-	int	j;
-	int length;
+	int		i;
+	int		j;
+	int		length;
 	char	*result;
 
 	i = 0;

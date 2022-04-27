@@ -14,27 +14,26 @@
 #include "../includes/gnl.h"
 #include <fcntl.h>
 
-int read_map(t_info *info, char *path)
+int	read_map(t_info *info, char *path)
 {	
-	int	fd;
-	int	flag;
-	char *line;
+	int		fd;
+	int		flag;
+	char	*line;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (free_info_print_error(info, "file open failed"));
-	flag = check_file_name(path);
+	flag = read_first_line(info, fd, &line);
 	if (!flag)
 		return (0);
-	flag = read_first_line(info, fd);
-	while (flag)
+	while (line)
 	{
 		info->height++;
-		flag = get_next_line(fd, &line);
-		if (flag != -1)
+		line = get_next_line(fd);
+		if (line)
 		{
-			if (ft_strlen(line) != info->width)
-				return (free_info_print_error(info, "invalid map(not rectangle)"));
+			if (ft_strlen_without_nl(line) != info->width)
+				return (free_info_print_error(info, "invalid map(not rect)"));
 			info->map = ft_strjoin_free(info->map, line);
 		}
 	}
@@ -43,18 +42,14 @@ int read_map(t_info *info, char *path)
 	return (1);
 }
 
-int	read_first_line(t_info *info, int fd)
+int	read_first_line(t_info *info, int fd, char **line)
 {
-	int	flag;
-	char *line;
-
-	flag = get_next_line(fd, &line);
-	if (flag == -1)
+	*line = get_next_line(fd);
+	if (*line == NULL)
 		return (free_info_print_error(info, "gnl failed"));
-	info->height++;
-	info->width = ft_strlen(line);
-	info->map = ft_strdup(line);
-	free(line);
+	info->width = ft_strlen(*line) - 1;
+	info->map = ft_strdup(*line);
+	free(*line);
 	return (1);
 }
 
@@ -62,27 +57,24 @@ int	check_map(t_info *info)
 {
 	int	i;
 	int	p;
-	int	t;
 	int	e;
 	int	flag;
 
 	i = 0;
 	p = 0;
-	t = 0;
 	e = 0;
 	while (info->map[i])
 	{
 		flag = check_wall(info, i);
 		if (!flag)
 			return (0);
-		flag = check_elememts(info, i, &p, &t, &e);
+		flag = check_elememts(info, i, &p, &e);
 		if (!flag)
 			return (0);
 		i++;
 	}
-	if (p != 1 || t < 1 || e != 1)
+	if (p != 1 || info->target_num < 1 || e != 1)
 		return (free_info_print_error(info, "invalid map(invalid elements)"));
-	info->target_num = t;
 	return (1);
 }
 
@@ -106,7 +98,7 @@ int	check_wall(t_info *info, int i)
 	return (1);
 }
 
-int	check_elememts(t_info *info, int i, int *p, int *t, int *e)
+int	check_elememts(t_info *info, int i, int *p, int *e)
 {
 	if (info->map[i] == 'P')
 	{
@@ -115,7 +107,7 @@ int	check_elememts(t_info *info, int i, int *p, int *t, int *e)
 		(*p)++;
 	}
 	else if (info->map[i] == 'C')
-		(*t)++;
+		info->target_num++;
 	else if (info->map[i] == 'E')
 	{
 		info->exit_pos = i;

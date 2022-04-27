@@ -47,9 +47,9 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-int ft_print_error(char *str)
+int	ft_print_error(char *str)
 {
-	ft_putstr_fd("Error\n:", STDERR_FILENO);
+	ft_putstr_fd("Error\n:", STDOUT_FILENO);
 	ft_putstr_fd(str, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
 	return (0);

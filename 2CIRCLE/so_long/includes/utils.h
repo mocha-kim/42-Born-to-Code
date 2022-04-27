@@ -16,13 +16,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int	ft_countc(char *str, char c);
-int	ft_findchar(char *s);
-int	ft_strlen(char *s);
+int		ft_countc(char *str, char c);
+char	*ft_strchr(char *s, int c);
+int		ft_strlen(char *s);
 char	*ft_strjoin_free(char *s1, char *s2);
 void	ft_remove_newline(char **str);
 
-char	*ft_substr(char *str, int start, int len);
+int		ft_strlen_without_nl(char *s);
 char	*ft_strdup(char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
@@ -31,7 +31,7 @@ size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
-int	ft_print_error(char *str);
-int	check_file_name(char *path);
+int		ft_print_error(char *str);
+int		check_file_name(char *path);
 
 #endif

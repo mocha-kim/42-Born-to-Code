@@ -12,19 +12,16 @@
 
 #include "../includes/utils.h"
 
-char	*ft_substr(char *str, int start, int len)
+int	ft_strlen_without_nl(char *s)
 {
-	char	*result;
+	int	i;
 
-	if (!str || !(result = malloc(sizeof(char) * len + 1)))
-		return (0);
-	if (start >= ft_strlen(str))
-	{
-		*result = 0;
-		return (result);
-	}
-	ft_strlcpy(result, str + start, len + 1);
-	return (result);
+	i = 0;
+	while (s[i])
+		i++;
+	if (s[i - 1] == '\n')
+		i--;
+	return (i);
 }
 
 char	*ft_strdup(char *s1)
@@ -34,7 +31,8 @@ char	*ft_strdup(char *s1)
 	int		i;
 
 	size = ft_strlen(s1);
-	if (!(str = malloc(sizeof(char) * size + 1)))
+	str = malloc(sizeof(char) * size + 1);
+	if (!str)
 		return (0);
 	i = 0;
 	while (i < size)
@@ -45,19 +43,30 @@ char	*ft_strdup(char *s1)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int		len1;
-	int		len2;
-	char	*result;
+	size_t	i;
+	size_t	c;
+	char	*str;
 
+	if (!s1)
+	{
+		s1 = (char *)malloc(1 * sizeof(char));
+		s1[0] = '\0';
+	}
 	if (!s1 || !s2)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	if (!(result = malloc(sizeof(char) * (len1 + len2 + 1))))
-		return (0);
-	ft_strlcpy(result, s1, len1 + 1);
-	ft_strlcat(result, s2, len2 + len1 + 1);
-	return (result);
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	c = 0;
+	if (s1)
+		while (s1[++i] != '\0')
+			str[i] = s1[i];
+	while (s2[c] != '\0')
+		str[i++] = s2[c++];
+	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free(s1);
+	return (str);
 }
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)

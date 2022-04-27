@@ -30,7 +30,7 @@ void	init_mlx(t_info *i)
 {
 	int	w;
 	int	h;
-	
+
 	i->mlx = mlx_init();
 	i->win_w = i->width * TILE;
 	i->win_h = i->height * TILE;
@@ -42,12 +42,14 @@ void	init_mlx(t_info *i)
 	i->back_img = mlx_xpm_file_to_image(i->mlx, "./sprites/back.xpm", &w, &h);
 	i->wall_img = mlx_xpm_file_to_image(i->mlx, "./sprites/wall.xpm", &w, &h);
 	i->target_img = mlx_xpm_file_to_image(i->mlx, "./sprites/box.xpm", &w, &h);
-	i->player_l_img = mlx_xpm_file_to_image(i->mlx, "./sprites/king_l.xpm", &w, &h);
-	i->player_r_img = mlx_xpm_file_to_image(i->mlx, "./sprites/king_r.xpm", &w, &h);
+	i->player_l_img = mlx_xpm_file_to_image(i->mlx,
+			"./sprites/king_l.xpm", &w, &h);
+	i->player_r_img = mlx_xpm_file_to_image(i->mlx,
+			"./sprites/king_r.xpm", &w, &h);
 	i->exit_img = mlx_xpm_file_to_image(i->mlx, "./sprites/door.xpm", &w, &h);
 }
 
-int free_info_print_error(t_info *info, char *str)
+int	free_info_print_error(t_info *info, char *str)
 {
 	if (info->map)
 		free(info->map);
