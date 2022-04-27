@@ -76,7 +76,9 @@ int	check_map(t_info *info)
 		flag = check_wall(info, i);
 		if (!flag)
 			return (0);
-		check_elememts(info, i, &p, &t, &e);
+		flag = check_elememts(info, i, &p, &t, &e);
+		if (!flag)
+			return (0);
 		i++;
 	}
 	if (p != 1 || t < 1 || e != 1)
@@ -105,7 +107,7 @@ int	check_wall(t_info *info, int i)
 	return (1);
 }
 
-void	check_elememts(t_info *info, int i, int *p, int *t, int *e)
+int	check_elememts(t_info *info, int i, int *p, int *t, int *e)
 {
 	if (info->map[i] == 'P')
 	{
@@ -117,4 +119,7 @@ void	check_elememts(t_info *info, int i, int *p, int *t, int *e)
 		(*t)++;
 	else if (info->map[i] == 'E')
 		(*e)++;
+	else if (info->map[i] != '0' && info->map[i] == '1')
+		return (free_info_print_error(info, "invalid map(invalid elements)"));
+	return (1);
 }

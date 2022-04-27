@@ -69,7 +69,7 @@ int read_map(t_info *info, char *path);
 int	read_first_line(t_info *info, int fd);
 int	check_map(t_info *info);
 int	check_wall(t_info *info, int i);
-void	check_elememts(t_info *info, int i, int *p, int *t, int *e);
+int	check_elememts(t_info *info, int i, int *p, int *t, int *e);
 
 /* game.c */
 void	put_img(t_info *info, int h, int w);
