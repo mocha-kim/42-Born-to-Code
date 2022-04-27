@@ -33,6 +33,7 @@ int	main(int argc, char *argv[])
 		draw_init_background(&info);
 		draw(&info);
 		mlx_hook(info.win, X_EVENT_KEY_PRESS, 0, &key_press, &info);
+		mlx_hook(info.win, X_EVENT_KEY_EXIT, 0, &exit_game, &info);
 		mlx_loop(info.mlx);
 	}
 	return (0);

@@ -25,6 +25,7 @@
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
+# define X_EVENT_KEY_EXIT		17
 
 # define KEY_ESC	53
 # define KEY_W		13
@@ -77,7 +78,7 @@ void	put_img(t_info *info, int h, int w);
 void	draw_init_background(t_info *info);
 void	draw(t_info *info);
 void	clear_game(t_info *info);
-void	exit_game(t_info *info);
+int		exit_game(t_info *info);
 
 /* move.c */
 int		key_press(int keycode, t_info *info);

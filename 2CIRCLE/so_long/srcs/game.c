@@ -87,7 +87,7 @@ void	clear_game(t_info *info)
 	exit_game(info);
 }
 
-void	exit_game(t_info *info)
+int	exit_game(t_info *info)
 {
 	if (info->map)
 		free(info->map);
