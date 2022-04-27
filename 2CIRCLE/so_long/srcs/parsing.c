@@ -22,8 +22,11 @@ int read_map(t_info *info, char *path)
 	char *line;
 
 	fd = open(path, O_RDONLY);
-	if (fd < -1)
+	if (fd < 0)
 		return (free_info_print_error(info, "file open failed"));
+	flag = check_file_name(path);
+	if (!flag)
+		return (0);
 	flag = read_first_line(info, fd);
 	while (flag)
 	{
@@ -32,7 +35,7 @@ int read_map(t_info *info, char *path)
 		if (flag != -1)
 		{
 			if (ft_strlen(line) != info->width)
-				return (free_info_print_error(info, "invalid map"));
+				return (free_info_print_error(info, "invalid map(not rectangle)"));
 			info->map = ft_strjoin_free(info->map, line);
 		}
 	}
@@ -64,7 +67,6 @@ int	check_map(t_info *info)
 	int	e;
 	int	flag;
 
-	printf("check : %d * %d / %d\n", info->height, info->width, ft_strlen(info->map));
 	i = 0;
 	p = 0;
 	t = 0;
@@ -74,11 +76,12 @@ int	check_map(t_info *info)
 		flag = check_wall(info, i);
 		if (!flag)
 			return (0);
-		check_elememts(info->map[i], &p, &t, &e);
+		check_elememts(info, i, &p, &t, &e);
 		i++;
 	}
 	if (p != 1 || t < 1 || e != 1)
-		return (free_info_print_error(info, "invalid map"));
+		return (free_info_print_error(info, "invalid map(invalid elements)"));
+	info->target_num = t;
 	return (1);
 }
 
@@ -87,27 +90,31 @@ int	check_wall(t_info *info, int i)
 	if (i < info->width)
 	{
 		if (info->map[i] != '1')
-			return (free_info_print_error(info, "invalid map"));
+			return (free_info_print_error(info, "invalid map(not surrounded)"));
 	}
 	else if (i % info->width == 0 || i % info->width == info->width - 1)
 	{
 		if (info->map[i] != '1')
-			return (free_info_print_error(info, "invalid map"));
+			return (free_info_print_error(info, "invalid map(not surrounded)"));
 	}
 	else if (i > ft_strlen(info->map) - info->width)
 	{
 		if (info->map[i] != '1')
-			return (free_info_print_error(info, "invalid map"));
+			return (free_info_print_error(info, "invalid map(not surrounded)"));
 	}
 	return (1);
 }
 
-void	check_elememts(char map, int *p, int *t, int *e)
+void	check_elememts(t_info *info, int i, int *p, int *t, int *e)
 {
-	if (map == 'P')
+	if (info->map[i] == 'P')
+	{
+		info->pos.x = i % info->width;
+		info->pos.y = i / info->width;
 		(*p)++;
-	else if (map == 'C')
+	}
+	else if (info->map[i] == 'C')
 		(*t)++;
-	else if (map == 'E')
+	else if (info->map[i] == 'E')
 		(*e)++;
 }

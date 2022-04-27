@@ -21,13 +21,13 @@ SRC_PATH	= ./srcs
 MLX_PATH	= ./mlx
 
 INCS		= -I $(INC_PATH)
-SRCS		= $(SRC_PATH)/main.c $(SRC_PATH)/gnl.c \
+SRCS		= $(SRC_PATH)/main.c $(SRC_PATH)/gnl.c $(SRC_PATH)/memory.c \
 			  $(SRC_PATH)/utils.c $(SRC_PATH)/utils2.c $(SRC_PATH)/utils3.c \
-			  $(SRC_PATH)/memory.c $(SRC_PATH)/parsing.c $(SRC_PATH)/game.c
+			  $(SRC_PATH)/parsing.c $(SRC_PATH)/game.c $(SRC_PATH)/move.c
 OBJS		= $(SRCS:.c=.o)
 
 CC			= gcc
-CFLAGS		= -O3 -Wall -Wextra -Werror -fsanitize=address
+CFLAGS		= -O3 -Wall -Wextra -Werror
 MLXFLAGS	= -Lmlx -lm -framework OpenGL -framework AppKit
 MLX			= libm.a
 

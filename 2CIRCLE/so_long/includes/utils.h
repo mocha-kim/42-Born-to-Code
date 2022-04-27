@@ -28,6 +28,8 @@ char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
 
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 int	ft_print_error(char *str);
 int	check_file_name(char *path);
