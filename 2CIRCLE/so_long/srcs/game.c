@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../includes/utils.h"
 #include <stdlib.h>
 
 void	put_img(t_info *info, int h, int w)

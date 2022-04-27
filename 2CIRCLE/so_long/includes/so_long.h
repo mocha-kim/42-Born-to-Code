@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 #include "../mlx/mlx.h"
-#include <stdio.h>
+#include "../includes/utils.h"
 
 # define TILE	64
 # define WIN_WIDTH	2560

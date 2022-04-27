@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../includes/utils.h"
 
 int	main(int argc, char *argv[])
 {

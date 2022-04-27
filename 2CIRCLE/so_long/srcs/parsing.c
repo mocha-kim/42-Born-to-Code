@@ -12,7 +12,6 @@
 
 #include "../includes/so_long.h"
 #include "../includes/gnl.h"
-#include "../includes/utils.h"
 #include <fcntl.h>
 
 int read_map(t_info *info, char *path)

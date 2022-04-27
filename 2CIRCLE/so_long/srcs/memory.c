@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../includes/utils.h"
 
 void	init_info(t_info *i)
 {

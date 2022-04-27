@@ -44,6 +44,8 @@ $(MLX):
 
 all:	$(NAME)
 
+bonus:	$(NAME)
+
 clean:
 	@$(MAKE) -C mlx clean
 	rm -f $(OBJS) $(BNS_OBJS)

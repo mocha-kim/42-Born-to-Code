@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../includes/utils.h"
 
 int	key_press(int keycode, t_info *info)
 {
