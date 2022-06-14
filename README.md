@@ -22,6 +22,7 @@
 |                                         Subject                                       | Submit Date |  Grade |   | 
 | ------------------------------------------------------------------------------------- | ----------- | ------ | - |
 | [push_swap](https://github.com/mocha-kim/42-Born-to-Code/tree/main/2CIRCLE/push_swap) |  2021-08-20 |  100%  |   |
+| [so_long](https://github.com/mocha-kim/42-Born-to-Code/tree/main/2CIRCLE/so_long)     |  2022-04-27 |  100%  |   |
 
 
 ## 3Circle
