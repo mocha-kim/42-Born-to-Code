@@ -1,3 +1,6 @@
 [submodule "5CIRCLE/webserv"]
 	path = 5CIRCLE/webserv
 	url = https://github.com/mocha-kim/webserv.git
+[submodule "3CIRCLE/minishell"]
+	path = 3CIRCLE/minishell
+	url = https://github.com/mocha-kim/minishell.git
