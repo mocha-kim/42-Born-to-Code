@@ -1,0 +1,3 @@
+[submodule "5CIRCLE/webserv"]
+	path = 5CIRCLE/webserv
+	url = https://github.com/mocha-kim/webserv.git
