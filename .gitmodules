@@ -7,3 +7,6 @@
 [submodule "5CIRCLE/inception"]
 	path = 5CIRCLE/inception
 	url = git@github.com:mocha-kim/inception.git
+[submodule "5CIRCLE/ft_containers"]
+	path = 5CIRCLE/ft_containers
+	url = https://github.com/mocha-kim/ft_containers.git
